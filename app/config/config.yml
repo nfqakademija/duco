@@ -65,16 +65,6 @@ swiftmailer:
     password:  "%mailer_password%"
     spool:     { type: memory }
 
-#hwi_oauth:
-#    firewall_names:        [secured_area]
-#    resource_owners:
-#        facebook:
-#            type:          facebook
-#            client_id:     1720761408200021
-#            client_secret: 904d3d05e11c054e3aea17cc1d1a31fd
-#            scope:         "email"
-#            options:
-#                display: popup #dialog is optimized for popup window
 hwi_oauth:
     #this is my custom user provider, created from FOSUBUserProvider - will manage the
     #automatic user registration on your site, with data from the provider (facebook. google, etc.)
@@ -87,12 +77,18 @@ hwi_oauth:
         username_iterations: 30
         properties:
             # these properties will be used/redefined later in the custom FOSUBUserProvider service.
-            facebook: facebook_id
+            facebook: facebook_id, facebook_email
+            google: google_id, google_email
     resource_owners:
         facebook:
             type:                facebook
             client_id:           1720761408200021
             client_secret:       904d3d05e11c054e3aea17cc1d1a31fd
+            scope:               "email"
+        google:
+            type:                google
+            client_id:           416594303859-1q5mjtv33378thhhakgkca176q3ms9u2.apps.googleusercontent.com
+            client_secret:       qIYKXRvI0W6dgoikqYgaLjf9
             scope:               "email"
 
 fos_user:
