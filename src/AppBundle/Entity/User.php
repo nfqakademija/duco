@@ -24,6 +24,12 @@ class User extends BaseUser
     /** @ORM\Column(name="facebook_access_token", type="string", length=255, nullable=true) */
     protected $facebook_access_token;
 
+    /** @ORM\Column(name="google_id", type="string", length=255, nullable=true) */
+    protected $google_id;
+
+    /** @ORM\Column(name="google_access_token", type="string", length=255, nullable=true) */
+    protected $google_access_token;
+
     public function __construct()
     {
         parent::__construct();
@@ -37,5 +43,15 @@ class User extends BaseUser
     public function setFacebookAccessToken($facebook_access_token)
     {
         $this->facebook_access_token = $facebook_access_token;
+    }
+
+    public function setGoogleId($google_id)
+    {
+        $this->google_id = $google_id;
+    }
+
+    public function setGoogleAccessToken($google_access_token)
+    {
+        $this->google_access_token = $google_access_token;
     }
 }
