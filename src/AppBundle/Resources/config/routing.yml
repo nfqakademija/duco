@@ -19,3 +19,7 @@ google_login:
 fos_user:
     resource: "@FOSUserBundle/Resources/config/routing/all.xml"
 
+fos_user_registration_confirmed:
+    pattern: /
+    requirements:
+        _method: GET
