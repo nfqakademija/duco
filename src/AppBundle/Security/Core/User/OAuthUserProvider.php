@@ -49,26 +49,9 @@ class OAuthUserProvider extends BaseClass
             $user->setLastName($response->getLastName());
             $user->setPlainPassword(md5(uniqid()));
             $user->setEnabled(true);
-
             $this->userManager->updateUser($user);
 
-            //$this->createSocialUser($service, $user->getId(), $response->getUsername(), $response->getAccessToken());
-            switch ($service) {
-                case 'google':
-                    $socialUser = new Google();
-                    $socialUser->setUserId($user->getId());
-                    $socialUser->setGoogleId($socialId);
-                    $socialUser->setGoogleAccessToken($response->getAccessToken());
-                    break;
-                case 'facebook':
-                    $socialUser = new Facebook();
-                    $socialUser->setUserId($user->getId());
-                    $socialUser->setFacebookId($socialId);
-                    $socialUser->setFacebookAccessToken($response->getAccessToken());
-                    break;
-            }
-            $this->entityManager->persist($socialUser);
-            $this->entityManager->flush();
+            $this->createSocialUser($service, $user->getId(), $socialId, $response->getAccessToken());
         }
         else
         {
@@ -76,23 +59,8 @@ class OAuthUserProvider extends BaseClass
 
             if ($socialUser === null)
             {
-                switch ($service) {
-                    case 'google':
-                        $socialUser = new Google();
-                        $socialUser->setUserId($user->getId());
-                        $socialUser->setGoogleId($socialId);
-                        $socialUser->setGoogleAccessToken($response->getAccessToken());
-                        break;
-                    case 'facebook':
-                        $socialUser = new Facebook();
-                        $socialUser->setUserId($user->getId());
-                        $socialUser->setFacebookId($socialId);
-                        $socialUser->setFacebookAccessToken($response->getAccessToken());
-                        break;
-                }
+                $this->createSocialUser($service, $user->getId(), $socialId, $response->getAccessToken());
             }
-            $this->entityManager->persist($socialUser);
-            $this->entityManager->flush();
 
             $checker = new UserChecker();
             $checker->checkPreAuth($user);
@@ -110,17 +78,19 @@ class OAuthUserProvider extends BaseClass
     {
         switch ($service) {
             case 'google':
-                $googleUser = new Google();
-                $googleUser->setUserId($userId);
-                $googleUser->setGoogleId($socialId);
-                $googleUser->setGoogleAccessToken($accessToken);
+                $socialUser = new Google();
+                $socialUser->setUserId($userId);
+                $socialUser->setGoogleId($socialId);
+                $socialUser->setGoogleAccessToken($accessToken);
                 break;
             case 'facebook':
-                $facebookUser = new Facebook();
-                $facebookUser->setUserId($userId);
-                $facebookUser->setFacebookId($socialId);
-                $facebookUser->setFacebookAccessToken($accessToken);
+                $socialUser = new Facebook();
+                $socialUser->setUserId($userId);
+                $socialUser->setFacebookId($socialId);
+                $socialUser->setFacebookAccessToken($accessToken);
                 break;
         }
+        $this->entityManager->persist($socialUser);
+        $this->entityManager->flush();
     }
 }
