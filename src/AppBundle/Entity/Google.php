@@ -15,9 +15,9 @@ use Symfony\Component\Validator\Constraints\Collection;
 
 /**
  * @ORM\Entity
- * @ORM\Table(name="facebook_users")
+ * @ORM\Table(name="google_users")
  */
-class Facebook
+class Google
 {
     /**
      * @ORM\Column(name="user_id", type="integer")
@@ -26,14 +26,14 @@ class Facebook
 
     /**
      * @ORM\Id
-     * @ORM\Column(name="facebook_id", type="string", length=255, nullable=false)
+     * @ORM\Column(name="google_id", type="string", length=255, nullable=false)
      */
-    protected $facebook_id;
+    protected $google_id;
 
     /**
-     * @ORM\Column(name="facebook_access_token", type="string", length=255, nullable=true)
+     * @ORM\Column(name="google_access_token", type="string", length=255, nullable=true)
      */
-    protected $facebook_access_token;
+    protected $google_access_token;
 
     /**
      * @param mixed $user_id
@@ -42,21 +42,20 @@ class Facebook
     {
         $this->user_id = $user_id;
     }
-
-    /**
-     * @param mixed $facebook_id
-     */
-    public function setFacebookId($facebook_id)
-    {
-        $this->facebook_id = $facebook_id;
-    }
-
-    /**
-     * @param mixed $facebook_access_token
-     */
-    public function setFacebookAccessToken($facebook_access_token)
-    {
-        $this->facebook_access_token = $facebook_access_token;
-    }
     
+    /**
+     * @param $google_id
+     */
+    public function setGoogleId($google_id)
+    {
+        $this->google_id = $google_id;
+    }
+
+    /**
+     * @param string $google_access_token
+     */
+    public function setGoogleAccessToken($google_access_token)
+    {
+        $this->google_access_token = $google_access_token;
+    }
 }

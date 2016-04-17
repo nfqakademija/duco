@@ -4,52 +4,123 @@ namespace AppBundle\Security\Core\User;
 use HWI\Bundle\OAuthBundle\OAuth\Response\UserResponseInterface;
 use HWI\Bundle\OAuthBundle\Security\Core\User\FOSUBUserProvider as BaseClass;
 use Symfony\Component\Security\Core\Exception\AuthenticationException;
+use FOS\UserBundle\Model\UserManagerInterface;
 use Symfony\Component\Security\Core\User\UserChecker;
 use Symfony\Component\Security\Core\User\UserInterface;
+use FOS\UserBundle\Doctrine;
+use AppBundle\Entity\Google;
+use AppBundle\Entity\Facebook;
 /**
  * Class OAuthUserProvider
  * @package AppBundle\Security\Core\User
  */
 class OAuthUserProvider extends BaseClass
 {
+    private $entityManager;
+
+    /**
+     * OAuthUserProvider constructor.
+     * @param UserManagerInterface $userManager
+     * @param array $properties
+     * @param $entityManager
+     */
+    public function __construct(UserManagerInterface $userManager, array $properties, $entityManager)
+    {
+        $this->entityManager = $entityManager;
+        parent::__construct($userManager, $properties);
+    }
+
     /**
      * {@inheritdoc}
      */
     public function loadUserByOAuthUserResponse(UserResponseInterface $response)
     {
-        $socialID = $response->getUsername();
-        $user = $this->userManager->findUserBy(array($this->getProperty($response)=>$socialID));
         $email = $response->getEmail();
-        //check if the user already has the corresponding social account
-        if (null === $user) {
-            //check if the user has a normal account
-            $user = $this->userManager->findUserByEmail($email);
+        $socialId = $response->getUsername();
+        $user = $this->userManager->findUserByEmail($email);
 
-            if (null === $user || !$user instanceof UserInterface) {
-                //if the user does not have a normal account, set it up:
-                $user = $this->userManager->createUser();
-                $user->setUsername($socialID);
-                $user->setEmail($email);
-                $user->setPlainPassword(md5(uniqid()));
-                $user->setEnabled(true);
-            }
-            //then set its corresponding social id
-            $service = $response->getResourceOwner()->getName();
+        $service = $response->getResourceOwner()->getName();
+        if ($user === null)
+        {
+            $user = $this->userManager->createUser();
+            $user->setUsername($response->getUsername());
+            $user->setEmail($email);
+            $user->setFirstName($response->getFirstName());
+            $user->setLastName($response->getLastName());
+            $user->setPlainPassword(md5(uniqid()));
+            $user->setEnabled(true);
+
+            $this->userManager->updateUser($user);
+
+            //$this->createSocialUser($service, $user->getId(), $response->getUsername(), $response->getAccessToken());
             switch ($service) {
                 case 'google':
-                    $user->setGoogleID($socialID);
+                    $socialUser = new Google();
+                    $socialUser->setUserId($user->getId());
+                    $socialUser->setGoogleId($socialId);
+                    $socialUser->setGoogleAccessToken($response->getAccessToken());
                     break;
                 case 'facebook':
-                    $user->setFacebookID($socialID);
+                    $socialUser = new Facebook();
+                    $socialUser->setUserId($user->getId());
+                    $socialUser->setFacebookId($socialId);
+                    $socialUser->setFacebookAccessToken($response->getAccessToken());
                     break;
             }
-            $this->userManager->updateUser($user);
-        } else {
-            //and then login the user
+            $this->entityManager->persist($socialUser);
+            $this->entityManager->flush();
+        }
+        else
+        {
+            $socialUser = $this->entityManager->getRepository('AppBundle:'.ucfirst($service))->find($socialId);
+
+            if ($socialUser === null)
+            {
+                switch ($service) {
+                    case 'google':
+                        $socialUser = new Google();
+                        $socialUser->setUserId($user->getId());
+                        $socialUser->setGoogleId($socialId);
+                        $socialUser->setGoogleAccessToken($response->getAccessToken());
+                        break;
+                    case 'facebook':
+                        $socialUser = new Facebook();
+                        $socialUser->setUserId($user->getId());
+                        $socialUser->setFacebookId($socialId);
+                        $socialUser->setFacebookAccessToken($response->getAccessToken());
+                        break;
+                }
+            }
+            $this->entityManager->persist($socialUser);
+            $this->entityManager->flush();
+
             $checker = new UserChecker();
             $checker->checkPreAuth($user);
         }
-
         return $user;
+    }
+
+    /**
+     * @param $service
+     * @param $userId
+     * @param $socialId
+     * @param $accessToken
+     */
+    private function createSocialUser($service, $userId, $socialId, $accessToken)
+    {
+        switch ($service) {
+            case 'google':
+                $googleUser = new Google();
+                $googleUser->setUserId($userId);
+                $googleUser->setGoogleId($socialId);
+                $googleUser->setGoogleAccessToken($accessToken);
+                break;
+            case 'facebook':
+                $facebookUser = new Facebook();
+                $facebookUser->setUserId($userId);
+                $facebookUser->setFacebookId($socialId);
+                $facebookUser->setFacebookAccessToken($accessToken);
+                break;
+        }
     }
 }
