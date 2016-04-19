@@ -27,18 +27,16 @@
                         <button type="submit" class="btn">Sign in!</button>
                     </form>
                 </div>
-            </div>
-
-            <div class="social-login">
-                <h3>...or login with:</h3>
-                <div class="social-login-buttons">
-                    <a class="btn btn-link-1 btn-link-1-facebook" href="{{ hwi_oauth_login_url('facebook') }}">
-                        <i class="fa fa-facebook"></i> {{ 'facebook' | trans({}, 'HWIOAuthBundle') }}
-                    </a>
-                    <a class="btn btn-link-1 btn-link-1-google-plus" href="{{ hwi_oauth_login_url('google') }}">
-                        <i class="fa fa-google-plus"></i> {{ 'google' | trans({}, 'HWIOAuthBundle') }}
-                    </a>
-                </div>
+                    <div class="social-login">
+                        <div class="social-login-buttons">
+                            <a class="btn btn-link-1 btn-link-1-facebook" href="{{ hwi_oauth_login_url('facebook') }}">
+                                <i class="fa fa-facebook"></i> {{ 'facebook' | trans({}, 'HWIOAuthBundle') }}
+                            </a>
+                            <a class="btn btn-link-1 btn-link-1-google-plus" href="{{ hwi_oauth_login_url('google') }}">
+                                <i class="fa fa-google-plus"></i> {{ 'google' | trans({}, 'HWIOAuthBundle') }}
+                            </a>
+                        </div>
+                    </div>
             </div>
 
         </div>
