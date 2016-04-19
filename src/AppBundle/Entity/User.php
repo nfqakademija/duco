@@ -4,6 +4,7 @@ namespace AppBundle\Entity;
 
 use FOS\UserBundle\Model\User as BaseUser;
 use Doctrine\ORM\Mapping as ORM;
+use AppBundle\Entity\Facebook;
 
 /**
  * @ORM\Entity
@@ -18,40 +19,31 @@ class User extends BaseUser
      */
     protected $id;
 
-    /** @ORM\Column(name="facebook_id", type="string", length=255, nullable=true) */
-    protected $facebook_id;
+    /** @ORM\Column(name="first_name", type="string", length=255, nullable=true) */
+    protected $first_name;
 
-    /** @ORM\Column(name="facebook_access_token", type="string", length=255, nullable=true) */
-    protected $facebook_access_token;
-
-    /** @ORM\Column(name="google_id", type="string", length=255, nullable=true) */
-    protected $google_id;
-
-    /** @ORM\Column(name="google_access_token", type="string", length=255, nullable=true) */
-    protected $google_access_token;
+    /** @ORM\Column(name="last_name", type="string", length=255, nullable=true) */
+    protected $last_name;
 
     public function __construct()
     {
         parent::__construct();
     }
 
-    public function setFacebookId($facebook_id)
+    /**
+     * @param string $first_name
+     */
+    public function setFirstName($first_name)
     {
-        $this->facebook_id = $facebook_id;
+        $this->first_name = $first_name;
     }
 
-    public function setFacebookAccessToken($facebook_access_token)
+    /**
+     * @param string $last_name
+     */
+    public function setLastName($last_name)
     {
-        $this->facebook_access_token = $facebook_access_token;
+        $this->last_name = $last_name;
     }
 
-    public function setGoogleId($google_id)
-    {
-        $this->google_id = $google_id;
-    }
-
-    public function setGoogleAccessToken($google_access_token)
-    {
-        $this->google_access_token = $google_access_token;
-    }
 }
