@@ -9,6 +9,7 @@ matrix:
     - php: hhvm
 before_script:
 #  - composer config -g github-oauth.github.com $GITHUB_COMPOSER_AUTH
+  - mysql -uroot -e 'create database symfony;'
   - composer install --no-interaction --prefer-dist
 script:
-  - vendor/bin/phpcs -p --standard=PSR2 --extensions=php ./src
+  - bin/phpcs -p --standard=PSR2 --extensions=php ./src
