@@ -10,6 +10,7 @@ use Symfony\Component\Security\Core\User\UserInterface;
 use FOS\UserBundle\Doctrine;
 use AppBundle\Entity\Google;
 use AppBundle\Entity\Facebook;
+
 /**
  * Class OAuthUserProvider
  * @package AppBundle\Security\Core\User
@@ -38,10 +39,8 @@ class OAuthUserProvider extends BaseClass
         $email = $response->getEmail();
         $socialId = $response->getUsername();
         $user = $this->userManager->findUserByEmail($email);
-
         $service = $response->getResourceOwner()->getName();
-        if ($user === null)
-        {
+        if ($user === null) {
             $user = $this->userManager->createUser();
             $user->setUsername($response->getUsername());
             $user->setEmail($email);
@@ -52,16 +51,11 @@ class OAuthUserProvider extends BaseClass
             $this->userManager->updateUser($user);
 
             $this->createSocialUser($service, $user->getId(), $socialId, $response->getAccessToken());
-        }
-        else
-        {
+        } else {
             $socialUser = $this->entityManager->getRepository('AppBundle:'.ucfirst($service))->find($socialId);
-
-            if ($socialUser === null)
-            {
+            if ($socialUser === null) {
                 $this->createSocialUser($service, $user->getId(), $socialId, $response->getAccessToken());
             }
-
             $checker = new UserChecker();
             $checker->checkPreAuth($user);
         }

@@ -58,5 +58,4 @@ class Facebook
     {
         $this->facebook_access_token = $facebook_access_token;
     }
-    
 }

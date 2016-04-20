@@ -45,5 +45,4 @@ class User extends BaseUser
     {
         $this->last_name = $last_name;
     }
-
 }
