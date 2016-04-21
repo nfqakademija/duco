@@ -38,6 +38,8 @@ class OAuthUserProvider extends BaseClass
         $socialId = $response->getUsername();
         $user = $this->userManager->findUserByEmail($email);
         $service = $response->getResourceOwner()->getName();
+        $accessToken = $response->getAccessToken();
+        $profilePicture = $response->getProfilePicture();
         if ($user === null) {
             $user = $this->userManager->createUser();
             $user->setUsername($response->getUsername());
@@ -47,13 +49,11 @@ class OAuthUserProvider extends BaseClass
             $user->setPlainPassword(md5(uniqid()));
             $user->setEnabled(true);
             $this->userManager->updateUser($user);
-            $this->createSocialUser($service, $user->getId(), $socialId,
-                $response->getAccessToken(), $response->getProfilePicture());
+            $this->createSocialUser($service, $user->getId(), $socialId, $accessToken, $profilePicture);
         } else {
             $socialUser = $this->entityManager->getRepository('AppBundle:'.ucfirst($service))->find($socialId);
             if ($socialUser === null) {
-                $this->createSocialUser($service, $user->getId(), $socialId,
-                    $response->getAccessToken(), $response->getProfilePicture());
+                $this->createSocialUser($service, $user->getId(), $socialId, $accessToken, $profilePicture);
             }
             $checker = new UserChecker();
             $checker->checkPreAuth($user);
