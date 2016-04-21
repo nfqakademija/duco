@@ -9,8 +9,6 @@
 namespace AppBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
-use Doctrine\ORM\Mapping\JoinColumn;
-use Doctrine\ORM\Mapping\OneToOne;
 use Symfony\Component\Validator\Constraints\Collection;
 
 /**
@@ -36,11 +34,32 @@ class Facebook
     protected $facebook_access_token;
 
     /**
+     * @ORM\Column(name="facebook_profile_img_url", type="string", length=255, nullable=true)
+     */
+    protected $facebook_profile_img_url;
+
+    /**
+     * @return mixed
+     */
+    public function getUserId()
+    {
+        return $this->user_id;
+    }
+
+    /**
      * @param mixed $user_id
      */
     public function setUserId($user_id)
     {
         $this->user_id = $user_id;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getFacebookId()
+    {
+        return $this->facebook_id;
     }
 
     /**
@@ -52,11 +71,37 @@ class Facebook
     }
 
     /**
-     * @param mixed $facebook_access_token
+     * @return string
+     */
+    public function getFacebookAccessToken()
+    {
+        return $this->facebook_access_token;
+    }
+
+    /**
+     * @param string $facebook_access_token
      */
     public function setFacebookAccessToken($facebook_access_token)
     {
         $this->facebook_access_token = $facebook_access_token;
     }
+
+    /**
+     * @return string
+     */
+    public function getFacebookProfileImgUrl()
+    {
+        return $this->facebook_profile_img_url;
+    }
+
+    /**
+     * @param string $facebook_profile_img_url
+     */
+    public function setFacebookProfileImgUrl($facebook_profile_img_url)
+    {
+        $this->facebook_profile_img_url = $facebook_profile_img_url;
+    }
+    
+    
     
 }
