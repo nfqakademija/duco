@@ -15,7 +15,7 @@ class HomeController extends Controller
     public function indexAction()
     {
         $form = $this->createForm(RegistrationFormType::class);
-        return $this->render(':pages:home.html.twig', array(
+        return $this->render('AppBundle:Home:index.html.twig', array(
             // ...
             'form' => $form->createView()
         ));
