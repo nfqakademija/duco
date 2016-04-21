@@ -3,7 +3,7 @@
 namespace AppBundle\Controller;
 
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
-use FOS\UserBundle\Form\Type\RegistrationFormType;
+use AppBundle\Form\Type\RegistrationFormType;
 
 class HomeController extends Controller
 {
