@@ -3,6 +3,7 @@
 namespace AppBundle\Controller;
 
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
+use FOS\UserBundle\Form\Type\RegistrationFormType;
 
 class HomeController extends Controller
 {
@@ -13,8 +14,10 @@ class HomeController extends Controller
      */
     public function indexAction()
     {
+        $form = $this->createForm(RegistrationFormType::class);
         return $this->render(':pages:home.html.twig', array(
             // ...
+            'form' => $form->createView()
         ));
     }
 

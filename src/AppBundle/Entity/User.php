@@ -30,6 +30,9 @@ class User extends BaseUser
     /** @ORM\Column(name="google_access_token", type="string", length=255, nullable=true) */
     protected $google_access_token;
 
+    /** @ORM\Column(name="name", type="string", length=255, nullable=true) */
+    private $name;
+
     public function __construct()
     {
         parent::__construct();
