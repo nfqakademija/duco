@@ -101,5 +101,4 @@ class Google
     {
         $this->google_profile_img_url = $google_profile_img_url;
     }
-    
 }

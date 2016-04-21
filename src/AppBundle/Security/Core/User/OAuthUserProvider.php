@@ -8,6 +8,7 @@ use Symfony\Component\Security\Core\User\UserChecker;
 use FOS\UserBundle\Doctrine;
 use AppBundle\Entity\Google;
 use AppBundle\Entity\Facebook;
+
 /**
  * Class OAuthUserProvider
  * @package AppBundle\Security\Core\User
@@ -46,11 +47,13 @@ class OAuthUserProvider extends BaseClass
             $user->setPlainPassword(md5(uniqid()));
             $user->setEnabled(true);
             $this->userManager->updateUser($user);
-            $this->createSocialUser($service, $user->getId(), $socialId, $response->getAccessToken(), $response->getProfilePicture());
+            $this->createSocialUser($service, $user->getId(), $socialId,
+                $response->getAccessToken(), $response->getProfilePicture());
         } else {
             $socialUser = $this->entityManager->getRepository('AppBundle:'.ucfirst($service))->find($socialId);
             if ($socialUser === null) {
-                $this->createSocialUser($service, $user->getId(), $socialId, $response->getAccessToken(), $response->getProfilePicture());
+                $this->createSocialUser($service, $user->getId(), $socialId,
+                    $response->getAccessToken(), $response->getProfilePicture());
             }
             $checker = new UserChecker();
             $checker->checkPreAuth($user);

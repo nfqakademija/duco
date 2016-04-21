@@ -101,7 +101,4 @@ class Facebook
     {
         $this->facebook_profile_img_url = $facebook_profile_img_url;
     }
-    
-    
-    
 }
