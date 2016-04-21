@@ -22,6 +22,7 @@ gulp.task('sass', function() {
 gulp.task('scripts', function() {
     gulp.src([
             dir.bower + 'jquery/dist/jquery.min.js',
+            dir.bower + 'jquery-backstretch/jquery.backstretch.min.js',
             // Bootstrap JS modules
             //dir.bootstrapJS + 'transition.js',
             //...
@@ -42,7 +43,8 @@ gulp.task('images', function() {
 
 gulp.task('fonts', function() {
     gulp.src([
-        dir.bower + 'bootstrap-sass/assets/fonts/**'
+            dir.bower + 'bootstrap-sass/assets/fonts/**',
+            dir.bower + 'components-font-awesome/fonts/**',
         ])
         .pipe(gulp.dest(dir.dist + 'fonts'));
 });

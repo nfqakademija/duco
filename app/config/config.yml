@@ -77,19 +77,26 @@ hwi_oauth:
         username_iterations: 30
         properties:
             # these properties will be used/redefined later in the custom FOSUBUserProvider service.
-            facebook: facebook_id, facebook_email
-            google: google_id, google_email
+            facebook: facebook_id
+            google: google_id
     resource_owners:
         facebook:
             type:                facebook
             client_id:           1720761408200021
             client_secret:       904d3d05e11c054e3aea17cc1d1a31fd
-            scope:               "email"
+            scope:               "email, public_profile"
+            infos_url:           "https://graph.facebook.com/me?fields=id,first_name,last_name,email,picture.type(large)"
+            paths:
+              email: email
+            options:
+              display: page
         google:
             type:                google
             client_id:           416594303859-1q5mjtv33378thhhakgkca176q3ms9u2.apps.googleusercontent.com
             client_secret:       qIYKXRvI0W6dgoikqYgaLjf9
-            scope:               "email"
+            scope:               "https://www.googleapis.com/auth/userinfo.email https://www.googleapis.com/auth/userinfo.profile"
+            paths:
+              email: email
 
 fos_user:
     db_driver: orm
