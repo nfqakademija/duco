@@ -1,0 +1,24 @@
+
+
+
+
+
+
+
+{% trans_default_domain 'FOSUserBundle' %}
+
+{{ form_start(form, {'method': 'post', 'action': path('fos_user_registration_register'), 'attr': {'class': 'fos_user_registration_register'}}) }}
+
+{#<div class="form-group">#}
+    {#<label class="sr-only" for="form-password">Password</label>#}
+    {#<input type="password" name="_password" class="form-password form-control" id="form-password"#}
+           {#required="required">#}
+    {#{{ form_widget(form.email, { 'attr': {'class': 'form-email form-control', 'placeholder': 'form.email'|trans } }) }}#}
+    {#{{ form_errors(form.email) }}#}
+{#</div>#}
+
+{{ form_widget(form) }}
+    <div>
+        <input type="submit" value="{{ 'registration.submit'|trans }}" />
+    </div>
+{{ form_end(form) }}
