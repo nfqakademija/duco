@@ -16,6 +16,14 @@ facebook_login:
 google_login:
     path: /login/check-google
 
+name_confirm:
+    path: /name-confirm
+    defaults: { _controller: AppBundle:ConfirmName:index }
+
+name_confirm_submit:
+    path: /name-confirm-submit
+    defaults: { _controller: AppBundle:ConfirmName:submit }
+
 fos_user:
     resource: "@FOSUserBundle/Resources/config/routing/all.xml"
 
