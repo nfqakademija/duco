@@ -21,7 +21,6 @@ use Ddeboer\DataImport\Writer\CsvWriter;
 class ReadCommand extends ContainerAwareCommand
 {
     protected $entityManager;
-    protected $em;
     protected $container;
 
     /**
@@ -35,7 +34,6 @@ class ReadCommand extends ContainerAwareCommand
         parent::__construct($name);
         $this->entityManager = $entityManager;
         $this->container = $container;
-        $this->em = $entityManager;
     }
 
     protected function configure()
