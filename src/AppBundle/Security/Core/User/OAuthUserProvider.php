@@ -83,6 +83,8 @@ class OAuthUserProvider extends BaseClass
                 $socialUser->setFacebookId($socialId);
                 $socialUser->setFacebookAccessToken($accessToken);
                 break;
+            default:
+                return;
         }
         $this->entityManager->persist($socialUser);
         $this->entityManager->flush();

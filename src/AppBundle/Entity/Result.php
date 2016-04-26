@@ -7,9 +7,9 @@ use Doctrine\ORM\Mapping as ORM;
  * Class Marathoner
  * @package AppBundle\Entity
  * @ORM\Entity
- * @ORM\Table(name="marathoners")
+ * @ORM\Table(name="results")
  */
-class Marathoner
+class Result
 {
     /**
      * @var int
@@ -18,6 +18,12 @@ class Marathoner
      * @ORM\GeneratedValue(strategy="AUTO")
      */
     protected $id;
+
+    /**
+     * @var int
+     * @ORM\Column(name="event_id", type="integer", nullable=true)
+     */
+    protected $eventId;
 
     /**
      * @var string
@@ -56,6 +62,12 @@ class Marathoner
     protected $club;
 
     /**
+     * @var int
+     * @ORM\Column(name="distance", type="integer", nullable=true)
+     */
+    protected $distance;
+
+    /**
      * @return int
      */
     public function getId()
@@ -69,6 +81,22 @@ class Marathoner
     public function setId($id)
     {
         $this->id = $id;
+    }
+
+    /**
+     * @return int
+     */
+    public function getEventId()
+    {
+        return $this->eventId;
+    }
+
+    /**
+     * @param int $eventId
+     */
+    public function setEventId($eventId)
+    {
+        $this->eventId = $eventId;
     }
 
     /**
@@ -165,5 +193,21 @@ class Marathoner
     public function setClub($club)
     {
         $this->club = $club;
+    }
+
+    /**
+     * @return int
+     */
+    public function getDistance()
+    {
+        return $this->distance;
+    }
+
+    /**
+     * @param int $distance
+     */
+    public function setDistance($distance)
+    {
+        $this->distance = $distance;
     }
 }
