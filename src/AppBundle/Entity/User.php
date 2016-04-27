@@ -2,8 +2,8 @@
 
 namespace AppBundle\Entity;
 
-use FOS\UserBundle\Model\User as BaseUser;
 use Doctrine\ORM\Mapping as ORM;
+use FOS\UserBundle\Model\User as BaseUser;
 
 /**
  * @ORM\Entity
@@ -18,16 +18,11 @@ class User extends BaseUser
      */
     protected $id;
 
-    /** @ORM\Column(name="first_name", type="string", length=255, nullable=true) */
-    protected $first_name;
+    /** @ORM\Column(name="is_name_confirmed", type="boolean", nullable=true) */
+    protected $isNameConfirmed;
 
-    /**
-     * @return mixed
-     */
-    public function getFirstName()
-    {
-        return $this->first_name;
-    }
+    /** @ORM\Column(name="first_name", type="string", length=255, nullable=true) */
+    protected $firstName;
 
     /**
      * @return mixed
@@ -46,18 +41,10 @@ class User extends BaseUser
     }
 
     /** @ORM\Column(name="last_name", type="string", length=255, nullable=true) */
-    protected $last_name;
+    protected $lastName;
 
     /**
-     * @return mixed
-     */
-    public function getLastName()
-    {
-        return $this->last_name;
-    }
-
-    /**
-     * @return void
+     * User constructor.
      */
     public function __construct()
     {
@@ -65,19 +52,51 @@ class User extends BaseUser
     }
 
     /**
-     * @param string $first_name
+     * @return boolean
      */
-    public function setFirstName($first_name)
+    public function isNameConfirmed()
     {
-        $this->first_name = $first_name;
+        return $this->isNameConfirmed;
     }
 
     /**
-     * @param string $last_name
+     * @param boolean $isNameConfirmed
      */
-    public function setLastName($last_name)
+    public function setNameConfirmed($isNameConfirmed)
     {
-        $this->last_name = $last_name;
+        $this->isNameConfirmed = $isNameConfirmed;
+    }
+
+    /**
+     * @return string
+     */
+    public function getFirstName()
+    {
+        return $this->firstName;
+    }
+
+    /**
+     * @param string $firstName
+     */
+    public function setFirstName($firstName)
+    {
+        $this->firstName = $firstName;
+    }
+
+    /**
+     * @return string
+     */
+    public function getLastName()
+    {
+        return $this->lastName;
+    }
+
+    /**
+     * @param string $lastName
+     */
+    public function setLastName($lastName)
+    {
+        $this->lastName = $lastName;
     }
 
     /**

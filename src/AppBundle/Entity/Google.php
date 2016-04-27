@@ -20,38 +20,38 @@ class Google
     /**
      * @ORM\Column(name="user_id", type="integer")
      */
-    protected $user_id;
+    protected $userId;
 
     /**
      * @ORM\Id
      * @ORM\Column(name="google_id", type="string", length=255, nullable=false)
      */
-    protected $google_id;
+    protected $googleId;
 
     /**
      * @ORM\Column(name="google_access_token", type="string", length=255, nullable=true)
      */
-    protected $google_access_token;
+    protected $googleAccessToken;
 
     /**
      * @ORM\Column(name="google_profile_img_url", type="string", length=255, nullable=true)
      */
-    protected $google_profile_img_url;
+    protected $googleProfileImgUrl;
 
     /**
      * @return mixed
      */
     public function getUserId()
     {
-        return $this->user_id;
+        return $this->userId;
     }
 
     /**
-     * @param mixed $user_id
+     * @param mixed $userId
      */
-    public function setUserId($user_id)
+    public function setUserId($userId)
     {
-        $this->user_id = $user_id;
+        $this->userId = $userId;
     }
 
     /**
@@ -59,15 +59,15 @@ class Google
      */
     public function getGoogleId()
     {
-        return $this->google_id;
+        return $this->googleId;
     }
 
     /**
-     * @param mixed $google_id
+     * @param mixed $googleId
      */
-    public function setGoogleId($google_id)
+    public function setGoogleId($googleId)
     {
-        $this->google_id = $google_id;
+        $this->googleId = $googleId;
     }
 
     /**
@@ -75,15 +75,15 @@ class Google
      */
     public function getGoogleAccessToken()
     {
-        return $this->google_access_token;
+        return $this->googleAccessToken;
     }
 
     /**
-     * @param string $google_access_token
+     * @param string $googleAccessToken
      */
-    public function setGoogleAccessToken($google_access_token)
+    public function setGoogleAccessToken($googleAccessToken)
     {
-        $this->google_access_token = $google_access_token;
+        $this->googleAccessToken = $googleAccessToken;
     }
 
     /**
@@ -91,14 +91,14 @@ class Google
      */
     public function getGoogleProfileImgUrl()
     {
-        return $this->google_profile_img_url;
+        return $this->googleProfileImgUrl;
     }
 
     /**
-     * @param string $google_profile_img_url
+     * @param string $googleProfileImgUrl
      */
-    public function setGoogleProfileImgUrl($google_profile_img_url)
+    public function setGoogleProfileImgUrl($googleProfileImgUrl)
     {
-        $this->google_profile_img_url = $google_profile_img_url;
+        $this->googleProfileImgUrl = $googleProfileImgUrl;
     }
 }

@@ -18,6 +18,7 @@ class AppKernel extends Kernel
             new AppBundle\AppBundle(),
             new HWI\Bundle\OAuthBundle\HWIOAuthBundle(),
             new FOS\UserBundle\FOSUserBundle(),
+            new Ddeboer\DataImportBundle\DdeboerDataImportBundle(),
         );
 
         if (in_array($this->getEnvironment(), array('dev', 'test'), true)) {
