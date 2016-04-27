@@ -16,7 +16,6 @@ class HomeController extends Controller
     {
         $form = $this->createForm(RegistrationFormType::class);
         return $this->render('AppBundle:Home:index.html.twig', array(
-            // ...
             'form' => $form->createView()
         ));
     }

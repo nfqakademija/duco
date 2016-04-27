@@ -1,8 +1,12 @@
 {% trans_default_domain 'FOSUserBundle' %}
 
+
+
+
+
 {% block fos_user_content %}
     {% if error %}
-        <div>{{ error.messageKey|trans(error.messageData, 'security') }}</div>
+        <div class="list-group-item list-group-item-danger">{{ error.messageKey|trans(error.messageData, 'security') }}</div>
     {% endif %}
 
     <form action="{{ path("fos_user_security_check") }}" method="post">
@@ -20,6 +24,6 @@
                    required="required">
         </div>
 
-        <input type="submit" id="_submit" name="_submit" value="{{ 'security.login.submit'|trans }}"/>
+        <button type="submit" id="_submit" name="_submit" class="btn">{{ 'security.login.submit'|trans }}</button>
     </form>
 {% endblock fos_user_content %}

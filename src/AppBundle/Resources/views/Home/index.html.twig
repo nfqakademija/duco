@@ -41,7 +41,8 @@
                     </div>
                 </div>
                 <div class="form-bottom">
-                    {% render url('fos_user_registration_register') %}
+                    {#{% render url('fos_user_registration_register') %}#}
+                    {{ render(controller('FOSUserBundle:Registration:register')) }}
                 </div>
             </div>
 

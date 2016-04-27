@@ -23,3 +23,9 @@ fos_user_registration_confirmed:
     pattern: /
     requirements:
         _method: GET
+
+fos_user_registration_register:
+    path: /register
+    defaults: { _controller: AppBundle:Registration:register }
+    requirements:
+        _method: POST

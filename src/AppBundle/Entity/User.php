@@ -81,7 +81,7 @@ class User extends BaseUser
     {
         $email = is_null($email) ? '' : $email;
         parent::setEmail($email);
-        $this->setUsername($email);
+        $this->setUsername(time());
     }
 
 }
