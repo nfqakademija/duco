@@ -51,6 +51,18 @@ class Event
     protected $distance;
 
     /**
+     * @var int
+     * @ORM\Column(name="column_offset", type="integer")
+     */
+    protected $columnOffset;
+
+    /**
+     * @var string
+     * @ORM\Column(name="columns", type="string", length=255)
+     */
+    protected $columns;
+
+    /**
      * @return int
      */
     public function getId()
@@ -144,5 +156,37 @@ class Event
     public function setDistance($distance)
     {
         $this->distance = $distance;
+    }
+
+    /**
+     * @return int
+     */
+    public function getColumnOffset()
+    {
+        return $this->columnOffset;
+    }
+
+    /**
+     * @param int $columnCount
+     */
+    public function setColumnOffset($columnOffset)
+    {
+        $this->columnOffset = $columnOffset;
+    }
+
+    /**
+     * @return string
+     */
+    public function getColumns()
+    {
+        return $this->columns;
+    }
+
+    /**
+     * @param string $columns
+     */
+    public function setColumns($columns)
+    {
+        $this->columns = $columns;
     }
 }

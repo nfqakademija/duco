@@ -45,7 +45,7 @@ class Result
 
     /**
      * @var
-     * @ORM\Column(name="finish_time", type="time", nullable=true)
+     * @ORM\Column(name="finish_time", type="string", nullable=true)
      */
     protected $finishTime;
 

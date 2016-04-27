@@ -2,6 +2,7 @@
 
 namespace AppBundle\Command;
 
+use AppBundle\ValueConverter\FloatToTimeConverter;
 use Ddeboer\DataImport\ItemConverter\MappingItemConverter;
 use Doctrine\ORM\EntityManager;
 use Symfony\Bundle\FrameworkBundle\Command\ContainerAwareCommand;
@@ -49,19 +50,19 @@ class ReadCommand extends ContainerAwareCommand
         $rows = $q->findAll();
         foreach ($rows as $row) {
             $file = new \SplFileObject($this->getFilePath($row));
-            $reader = new ExcelReader($file, 0);
-            $replacement = ['firstName', 'lastName', 'raceNumber', '', '', '', 'overallPosition',
-                '', '', '', 'club', '', '', ''];
-            $reader->setColumnHeaders($replacement);
+            $reader = new ExcelReader($file, $row->getColumnOffset());
             $converter = new CallbackItemConverter(function ($item) use ($row) {
                 $item['eventId'] = $row->getId();
                 $item['distance'] = $row->getDistance();
                 return $item;
             });
+            $columnConverter = new MappingItemConverter(unserialize($row->getColumns()));
             $doctrineWriter = new DoctrineWriter($this->entityManager, 'AppBundle:Result');
-            //$doctrineWriter->disableTruncate();
+            $doctrineWriter->disableTruncate();
             $workFlow = new Workflow($reader);
             $workFlow
+                ->addItemConverter($columnConverter)
+                ->addValueConverter('finishTime', new FloatToTimeConverter())
                 ->addItemConverter($converter)
                 ->addWriter($doctrineWriter)
                 ->process();
