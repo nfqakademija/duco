@@ -1,13 +1,14 @@
 <?php
 namespace AppBundle\Security\Core\User;
 
+use AppBundle\Entity\Facebook;
+use AppBundle\Entity\Google;
+use Doctrine\Common\Persistence\AbstractManagerRegistry;
+use FOS\UserBundle\Doctrine;
+use FOS\UserBundle\Model\UserManagerInterface;
 use HWI\Bundle\OAuthBundle\OAuth\Response\UserResponseInterface;
 use HWI\Bundle\OAuthBundle\Security\Core\User\FOSUBUserProvider as BaseClass;
-use FOS\UserBundle\Model\UserManagerInterface;
 use Symfony\Component\Security\Core\User\UserChecker;
-use FOS\UserBundle\Doctrine;
-use AppBundle\Entity\Google;
-use AppBundle\Entity\Facebook;
 
 /**
  * Class OAuthUserProvider
@@ -19,9 +20,9 @@ class OAuthUserProvider extends BaseClass
 
     /**
      * OAuthUserProvider constructor.
-     * @param UserManagerInterface $userManager
-     * @param array $properties
-     * @param $entityManager
+     * @param UserManagerInterface    $userManager
+     * @param array                   $properties
+     * @param AbstractManagerRegistry $entityManager
      */
     public function __construct(UserManagerInterface $userManager, array $properties, $entityManager)
     {
@@ -58,6 +59,7 @@ class OAuthUserProvider extends BaseClass
             $checker = new UserChecker();
             $checker->checkPreAuth($user);
         }
+
         return $user;
     }
 

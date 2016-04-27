@@ -2,9 +2,8 @@
 
 namespace AppBundle\Entity;
 
-use FOS\UserBundle\Model\User as BaseUser;
 use Doctrine\ORM\Mapping as ORM;
-use AppBundle\Entity\Facebook;
+use FOS\UserBundle\Model\User as BaseUser;
 
 /**
  * @ORM\Entity
@@ -19,30 +18,84 @@ class User extends BaseUser
      */
     protected $id;
 
+    /** @ORM\Column(name="is_name_confirmed", type="boolean", nullable=true) */
+    protected $isNameConfirmed;
+
     /** @ORM\Column(name="first_name", type="string", length=255, nullable=true) */
-    protected $first_name;
+    protected $firstName;
 
     /** @ORM\Column(name="last_name", type="string", length=255, nullable=true) */
-    protected $last_name;
+    protected $lastName;
 
+    /**
+     * User constructor.
+     */
     public function __construct()
     {
         parent::__construct();
     }
 
     /**
-     * @param string $first_name
+     * @return mixed
      */
-    public function setFirstName($first_name)
+    public function getId()
     {
-        $this->first_name = $first_name;
+        return $this->id;
     }
 
     /**
-     * @param string $last_name
+     * @param mixed $id
      */
-    public function setLastName($last_name)
+    public function setId($id)
     {
-        $this->last_name = $last_name;
+        $this->id = $id;
+    }
+
+    /**
+     * @return boolean
+     */
+    public function isNameConfirmed()
+    {
+        return $this->isNameConfirmed;
+    }
+
+    /**
+     * @param boolean $isNameConfirmed
+     */
+    public function setNameConfirmed($isNameConfirmed)
+    {
+        $this->isNameConfirmed = $isNameConfirmed;
+    }
+
+    /**
+     * @return string
+     */
+    public function getFirstName()
+    {
+        return $this->firstName;
+    }
+
+    /**
+     * @param string $firstName
+     */
+    public function setFirstName($firstName)
+    {
+        $this->firstName = $firstName;
+    }
+
+    /**
+     * @return string
+     */
+    public function getLastName()
+    {
+        return $this->lastName;
+    }
+
+    /**
+     * @param string $lastName
+     */
+    public function setLastName($lastName)
+    {
+        $this->lastName = $lastName;
     }
 }

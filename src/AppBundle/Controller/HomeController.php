@@ -4,6 +4,10 @@ namespace AppBundle\Controller;
 
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 
+/**
+ * Class HomeController
+ * @package AppBundle\Controller
+ */
 class HomeController extends Controller
 {
     /**
@@ -13,8 +17,11 @@ class HomeController extends Controller
      */
     public function indexAction()
     {
-        return $this->render('AppBundle:Home:index.html.twig', array(
-            // ...
-        ));
+        $securityContext = $this->container->get('security.authorization_checker');
+        if ($securityContext->isGranted('IS_AUTHENTICATED_REMEMBERED')) {
+            return $this->redirectToRoute('account_home');
+        }
+
+        return $this->render('AppBundle:Home:index.html.twig');
     }
 }
