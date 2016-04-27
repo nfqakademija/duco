@@ -23,6 +23,11 @@ name_confirm:
 name_confirm_submit:
     path: /name-confirm-submit
     defaults: { _controller: AppBundle:ConfirmName:submit }
+    methods: POST
+
+account_home:
+    path: /account
+    defaults: { _controller: AppBundle:Account:index }
 
 fos_user:
     resource: "@FOSUserBundle/Resources/config/routing/all.xml"

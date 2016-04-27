@@ -25,7 +25,7 @@ class ConfirmNameController extends Controller
                 'last_name' => $user->getLastName(),
             ));
         } else {
-            return $this->render('AppBundle:Home:index.html.twig');
+            return $this->redirectToRoute('app.index');
         }
     }
 
@@ -45,6 +45,6 @@ class ConfirmNameController extends Controller
         $user->setNameConfirmed(true);
         $this->getDoctrine()->getManager()->flush();
 
-        return $this->render('AppBundle:Home:index.html.twig');
+        return $this->redirectToRoute('app.index');
     }
 }

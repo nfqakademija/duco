@@ -17,6 +17,11 @@ class HomeController extends Controller
      */
     public function indexAction()
     {
+        $securityContext = $this->container->get('security.authorization_checker');
+        if ($securityContext->isGranted('IS_AUTHENTICATED_REMEMBERED')) {
+            return $this->redirectToRoute('account_home');
+        }
+
         return $this->render('AppBundle:Home:index.html.twig');
     }
 }
