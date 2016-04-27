@@ -6,11 +6,11 @@ imports:
 # Put parameters here that don't need to change on each machine where the app is deployed
 # http://symfony.com/doc/current/best_practices/configuration.html#application-related-configuration
 parameters:
-    locale: en
+    locale: lt
 
 framework:
     #esi:             ~
-    #translator:      { fallbacks: ["%locale%"] }
+    translator:      { fallbacks: ["%locale%"] }
     secret:          "%secret%"
     router:
         resource: "%kernel.root_dir%/config/routing.yml"
@@ -82,12 +82,13 @@ hwi_oauth:
     resource_owners:
         facebook:
             type:                facebook
-            client_id:           1720761408200021
-            client_secret:       904d3d05e11c054e3aea17cc1d1a31fd
+            client_id:           1729598303982998
+            client_secret:       f4bb6ad344df694478ab7a5581dc75ff
             scope:               "email, public_profile"
-            infos_url:           "https://graph.facebook.com/me?fields=id,first_name,last_name,email,picture.type(large)"
+            infos_url:           "https://graph.facebook.com/me?fields=id,first_name,last_name,email,picture.type(square)"
             paths:
               email: email
+              profilepicture: picture.data.url
             options:
               display: page
         google:
@@ -102,3 +103,6 @@ fos_user:
     db_driver: orm
     firewall_name: main
     user_class: AppBundle\Entity\User
+    registration:
+        form:
+            type: app_user_registration
