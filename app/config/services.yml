@@ -1,5 +1,3 @@
-# Learn more about services, parameters and containers at
-# http://symfony.com/doc/current/book/service_container.html
 parameters:
     my_user_provider.class: AppBundle\Security\Core\User\OAuthUserProvider
 
@@ -7,3 +5,9 @@ services:
     my_user_provider:
         class: AppBundle\Security\Core\User\OAuthUserProvider
         arguments: [@fos_user.user_manager,{facebook: facebook_id, google: google_id}, @doctrine.orm.entity_manager]
+
+    app.command.read:
+        class: AppBundle\Command\ReadCommand
+        tags:
+            - { name: console.command }
+        arguments: ['read', @doctrine.orm.entity_manager, @service_container]
