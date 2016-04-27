@@ -44,10 +44,16 @@ class Result
     protected $raceNumber;
 
     /**
-     * @var
+     * @var string
      * @ORM\Column(name="finish_time", type="string", nullable=true)
      */
     protected $finishTime;
+
+    /**
+     * @var string
+     * @ORM\Column(name="net_time", type="string", nullable=true)
+     */
+    protected $netTime;
 
     /**
      * @var int
@@ -161,6 +167,22 @@ class Result
     public function setFinishTime($finishTime)
     {
         $this->finishTime = $finishTime;
+    }
+
+    /**
+     * @return string
+     */
+    public function getNetTime()
+    {
+        return $this->netTime;
+    }
+
+    /**
+     * @param string $netTime
+     */
+    public function setNetTime($netTime)
+    {
+        $this->netTime = $netTime;
     }
 
     /**

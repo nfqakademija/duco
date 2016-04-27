@@ -63,6 +63,7 @@ class ReadCommand extends ContainerAwareCommand
             $workFlow
                 ->addItemConverter($columnConverter)
                 ->addValueConverter('finishTime', new FloatToTimeConverter())
+                ->addValueConverter('netTime', new FloatToTimeConverter())
                 ->addItemConverter($converter)
                 ->addWriter($doctrineWriter)
                 ->process();
