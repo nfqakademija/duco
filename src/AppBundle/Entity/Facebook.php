@@ -9,8 +9,6 @@
 namespace AppBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
-use Doctrine\ORM\Mapping\JoinColumn;
-use Doctrine\ORM\Mapping\OneToOne;
 use Symfony\Component\Validator\Constraints\Collection;
 
 /**
@@ -22,40 +20,85 @@ class Facebook
     /**
      * @ORM\Column(name="user_id", type="integer")
      */
-    protected $user_id;
+    protected $userId;
 
     /**
      * @ORM\Id
      * @ORM\Column(name="facebook_id", type="string", length=255, nullable=false)
      */
-    protected $facebook_id;
+    protected $facebookId;
 
     /**
      * @ORM\Column(name="facebook_access_token", type="string", length=255, nullable=true)
      */
-    protected $facebook_access_token;
+    protected $facebookAccessToken;
 
     /**
-     * @param mixed $user_id
+     * @ORM\Column(name="facebook_profile_img_url", type="string", length=255, nullable=true)
      */
-    public function setUserId($user_id)
+    protected $facebookProfileImgUrl;
+
+    /**
+     * @return mixed
+     */
+    public function getUserId()
     {
-        $this->user_id = $user_id;
+        return $this->userId;
     }
 
     /**
-     * @param mixed $facebook_id
+     * @param mixed $userId
      */
-    public function setFacebookId($facebook_id)
+    public function setUserId($userId)
     {
-        $this->facebook_id = $facebook_id;
+        $this->userId = $userId;
     }
 
     /**
-     * @param mixed $facebook_access_token
+     * @return mixed
      */
-    public function setFacebookAccessToken($facebook_access_token)
+    public function getFacebookId()
     {
-        $this->facebook_access_token = $facebook_access_token;
+        return $this->facebookId;
+    }
+
+    /**
+     * @param mixed $facebookId
+     */
+    public function setFacebookId($facebookId)
+    {
+        $this->facebookId = $facebookId;
+    }
+
+    /**
+     * @return string
+     */
+    public function getFacebookAccessToken()
+    {
+        return $this->facebookAccessToken;
+    }
+
+    /**
+     * @param string $facebookAccessToken
+     */
+    public function setFacebookAccessToken($facebookAccessToken)
+    {
+        $this->facebookAccessToken = $facebookAccessToken;
+    }
+
+    /**
+     * @return string
+     */
+    public function getFacebookProfileImgUrl()
+    {
+        return $this->facebookProfileImgUrl;
+    }
+
+    /**
+     * @param string $facebookProfileImgUrl
+     */
+    public function setFacebookProfileImgUrl($facebookProfileImgUrl)
+    {
+        $this->facebookProfileImgUrl = $facebookProfileImgUrl;
     }
 }

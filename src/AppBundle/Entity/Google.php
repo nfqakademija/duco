@@ -9,8 +9,6 @@
 namespace AppBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
-use Doctrine\ORM\Mapping\JoinColumn;
-use Doctrine\ORM\Mapping\OneToOne;
 use Symfony\Component\Validator\Constraints\Collection;
 
 /**
@@ -22,40 +20,85 @@ class Google
     /**
      * @ORM\Column(name="user_id", type="integer")
      */
-    protected $user_id;
+    protected $userId;
 
     /**
      * @ORM\Id
      * @ORM\Column(name="google_id", type="string", length=255, nullable=false)
      */
-    protected $google_id;
+    protected $googleId;
 
     /**
      * @ORM\Column(name="google_access_token", type="string", length=255, nullable=true)
      */
-    protected $google_access_token;
+    protected $googleAccessToken;
 
     /**
-     * @param mixed $user_id
+     * @ORM\Column(name="google_profile_img_url", type="string", length=255, nullable=true)
      */
-    public function setUserId($user_id)
-    {
-        $this->user_id = $user_id;
-    }
-    
+    protected $googleProfileImgUrl;
+
     /**
-     * @param $google_id
+     * @return mixed
      */
-    public function setGoogleId($google_id)
+    public function getUserId()
     {
-        $this->google_id = $google_id;
+        return $this->userId;
     }
 
     /**
-     * @param string $google_access_token
+     * @param mixed $userId
      */
-    public function setGoogleAccessToken($google_access_token)
+    public function setUserId($userId)
     {
-        $this->google_access_token = $google_access_token;
+        $this->userId = $userId;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getGoogleId()
+    {
+        return $this->googleId;
+    }
+
+    /**
+     * @param mixed $googleId
+     */
+    public function setGoogleId($googleId)
+    {
+        $this->googleId = $googleId;
+    }
+
+    /**
+     * @return string
+     */
+    public function getGoogleAccessToken()
+    {
+        return $this->googleAccessToken;
+    }
+
+    /**
+     * @param string $googleAccessToken
+     */
+    public function setGoogleAccessToken($googleAccessToken)
+    {
+        $this->googleAccessToken = $googleAccessToken;
+    }
+
+    /**
+     * @return string
+     */
+    public function getGoogleProfileImgUrl()
+    {
+        return $this->googleProfileImgUrl;
+    }
+
+    /**
+     * @param string $googleProfileImgUrl
+     */
+    public function setGoogleProfileImgUrl($googleProfileImgUrl)
+    {
+        $this->googleProfileImgUrl = $googleProfileImgUrl;
     }
 }

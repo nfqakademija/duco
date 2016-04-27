@@ -1,15 +1,14 @@
 <?php
 namespace AppBundle\Security\Core\User;
 
+use AppBundle\Entity\Facebook;
+use AppBundle\Entity\Google;
+use Doctrine\Common\Persistence\AbstractManagerRegistry;
+use FOS\UserBundle\Doctrine;
+use FOS\UserBundle\Model\UserManagerInterface;
 use HWI\Bundle\OAuthBundle\OAuth\Response\UserResponseInterface;
 use HWI\Bundle\OAuthBundle\Security\Core\User\FOSUBUserProvider as BaseClass;
-use Symfony\Component\Security\Core\Exception\AuthenticationException;
-use FOS\UserBundle\Model\UserManagerInterface;
 use Symfony\Component\Security\Core\User\UserChecker;
-use Symfony\Component\Security\Core\User\UserInterface;
-use FOS\UserBundle\Doctrine;
-use AppBundle\Entity\Google;
-use AppBundle\Entity\Facebook;
 
 /**
  * Class OAuthUserProvider
@@ -21,9 +20,9 @@ class OAuthUserProvider extends BaseClass
 
     /**
      * OAuthUserProvider constructor.
-     * @param UserManagerInterface $userManager
-     * @param array $properties
-     * @param $entityManager
+     * @param UserManagerInterface    $userManager
+     * @param array                   $properties
+     * @param AbstractManagerRegistry $entityManager
      */
     public function __construct(UserManagerInterface $userManager, array $properties, $entityManager)
     {
@@ -40,6 +39,8 @@ class OAuthUserProvider extends BaseClass
         $socialId = $response->getUsername();
         $user = $this->userManager->findUserByEmail($email);
         $service = $response->getResourceOwner()->getName();
+        $accessToken = $response->getAccessToken();
+        $profilePicture = $response->getProfilePicture();
         if ($user === null) {
             $user = $this->userManager->createUser();
             $user->setUsername($response->getUsername());
@@ -49,16 +50,16 @@ class OAuthUserProvider extends BaseClass
             $user->setPlainPassword(md5(uniqid()));
             $user->setEnabled(true);
             $this->userManager->updateUser($user);
-
-            $this->createSocialUser($service, $user->getId(), $socialId, $response->getAccessToken());
+            $this->createSocialUser($service, $user->getId(), $socialId, $accessToken, $profilePicture);
         } else {
             $socialUser = $this->entityManager->getRepository('AppBundle:'.ucfirst($service))->find($socialId);
             if ($socialUser === null) {
-                $this->createSocialUser($service, $user->getId(), $socialId, $response->getAccessToken());
+                $this->createSocialUser($service, $user->getId(), $socialId, $accessToken, $profilePicture);
             }
             $checker = new UserChecker();
             $checker->checkPreAuth($user);
         }
+
         return $user;
     }
 
@@ -68,7 +69,7 @@ class OAuthUserProvider extends BaseClass
      * @param $socialId
      * @param $accessToken
      */
-    private function createSocialUser($service, $userId, $socialId, $accessToken)
+    private function createSocialUser($service, $userId, $socialId, $accessToken, $profileImgUrl)
     {
         switch ($service) {
             case 'google':
@@ -76,12 +77,14 @@ class OAuthUserProvider extends BaseClass
                 $socialUser->setUserId($userId);
                 $socialUser->setGoogleId($socialId);
                 $socialUser->setGoogleAccessToken($accessToken);
+                $socialUser->setGoogleProfileImgUrl($profileImgUrl);
                 break;
             case 'facebook':
                 $socialUser = new Facebook();
                 $socialUser->setUserId($userId);
                 $socialUser->setFacebookId($socialId);
                 $socialUser->setFacebookAccessToken($accessToken);
+                $socialUser->setFacebookProfileImgUrl($profileImgUrl);
                 break;
             default:
                 return;
