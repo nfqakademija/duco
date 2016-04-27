@@ -56,6 +56,9 @@ class User extends BaseUser
         return $this->last_name;
     }
 
+    /**
+     * @return void
+     */
     public function __construct()
     {
         parent::__construct();
@@ -77,11 +80,13 @@ class User extends BaseUser
         $this->last_name = $last_name;
     }
 
+    /**
+     * @param string $email
+     */
     public function setEmail($email)
     {
         $email = is_null($email) ? '' : $email;
         parent::setEmail($email);
         $this->setUsername(time());
     }
-
 }

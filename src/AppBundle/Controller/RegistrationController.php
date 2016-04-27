@@ -1,10 +1,6 @@
 <?php
 
 
-
-
-
-
 /*
  * This file is part of the FOSUserBundle package.
  *
@@ -21,9 +17,13 @@ use Symfony\Component\HttpFoundation\Request;
 
 class RegistrationController extends BaseController
 {
+    /**
+     * @param $request
+     * @return \Symfony\Component\HttpFoundation\Response
+     */
     public function registerAction(Request $request)
     {
-        if($request->isMethod('POST')){
+        if ($request->isMethod('POST')) {
 
             /** @var $formFactory \FOS\UserBundle\Form\Factory\FactoryInterface */
             $formFactory = $this->get('fos_user.registration.form.factory');
@@ -39,7 +39,7 @@ class RegistrationController extends BaseController
             $form->handleRequest($request);
 
             $errors = [];
-            if(!$form->isValid()) {
+            if (!$form->isValid()) {
                 foreach ($form->getErrors(true) as $e) {
                     $errors[] = $e->getMessage();
                 }
