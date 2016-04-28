@@ -1,51 +1,44 @@
-
-
-
-
-
-
-
 {% trans_default_domain 'FOSUserBundle' %}
 
 {{ form_start(form, {'method': 'post', 'action': path('fos_user_registration_register'), 'attr': {'class': 'fos_user_registration_register'}}) }}
 
 {% set errors = app.session.get('errors') %}
 <div class="list-group">
-{% for error in errors if errors %}
-    {#<p class="alert alert-danger" role="alert">{{ error }}</p>#}
-    <span class="list-group-item list-group-item-danger">{{ error }}</span>
-{% endfor %}
+    {% for error in errors if errors %}
+        {#<p class="alert alert-danger" role="alert">{{ error }}</p>#}
+        <span class="list-group-item list-group-item-danger">{{ error }}</span>
+    {% endfor %}
 </div>
 {% set errors = app.session.set('errors', '') %}
-    <div class="form-group">
-        {{ form_widget(form.email, { 'attr': {'class': 'form-email form-control', 'placeholder': 'form.email'|trans } }) }}
-        {#{{ errors.email }}#}
-        {{ form_errors(form.email) }}
-    </div>
+<div class="form-group">
+    {{ form_widget(form.email, { 'attr': {'class': 'form-email form-control', 'placeholder': 'form.email'|trans } }) }}
+    {#{{ errors.email }}#}
+    {{ form_errors(form.email) }}
+</div>
 
-    <div class="form-group">
-        {{ form_widget(form.plainPassword.first, { 'attr': {'class': 'form-password form-control', 'placeholder': 'form.password'|trans } }) }}
-        {{ form_errors(form.plainPassword.first) }}
-    </div>
+<div class="form-group">
+    {{ form_widget(form.plainPassword.first, { 'attr': {'class': 'form-password form-control', 'placeholder': 'form.password'|trans } }) }}
+    {{ form_errors(form.plainPassword.first) }}
+</div>
 
-    <div class="form-group">
-        {{ form_widget(form.plainPassword.second, { 'attr': {'class': 'form-password form-control', 'placeholder': 'form.password'|trans } }) }}
-        {{ form_errors(form.plainPassword.second) }}
-    </div>
+<div class="form-group">
+    {{ form_widget(form.plainPassword.second, { 'attr': {'class': 'form-password form-control', 'placeholder': 'form.password'|trans } }) }}
+    {{ form_errors(form.plainPassword.second) }}
+</div>
 
-    <div class="form-group">
-        {{ form_widget(form.firstname, { 'attr': {'class': 'form-firstname form-control', 'placeholder': 'form.firstname'|trans } }) }}
-        {{ form_errors(form.firstname) }}
-    </div>
+<div class="form-group">
+    {{ form_widget(form.firstname, { 'attr': {'class': 'form-firstname form-control', 'placeholder': 'form.firstname'|trans } }) }}
+    {{ form_errors(form.firstname) }}
+</div>
 
-    <div class="form-group">
-        {{ form_widget(form.lastname, { 'attr': {'class': 'form-lastname form-control', 'placeholder': 'form.lastname'|trans } }) }}
-        {{ form_errors(form.lastname) }}
-    </div>
+<div class="form-group">
+    {{ form_widget(form.lastname, { 'attr': {'class': 'form-lastname form-control', 'placeholder': 'form.lastname'|trans } }) }}
+    {{ form_errors(form.lastname) }}
+</div>
 
 
-    <div>
-        <button type="submit" class="btn">{{ 'registration.submit'|trans }}</button>
-    </div>
+<div>
+    <button type="submit" class="btn">{{ 'registration.submit'|trans }}</button>
+</div>
 {{ form_end(form) }}
 
