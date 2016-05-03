@@ -20,12 +20,12 @@ class HomeController extends Controller
     {
         $securityContext = $this->container->get('security.authorization_checker');
         if ($securityContext->isGranted('IS_AUTHENTICATED_REMEMBERED')) {
-            return $this->redirectToRoute('account_home');
+            return $this->redirectToRoute('profile');
         }
-
         $form = $this->createForm(RegistrationFormType::class);
+
         return $this->render('AppBundle:Home:index.html.twig', array(
-            'form' => $form->createView()
+            'form' => $form->createView(),
         ));
     }
 }

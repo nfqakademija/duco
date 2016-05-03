@@ -2,6 +2,7 @@
 
 namespace AppBundle\Entity;
 
+use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
@@ -61,6 +62,11 @@ class Event
      * @ORM\Column(name="columns", type="string", length=255)
      */
     protected $columns;
+
+    /**
+     * @var ArrayCollection
+     */
+    protected $results;
 
     /**
      * @return int
@@ -167,7 +173,7 @@ class Event
     }
 
     /**
-     * @param int $columnCount
+     * @param int $columnOffset
      */
     public function setColumnOffset($columnOffset)
     {
@@ -188,5 +194,32 @@ class Event
     public function setColumns($columns)
     {
         $this->columns = $columns;
+    }
+
+    /**
+     * @return ArrayCollection
+     */
+    public function getResults()
+    {
+        return $this->results;
+    }
+
+    /**
+     * @param ArrayCollection $results
+     */
+    public function setResults($results)
+    {
+        $this->results = $results;
+    }
+
+    /**
+     * @param Result $result
+     */
+    public function addResult($result)
+    {
+        if ($this->results == null) {
+            $this->results = new ArrayCollection();
+        }
+        $this->results->add($result);
     }
 }

@@ -6,7 +6,7 @@ use Doctrine\ORM\Mapping as ORM;
 /**
  * Class Marathoner
  * @package AppBundle\Entity
- * @ORM\Entity
+ * @ORM\Entity(repositoryClass="AppBundle\Repository\ResultRepository")
  * @ORM\Table(name="results")
  */
 class Result
@@ -21,7 +21,7 @@ class Result
 
     /**
      * @var int
-     * @ORM\Column(name="event_id", type="integer", nullable=true)
+     * @ORM\Column(name="event_id", type="integer")
      */
     protected $eventId;
 

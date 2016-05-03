@@ -25,7 +25,7 @@ class ConfirmNameController extends Controller
                 'last_name' => $user->getLastName(),
             ));
         } else {
-            return $this->redirectToRoute('app.index');
+            return $this->redirect('profile');
         }
     }
 
@@ -45,6 +45,6 @@ class ConfirmNameController extends Controller
         $user->setNameConfirmed(true);
         $this->getDoctrine()->getManager()->flush();
 
-        return $this->redirectToRoute('app.index');
+        return $this->redirect('profile');
     }
 }

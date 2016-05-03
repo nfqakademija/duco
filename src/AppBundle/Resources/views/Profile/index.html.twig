@@ -1,0 +1,24 @@
+{% extends '::base.html.twig' %}
+
+{% block body %}
+    <img src="{{ profile_img }}" />
+    <p>{{ user.firstName }} {{ user.lastName }}</p>
+
+    <h1>Pridėti rezultatus</h1>
+    <form role="form" action="{{ path('profile_update_results') }}" method="post">
+        {% for event in results %}
+            <div>
+                <h2>{{ event.eventName }} {{ event.year }} {{ event.distance }}km</h2>
+                <ul>
+                {% for result in event.results %}
+                    <li>
+                        <input type="checkbox" name="checked[]" id="{{ result.id }}" value="{{ result.id }}">
+                        <label for="{{ result.id }}">{{ result.overallPosition }} {{ result.netTime }} {{ result.club }}</label>
+                    </li>
+                {% endfor %}
+                </ul>
+            </div>
+        {% endfor %}
+        <input type="submit" value="Išsaugoti">
+    </form>
+{% endblock %}

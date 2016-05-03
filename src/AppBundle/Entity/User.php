@@ -24,6 +24,17 @@ class User extends BaseUser
     /** @ORM\Column(name="first_name", type="string", length=255, nullable=true) */
     protected $firstName;
 
+    /** @ORM\Column(name="last_name", type="string", length=255, nullable=true) */
+    protected $lastName;
+
+    /**
+     * User constructor.
+     */
+    public function __construct()
+    {
+        parent::__construct();
+    }
+
     /**
      * @return mixed
      */
@@ -38,17 +49,6 @@ class User extends BaseUser
     public function setId($id)
     {
         $this->id = $id;
-    }
-
-    /** @ORM\Column(name="last_name", type="string", length=255, nullable=true) */
-    protected $lastName;
-
-    /**
-     * User constructor.
-     */
-    public function __construct()
-    {
-        parent::__construct();
     }
 
     /**
