@@ -20,10 +20,18 @@ class AccountController extends Controller
     public function indexAction()
     {
         $user = $this->getUser();
-        $events = $this->getDoctrine()->getRepository('AppBundle:Result')->getAllResultsByName($user->getFirstName(), $user->getLastName());
-        $img = $this->getDoctrine()->getRepository('AppBundle:Facebook')->findOneBy(['userId' => $this->getUser()->getId()])->getFacebookProfileImgUrl();
+        $events = $this->getDoctrine()
+            ->getRepository('AppBundle:Result')
+            ->getAllResultsByName($user->getFirstName(), $user->getLastName());
+        $img = $this->getDoctrine()
+            ->getRepository('AppBundle:Facebook')
+            ->findOneBy(['userId' => $this->getUser()->getId()])
+            ->getFacebookProfileImgUrl();
         if ($img == null) {
-            $img = $this->getDoctrine()->getRepository('AppBundle:Google')->findOneBy(['userId' => $this->getUser()->getId()])->getGoogleProfileImgUrl();
+            $img = $this->getDoctrine()
+                ->getRepository('AppBundle:Google')
+                ->findOneBy(['userId' => $this->getUser()->getId()])
+                ->getGoogleProfileImgUrl();
         }
 
         return $this->render('AppBundle:Profile:index.html.twig', [
@@ -39,7 +47,9 @@ class AccountController extends Controller
     public function updateAction()
     {
         $em = $this->getDoctrine()->getManager();
-        $addedResults = $this->getDoctrine()->getRepository('AppBundle:UserResults')->findBy(['userId' => $this->getUser()->getId()]);
+        $addedResults = $this->getDoctrine()
+            ->getRepository('AppBundle:UserResults')
+            ->findBy(['userId' => $this->getUser()->getId()]);
         foreach ($addedResults as $result) {
             $em->remove($result);
         }
