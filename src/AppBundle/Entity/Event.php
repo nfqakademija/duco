@@ -63,6 +63,24 @@ class Event
     protected $columns;
 
     /**
+     * @var int
+     * @ORM\Column(name="sheet", type="integer")
+     */
+    protected $sheet;
+
+    /**
+     * @var string
+     * @ORM\Column(name="provider_name", type="string", length=255)
+     */
+    protected $providerName;
+
+    /**
+     * @var int
+     * @ORM\Column(name="data_imported", type="integer")
+     */
+    protected $dataImported;
+
+    /**
      * @return int
      */
     public function getId()
@@ -167,7 +185,7 @@ class Event
     }
 
     /**
-     * @param int $columnCount
+     * @param int $columnOffset
      */
     public function setColumnOffset($columnOffset)
     {
@@ -188,5 +206,53 @@ class Event
     public function setColumns($columns)
     {
         $this->columns = $columns;
+    }
+
+    /**
+     * @return int
+     */
+    public function getSheet()
+    {
+        return $this->sheet;
+    }
+
+    /**
+     * @param int $sheet
+     */
+    public function setSheet($sheet)
+    {
+        $this->sheet = $sheet;
+    }
+
+    /**
+     * @return string
+     */
+    public function getProviderName()
+    {
+        return $this->providerName;
+    }
+
+    /**
+     * @param string $providerName
+     */
+    public function setProviderName($providerName)
+    {
+        $this->providerName = $providerName;
+    }
+
+    /**
+     * @return int
+     */
+    public function getDataImported()
+    {
+        return $this->dataImported;
+    }
+
+    /**
+     * @param int $dataImported
+     */
+    public function setDataImported($dataImported)
+    {
+        $this->dataImported = $dataImported;
     }
 }
