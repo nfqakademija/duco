@@ -1,0 +1,23 @@
+
+
+
+
+
+
+<nav class="navbar">
+    <div class="container">
+        {% if app.user %}
+            <div class="navbar-header">
+                <a href="{{ path('profile_show_results') }}">
+                    <img class="img-circle" src="{{ app.user.profilePicture }}"/>
+                    <p>{{ app.user.firstName }} {{ app.user.lastName }}</p>
+                </a>
+                <ul class="nav navbar-nav navbar-right security-links">
+                    <li><a href="{{ path('fos_user_security_logout') }}"><span class="glyphicon glyphicon-log-out"></span>
+                            Logout</a></li>
+                </ul>
+            </div>
+        {% endif %}
+        <a class="navbar-brand" href="{{ path('app.index') }}"></a>
+    </div>
+</nav>

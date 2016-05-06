@@ -60,6 +60,8 @@ class OAuthUserProvider extends BaseClass
             $checker->checkPreAuth($user);
         }
 
+        $user->setProfilePicture($profilePicture);
+
         return $user;
     }
 

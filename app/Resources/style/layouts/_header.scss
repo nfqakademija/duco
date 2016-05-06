@@ -1,0 +1,56 @@
+
+.navbar {
+
+  background-color: rgba(61, 92, 137, 0.7);
+  margin-bottom: 150px;
+  height: 90px;
+
+  &-nav {
+    margin: 0 -15px;
+  }
+
+  &-header {
+    margin-top: 20px;
+    width: 300px;
+    float: right;
+    color: black;
+
+    a {
+      float: left;
+    }
+
+    p {
+      margin-top: 10px;
+    }
+
+    img {
+      height: 50px;
+      vertical-align: middle;
+      margin-right: 5px;
+    }
+
+    img, p {
+      float: left;
+    }
+
+    a, p {
+      color: #fff;
+    }
+  }
+
+  .navbar-brand {
+    margin-left: 0px;
+    position: absolute;
+    top: 20px;
+    display: block;
+    height: 52px;
+    width: 189px;
+    background-image: url('http://txt-dynamic.static.1001fonts.net/txt/dHRmLjcyLmZmZmZmZi5SRlZEVHcsLC4w/quantico.regular.png');
+  }
+
+  .security-links {
+    position: absolute;
+    right: 5%;
+  }
+
+}

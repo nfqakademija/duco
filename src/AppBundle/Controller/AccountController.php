@@ -23,20 +23,8 @@ class AccountController extends Controller
         $events = $this->getDoctrine()
             ->getRepository('AppBundle:Result')
             ->getAllResultsByName($user->getFirstName(), $user->getLastName());
-        $img = $this->getDoctrine()
-            ->getRepository('AppBundle:Facebook')
-            ->findOneBy(['userId' => $this->getUser()->getId()])
-            ->getFacebookProfileImgUrl();
-        if ($img == null) {
-            $img = $this->getDoctrine()
-                ->getRepository('AppBundle:Google')
-                ->findOneBy(['userId' => $this->getUser()->getId()])
-                ->getGoogleProfileImgUrl();
-        }
 
         return $this->render('AppBundle:Profile:index.html.twig', [
-            'user' => $user,
-            'profile_img' => $img,
             'results' => $events,
         ]);
     }
