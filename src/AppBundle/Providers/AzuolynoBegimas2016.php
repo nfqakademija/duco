@@ -121,9 +121,15 @@ class AzuolynoBegimas2016 implements ProviderInterface
         return new CallbackItemConverter(function ($item) {
             $item['eventId'] = $this->getEvent()->getId();
             switch ($this->getEvent()->getSheet()) {
-                case 0: $item['distance'] = 5; break;
-                case 1: $item['distance'] = 10; break;
-                case 2: $item['distance'] = 15; break;
+                case 0:
+                    $item['distance'] = 5;
+                    break;
+                case 1:
+                    $item['distance'] = 10;
+                    break;
+                case 2:
+                    $item['distance'] = 15;
+                    break;
             }
             return $item;
         });
@@ -157,8 +163,11 @@ class AzuolynoBegimas2016 implements ProviderInterface
 
     protected function getDoctrineWriter()
     {
-        $doctrineWriter = new DoctrineWriter($this->entityManager, 'AppBundle:Result',
-            array('overallPosition', 'lastName', 'eventId'));
+        $doctrineWriter = new DoctrineWriter(
+            $this->entityManager,
+            'AppBundle:Result',
+            array('overallPosition', 'lastName', 'eventId')
+        );
         $doctrineWriter->disableTruncate();
         return $doctrineWriter;
     }
