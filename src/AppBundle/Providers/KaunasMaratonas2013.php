@@ -122,69 +122,68 @@ class KaunasMaratonas2013 implements ProviderInterface
 
     protected function getColumnConverter()
     {
-        $columnConverter = new MappingItemConverter(unserialize($this->getEvent()->getColumns()));
-        return $columnConverter;
+        return new MappingItemConverter(unserialize($this->getEvent()->getColumns()));
     }
 
     protected function getNameConverter()
     {
-        $nameConverter = new CallbackItemConverter(function ($item) {
+        return new CallbackItemConverter(function ($item) {
             $position = strpos($item['firstName'], ' ');
             $item['lastName'] = substr($item['firstName'], $position+1);
             $item['firstName'] = substr($item['firstName'], 0, $position);
             return $item;
         });
-        return $nameConverter;
     }
 
     protected function getTimeTrimConverter()
     {
-        $timeTrimConverter = new CallbackItemConverter(function ($item) {
+        return new CallbackItemConverter(function ($item) {
             $item['finishTime'] = substr($item['finishTime'], 0, strpos($item['finishTime'], ','));
             return $item;
         });
-        return $timeTrimConverter;
     }
 
     protected function getRowMergeConverter($reader)
     {
-        $rowMergeConverter = new CallbackItemConverter(function ($item) use ($reader) {
-            $raceNumber = $this->getColumnName(unserialize($this->getEvent()->getColumns()), 'raceNumber');
-            $i = 0;
-            foreach ($reader as $readerItem) {
-                if ($readerItem[$raceNumber] === $item['raceNumber'] && is_null($item['netTime'])) {
-                    $ind = $i + 1;
-                    break;
-                }
-                $i++;
-            }
-            $readerItem = $reader->getRow($ind + $this->getEvent()->getColumnOffset());
+        return new CallbackItemConverter(function ($item) use ($reader) {
+            $readerItem = $reader->getRow($this->getIndex($item, $reader) + $this->getEvent()->getColumnOffset());
             $netTime = $this->getColumnName(unserialize($this->getEvent()->getColumns()), 'netTime');
             $item['netTime'] = $readerItem[$netTime];
             return $item;
         });
-        return $rowMergeConverter;
+    }
+
+    protected function getIndex($item, $reader)
+    {
+        $raceNumber = $this->getColumnName(unserialize($this->getEvent()->getColumns()), 'raceNumber');
+        $i = 0;
+        foreach ($reader as $readerItem) {
+            if ($readerItem[$raceNumber] === $item['raceNumber'] && is_null($item['netTime'])) {
+                $ind = $i + 1;
+                break;
+            }
+            $i++;
+        }
+        return $ind;
     }
 
     protected function getAddConverter()
     {
-        $addConverter = new CallbackItemConverter(function ($item) {
+        return new CallbackItemConverter(function ($item) {
             $item['eventId'] = $this->getEvent()->getId();
             $item['distance'] = $this->getEvent()->getDistance();
             return $item;
         });
-        return $addConverter;
     }
 
     protected function getRowFilter()
     {
-        $rowFilter = new CallbackFilter(function ($item) {
+        return new CallbackFilter(function ($item) {
             $overallPosition = $this->getColumnName(unserialize($this->getEvent()->getColumns()), 'overallPosition');
             $finishTime = $this->getColumnName(unserialize($this->getEvent()->getColumns()), 'finishTime');
             $netTime = $this->getColumnName(unserialize($this->getEvent()->getColumns()), 'netTime');
             return (!is_null($item[$overallPosition]) || !is_null($item[$finishTime]) || !is_null($item[$netTime]));
         });
-        return $rowFilter;
     }
 
     protected function getDoctrineWriter()

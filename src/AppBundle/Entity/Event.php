@@ -22,61 +22,61 @@ class Event
 
     /**
      * @var string
-     * @ORM\Column(name="event_name", type="string", length=255, nullable=true)
+     * @ORM\Column(name="event_name", type="string", length=255, nullable=false)
      */
     protected $eventName;
 
     /**
      * @var int
-     * @ORM\Column(name="year", type="integer", nullable=true)
+     * @ORM\Column(name="year", type="integer", nullable=false)
      */
     protected $year;
 
     /**
      * @var string
-     * @ORM\Column(name="source", type="string", length=255, nullable=true)
+     * @ORM\Column(name="source", type="string", length=255, nullable=false)
      */
     protected $source;
 
     /**
      * @var string
-     * @ORM\Column(name="source_type", type="string", length=255, nullable=true)
+     * @ORM\Column(name="source_type", type="string", length=255, nullable=false)
      */
     protected $sourceType;
 
     /**
      * @var int
-     * @ORM\Column(name="distance", type="integer")
+     * @ORM\Column(name="distance", type="integer", nullable=false)
      */
     protected $distance;
 
     /**
      * @var int
-     * @ORM\Column(name="column_offset", type="integer")
+     * @ORM\Column(name="column_offset", type="integer", nullable=false)
      */
     protected $columnOffset;
 
     /**
      * @var string
-     * @ORM\Column(name="columns", type="string", length=255)
+     * @ORM\Column(name="columns", type="string", length=255, nullable=false)
      */
     protected $columns;
 
     /**
      * @var int
-     * @ORM\Column(name="sheet", type="integer")
+     * @ORM\Column(name="sheet", type="integer", nullable=false)
      */
     protected $sheet;
 
     /**
      * @var string
-     * @ORM\Column(name="provider_name", type="string", length=255)
+     * @ORM\Column(name="provider_name", type="string", length=255, nullable=false)
      */
     protected $providerName;
 
     /**
      * @var int
-     * @ORM\Column(name="data_imported", type="integer")
+     * @ORM\Column(name="data_imported", type="integer", nullable=false)
      */
     protected $dataImported;
 

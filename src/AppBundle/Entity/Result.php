@@ -14,7 +14,7 @@ class Result
     /**
      * @var int
      * @ORM\Id()
-     * @ORM\Column(name="id", type="integer")
+     * @ORM\Column(type="integer")
      * @ORM\GeneratedValue(strategy="AUTO")
      */
     protected $id;
@@ -69,7 +69,7 @@ class Result
 
     /**
      * @var int
-     * @ORM\Column(name="distance", type="integer", nullable=true)
+     * @ORM\Column(name="distance", type="decimal", precision=3, scale=1, nullable=true)
      */
     protected $distance;
 

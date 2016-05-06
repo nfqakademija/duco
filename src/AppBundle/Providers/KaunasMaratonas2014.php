@@ -104,29 +104,26 @@ class KaunasMaratonas2014 implements ProviderInterface
 
     protected function getColumnConverter()
     {
-        $columnConverter = new MappingItemConverter(unserialize($this->getEvent()->getColumns()));
-        return $columnConverter;
+        return new MappingItemConverter(unserialize($this->getEvent()->getColumns()));
     }
 
     protected function getAddConverter()
     {
-        $addConverter = new CallbackItemConverter(function ($item) {
+        return new CallbackItemConverter(function ($item) {
             $item['eventId'] = $this->getEvent()->getId();
             $item['distance'] = $this->getEvent()->getDistance();
             return $item;
         });
-        return $addConverter;
     }
 
     protected function getRowFilter()
     {
-        $rowFilter = new CallbackFilter(function ($item) {
+        return new CallbackFilter(function ($item) {
             $overallPosition = $this->getColumnName(unserialize($this->getEvent()->getColumns()), 'overallPosition');
             $finishTime = $this->getColumnName(unserialize($this->getEvent()->getColumns()), 'finishTime');
             $netTime = $this->getColumnName(unserialize($this->getEvent()->getColumns()), 'netTime');
             return (!is_null($item[$overallPosition]) || !is_null($item[$finishTime]) || !is_null($item[$netTime]));
         });
-        return $rowFilter;
     }
 
     protected function getDoctrineWriter()
