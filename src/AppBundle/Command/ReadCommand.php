@@ -30,21 +30,29 @@ class ReadCommand extends ContainerAwareCommand
     {
         $this
             ->setName('read')
-            ->setDescription('Read results');
+            ->setDescription('Read results')
+            ->addOption('import-events');
     }
 
     protected function execute(InputInterface $input, OutputInterface $output)
     {
-        $events = $this->getNotImportedEvents();
-        foreach ($events as $event) {
-            $providerName = '\\AppBundle\\Providers\\' . $event->getProviderName();
-            $provider = new $providerName();
-            $provider->setEvent($event);
-            $provider->setEntityManager($this->entityManager);
-            $provider->setServiceContainer($this->container);
-            $provider->import();
-            $this->setDataImported($event->getId());
-            $output->writeln('Failas ' . $event->getSource() . ' nuskaitytas');
+        if ($input->getOption('import-events')) {
+            $fileName = $this->container->get('kernel')->getRootDir() . '/Resources/files/events/events.sql';
+            $sql = file_get_contents($fileName);
+            $conn = $this->entityManager->getConnection()->prepare($sql);
+            $conn->execute();
+        } else {
+            $events = $this->getNotImportedEvents();
+            foreach ($events as $event) {
+                $providerName = '\\AppBundle\\Providers\\' . $event->getProviderName();
+                $provider = new $providerName();
+                $provider->setEvent($event);
+                $provider->setEntityManager($this->entityManager);
+                $provider->setServiceContainer($this->container);
+                $provider->import();
+                $this->setDataImported($event->getId());
+                $output->writeln('Failas ' . $event->getSource() . ' nuskaitytas');
+            }
         }
     }
 
