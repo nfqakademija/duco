@@ -6,7 +6,7 @@
 
     <h1>Pridėti rezultatus</h1>
     <form role="form" action="{{ path('profile_update_results') }}" method="post">
-        {% for event in results %}
+        {% for event in notAddedResults %}
             <div>
                 <h2>{{ event.eventName }} {{ event.year }} {{ event.distance }}km</h2>
                 <ul>
@@ -21,4 +21,18 @@
         {% endfor %}
         <input type="submit" value="Išsaugoti">
     </form>
+
+    <h1>Pridėti rezultatai</h1>
+    {% for event in addedResults %}
+        <div>
+            <h2>{{ event.eventName }} {{ event.year }} {{ event.distance }}km</h2>
+            <ul>
+                {% for result in event.results %}
+                    <li>
+                        {{ result.overallPosition }} {{ result.netTime }} {{ result.club }}
+                    </li>
+                {% endfor %}
+            </ul>
+        </div>
+    {% endfor %}
 {% endblock %}

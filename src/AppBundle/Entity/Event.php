@@ -11,7 +11,7 @@ use Doctrine\ORM\Mapping as ORM;
  * @ORM\Entity()
  * @ORM\Table(name="events")
  */
-class Event
+class Event extends \AppBundle\Model\Event
 {
     /**
      * @var int
@@ -62,11 +62,6 @@ class Event
      * @ORM\Column(name="columns", type="string", length=255)
      */
     protected $columns;
-
-    /**
-     * @var ArrayCollection
-     */
-    protected $results;
 
     /**
      * @return int
@@ -210,16 +205,5 @@ class Event
     public function setResults($results)
     {
         $this->results = $results;
-    }
-
-    /**
-     * @param Result $result
-     */
-    public function addResult($result)
-    {
-        if ($this->results == null) {
-            $this->results = new ArrayCollection();
-        }
-        $this->results->add($result);
     }
 }
