@@ -2,6 +2,7 @@
 
 namespace AppBundle\Repository;
 
+use AppBundle\Entity\AddedResult;
 use AppBundle\Entity\Event;
 use AppBundle\Entity\Result;
 use Doctrine\ORM\Query\Expr\Join;
@@ -19,24 +20,58 @@ class ResultRepository extends \Doctrine\ORM\EntityRepository
      * @param string $lastName
      * @return null
      */
-    public function getAllResultsByName($firstName, $lastName)
+    public function getNotAddedResultsByName($firstName, $lastName)
     {
         $qb = $this->getEntityManager()->createQueryBuilder();
         $qb->select(['r', 'e'])
             ->from(Result::class, 'r')
             ->innerJoin(Event::class, 'e', Join::WITH, 'e.id = r.eventId')
+            ->leftJoin(AddedResult::class, 'a', Join::WITH, 'a.resultId = r.id')
             ->where('r.firstName = :firstName')
-            ->andWhere('r.lastName = :lastName');
+            ->andWhere('r.lastName = :lastName')
+            ->andWhere('a.userId IS NULL');
+
         $qb->setParameters([
             'firstName' => $firstName,
             'lastName' => $lastName,
         ]);
-        $data = $qb->getQuery()->getResult();
+
+        $data = $qb->getQuery()->useResultCache(false)->getResult();
+
+        return $this->groupArrayToEvents($this->cloneArray($data), "AppBundle\\Entity\\Result");
+    }
+
+    /**
+     * @param int $userId
+     * @return null
+     */
+    public function getAddedResultsByUserId($userId)
+    {
+        $qb = $this->getEntityManager()->createQueryBuilder();
+        $qb->select(['r', 'e'])
+            ->from(AddedResult::class, 'r')
+            ->innerJoin(Event::class, 'e', Join::WITH, 'e.id = r.eventId')
+            ->where('r.userId = :userId');
+        $qb->setParameters([
+            'userId' => $userId,
+        ]);
+        $data = $qb->getQuery()->useResultCache(false)->getResult();
+
+        return $this->groupArrayToEvents($data, "AppBundle\\Entity\\AddedResult");
+    }
+
+    /**
+     * @param array  $data
+     * @param string $objectNameToAddToEvent
+     * @return null
+     */
+    private function groupArrayToEvents($data, $objectNameToAddToEvent)
+    {
         $events = null;
         $results = null;
         if ($data != null) {
             foreach ($data as $row) {
-                if (get_class($row) == "AppBundle\\Entity\\Result") {
+                if (get_class($row) == $objectNameToAddToEvent) {
                     $results[] = $row;
                 } else {
                     $events[$row->getId()] = $row;
@@ -48,5 +83,16 @@ class ResultRepository extends \Doctrine\ORM\EntityRepository
         }
 
         return $events;
+    }
+
+    /**
+     * @param array $array
+     */
+    private function cloneArray($array)
+    {
+        $clonedData = null;
+        foreach ($array as $row) {
+            $clonedData[] = clone $row;
+        }
     }
 }
