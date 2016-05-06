@@ -41,5 +41,4 @@ abstract class User extends FOSUser
 
         $session->set('profilePicture', $profilePicture);
     }
-
 }
