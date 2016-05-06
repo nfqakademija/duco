@@ -8,9 +8,8 @@ use Ddeboer\DataImport\ItemConverter\CallbackItemConverter;
 use Ddeboer\DataImport\ItemConverter\MappingItemConverter;
 use Ddeboer\DataImport\Filter\CallbackFilter;
 use Ddeboer\DataImport\Workflow;
-use AppBundle\ValueConverter\FloatToTimeConverter;
 
-class KaunasMaratonas2014 implements ProviderInterface
+class AzuolynoBegimas2016 implements ProviderInterface
 {
     protected $event = array();
     protected $entityManager;
@@ -68,12 +67,12 @@ class KaunasMaratonas2014 implements ProviderInterface
     {
         $workFlow = new Workflow($this->getReader());
         $workFlow
-            ->addItemConverter($this->getColumnConverter())
-            ->addItemConverter($this->getNameConverter())
-            ->addValueConverter('netTime', new FloatToTimeConverter())
-            ->addValueConverter('finishTime', new FloatToTimeConverter())
-            ->addItemConverter($this->getAddConverter())
             ->addFilter($this->getRowFilter())
+            ->addItemConverter($this->getColumnConverter())
+            ->addItemConverter($this->getAddConverter())
+            ->addItemConverter($this->getNameConverter())
+            ->addItemConverter($this->getTimeTrimConverter())
+            ->addItemConverter($this->getNetTimeConverter())
             ->addWriter($this->getDoctrineWriter())
             ->process();
     }
@@ -93,6 +92,14 @@ class KaunasMaratonas2014 implements ProviderInterface
         return $path;
     }
 
+    protected function getRowFilter()
+    {
+        return new CallbackFilter(function ($item) {
+            $overallPosition = $this->getColumnName(unserialize($this->getEvent()->getColumns()), 'overallPosition');
+            return (!is_null($item[$overallPosition]));
+        });
+    }
+
     protected function getColumnName($columns, $name)
     {
         while ($current = current($columns)) {
@@ -101,6 +108,7 @@ class KaunasMaratonas2014 implements ProviderInterface
             }
             next($columns);
         }
+        return null;
     }
 
     protected function getColumnConverter()
@@ -108,38 +116,49 @@ class KaunasMaratonas2014 implements ProviderInterface
         return new MappingItemConverter(unserialize($this->getEvent()->getColumns()));
     }
 
-    protected function getNameConverter()
-    {
-        return new CallbackItemConverter(function ($item) {
-            $position = strpos($item['firstName'], ' ');
-            $item['lastName'] = substr($item['firstName'], $position+1);
-            $item['firstName'] = substr($item['firstName'], 0, $position);
-            return $item;
-        });
-    }
-
     protected function getAddConverter()
     {
         return new CallbackItemConverter(function ($item) {
             $item['eventId'] = $this->getEvent()->getId();
-            $item['distance'] = $this->getEvent()->getDistance();
+            switch ($this->getEvent()->getSheet()) {
+                case 0: $item['distance'] = 5; break;
+                case 1: $item['distance'] = 10; break;
+                case 2: $item['distance'] = 15; break;
+            }
             return $item;
         });
     }
 
-    protected function getRowFilter()
+    protected function getNameConverter()
     {
-        return new CallbackFilter(function ($item) {
-            $overallPosition = $this->getColumnName(unserialize($this->getEvent()->getColumns()), 'overallPosition');
-            $finishTime = $this->getColumnName(unserialize($this->getEvent()->getColumns()), 'finishTime');
-            $netTime = $this->getColumnName(unserialize($this->getEvent()->getColumns()), 'netTime');
-            return (!is_null($item[$overallPosition]) || !is_null($item[$finishTime]) || !is_null($item[$netTime]));
+        return new CallbackItemConverter(function ($item) {
+            $position = strpos($item['firstName'], ' ');
+            $item['lastName'] = substr($item['firstName'], 0, $position);
+            $item['firstName'] = substr($item['firstName'], $position+1);
+            return $item;
+        });
+    }
+
+    protected function getTimeTrimConverter()
+    {
+        return new CallbackItemConverter(function ($item) {
+            $item['finishTime'] = substr($item['finishTime'], 0, strpos($item['finishTime'], '.'));
+            return $item;
+        });
+    }
+
+    protected function getNetTimeConverter()
+    {
+        return new CallbackItemConverter(function ($item) {
+            $item['netTime'] = $item['finishTime'];
+            return $item;
         });
     }
 
     protected function getDoctrineWriter()
     {
-        $doctrineWriter = new DoctrineWriter($this->entityManager, 'AppBundle:Result', array('raceNumber', 'eventId'));
+        $doctrineWriter = new DoctrineWriter($this->entityManager, 'AppBundle:Result',
+            array('overallPosition', 'lastName', 'eventId'));
         $doctrineWriter->disableTruncate();
         return $doctrineWriter;
     }

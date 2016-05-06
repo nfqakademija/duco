@@ -124,7 +124,7 @@ class VilniusMaratonas2014 implements ProviderInterface
     protected function getDoctrineWriter()
     {
         $doctrineWriter = new DoctrineWriter($this->entityManager, 'AppBundle:Result',
-            array('finishTime', 'distance', 'eventId'));
+            array('finishTime', 'distance', 'eventId', 'lastName'));
         $doctrineWriter->disableTruncate();
         return $doctrineWriter;
     }
