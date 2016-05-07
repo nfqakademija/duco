@@ -1,0 +1,9 @@
+form:
+    firstname: Vardas
+    lastname: Pavardė
+    titles:
+        login: Prisijunkite
+        register: Užsiregistruokite
+    subtitles:
+        login: 'Įveskite savo elektroninį paštą ir slaptažodį'
+        register: 'Užpildykite žemiau esančią formą ir gaukite prieigą prie maratonų'

@@ -3,6 +3,7 @@
 namespace AppBundle\Controller;
 
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
+use AppBundle\Form\Type\RegistrationFormType;
 
 /**
  * Class HomeController
@@ -22,6 +23,9 @@ class HomeController extends Controller
             return $this->redirectToRoute('account_home');
         }
 
-        return $this->render('AppBundle:Home:index.html.twig');
+        $form = $this->createForm(RegistrationFormType::class);
+        return $this->render('AppBundle:Home:index.html.twig', array(
+            'form' => $form->createView()
+        ));
     }
 }
