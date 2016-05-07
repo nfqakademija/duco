@@ -46,7 +46,7 @@ class Event
 
     /**
      * @var int
-     * @ORM\Column(name="distance", type="integer", nullable=false)
+     * @ORM\Column(name="distance", type="decimal", precision=3, scale=1, nullable=false)
      */
     protected $distance;
 

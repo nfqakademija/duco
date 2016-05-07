@@ -2,13 +2,15 @@
 
 namespace AppBundle\Providers;
 
-use Ddeboer\DataImport\Workflow;
-use Ddeboer\DataImport\Reader\CsvReader;
+use Ddeboer\DataImport\Filter\OffsetFilter;
+use Ddeboer\DataImport\Reader\ExcelReader;
 use Ddeboer\DataImport\Writer\DoctrineWriter;
-use Ddeboer\DataImport\ItemConverter\MappingItemConverter;
 use Ddeboer\DataImport\ItemConverter\CallbackItemConverter;
+use Ddeboer\DataImport\ItemConverter\MappingItemConverter;
+use Ddeboer\DataImport\Filter\CallbackFilter;
+use Ddeboer\DataImport\Workflow;
 
-class VilniusMaratonas2014 implements ProviderInterface
+class TrakaiPusmaratonis2013 implements ProviderInterface
 {
     protected $event = array();
     protected $entityManager;
@@ -66,32 +68,49 @@ class VilniusMaratonas2014 implements ProviderInterface
     {
         $workFlow = new Workflow($this->getReader());
         $workFlow
+            ->addFilter(new OffsetFilter(1))
+            ->addFilter($this->getRowFilter())
             ->addItemConverter($this->getColumnConverter())
             ->addItemConverter($this->getAddConverter())
-            ->addItemConverter($this->getNameConverter())
-            ->addItemConverter($this->getNetTimeConverter())
+            //->addItemConverter($this->getNameConverter())
+            //->addItemConverter($this->getTimeTrimConverter())
+            //->addItemConverter($this->getNetTimeConverter())
             ->addWriter($this->getDoctrineWriter())
             ->process();
-
     }
 
     protected function getReader()
     {
         $file = new \SplFileObject($this->getFilePath());
-        $reader = new CsvReader($file, ';');
-        $reader->setHeaderRowNumber(0);
+        $reader = new ExcelReader($file, $this->getEvent()->getColumnOffset(), $this->getEvent()->getSheet());
         return $reader;
     }
 
     protected function getFilePath()
     {
-        //$file = $this->getEvent()->getSource() . '.' . $this->getEvent()->getSourceType();
-        //$path = $this->getServiceContainer()->get('kernel')->getRootDir() . $file;
         $fileType = $this->getEvent()->getSourceType();
         $path = $this->getServiceContainer()->get('kernel')->getRootDir() . '/Resources/files/Maratonas.' . $fileType;
-        $file = $this->getServiceContainer()->get('kernel')->getRootDir() . '/Resources/files/' . $this->getEvent()->getSource();
-        file_put_contents($path, file_get_contents($file));
+        file_put_contents($path, file_get_contents($this->getEvent()->getSource()));
         return $path;
+    }
+
+    protected function getRowFilter()
+    {
+        return new CallbackFilter(function ($item) {
+            $overallPosition = $this->getColumnName(unserialize($this->getEvent()->getColumns()), 'overallPosition');
+            return (!($item[$overallPosition] === 0));
+        });
+    }
+
+    protected function getColumnName($columns, $name)
+    {
+        while ($current = current($columns)) {
+            if ($current === $name) {
+                return key($columns);
+            }
+            next($columns);
+        }
+        return null;
     }
 
     protected function getColumnConverter()
@@ -107,31 +126,9 @@ class VilniusMaratonas2014 implements ProviderInterface
         });
     }
 
-    protected function getNameConverter()
-    {
-        return new CallbackItemConverter(function ($item) {
-            $position = strpos($item['firstName'], ' ');
-            $item['lastName'] = substr($item['firstName'], $position+1);
-            $item['firstName'] = substr($item['firstName'], 0, $position);
-            return $item;
-        });
-    }
-
-    protected function getNetTimeConverter()
-    {
-        return new CallbackItemConverter(function ($item) {
-            $item['netTime'] = $item['finishTime'];
-            return $item;
-        });
-    }
-
     protected function getDoctrineWriter()
     {
-        $doctrineWriter = new DoctrineWriter(
-            $this->entityManager,
-            'AppBundle:Result',
-            array('finishTime', 'distance', 'eventId', 'lastName')
-        );
+        $doctrineWriter = new DoctrineWriter($this->entityManager, 'AppBundle:Result', array('raceNumber', 'eventId'));
         $doctrineWriter->disableTruncate();
         return $doctrineWriter;
     }
