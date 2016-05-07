@@ -35,6 +35,11 @@ profile_update_results:
     methods: POST
     defaults: { _controller: AppBundle:Account:update }
 
+search:
+    path: /search
+    methods: GET
+    defaults: { _controller: AppBundle:Search:index }
+
 fos_user:
     resource: "@FOSUserBundle/Resources/config/routing/all.xml"
 

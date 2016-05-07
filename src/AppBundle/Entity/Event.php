@@ -11,7 +11,7 @@ use Doctrine\ORM\Mapping as ORM;
  * @ORM\Entity()
  * @ORM\Table(name="events")
  */
-class Event extends \AppBundle\Model\Event
+class Event extends \AppBundle\Models\Event
 {
     /**
      * @var int

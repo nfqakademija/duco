@@ -39,7 +39,6 @@ class AccountController extends Controller
         $em = $this->getDoctrine()->getManager();
         $request = Request::createFromGlobals();
         $checkedValues = $request->request->get('checked', '');
-        var_dump($checkedValues);
         foreach ($checkedValues as $id) {
             $checkedResult = $this->getDoctrine()
                 ->getRepository('AppBundle:Result')

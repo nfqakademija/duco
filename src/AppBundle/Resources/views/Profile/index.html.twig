@@ -2,12 +2,12 @@
 
 {% block body %}
 
-    <h2 style="color: #ffffff">Pridėti rezultatai</h2>
+    <h2 class='text-white'>Pridėti rezultatai</h2>
     <div class="row">
-        <div class="well well-large col-sm-8 col-sm-offset-2" style="background-color: #ffffff">
+        <div class="well well-large col-lg-8 col-lg-offset-2 bg-white">
             {% if addedResults|length > 0 %}
-                <table style="border-spacing: 25px 0; border-collapse: separate;">
-                    <thead style="white-space: nowrap;">
+                <table class="results-table">
+                    <thead>
                     <tr>
                         <th><b>Vieta</b></th>
                         <th><b>Oficialus laikas</b></th>
@@ -55,83 +55,82 @@
     </div>
 
     <div class="row">
-            <h2 style="color: #ffffff">Rezultatų pridėjimas</h2>
-            <div class="well well-large col-sm-8 col-sm-offset-2">
-                {% if notAddedResults|length > 0 %}
-                    <div class="panel-group" id="accordion">
-                        <form role="form" action="{{ path('profile_update_results') }}" method="post">
-                            {% for event in notAddedResults %}
-                                <div class="panel panel-default">
-                                    <div class="panel-heading">
-                                        <h4 class="panel-title">
-                                            <a data-toggle="collapse" data-parent="#accordion" href="#e_{{ event.id }}">
-                                                {{ event.eventName }} {{ event.year }} {{ event.distance }}km
-                                            </a>
-                                        </h4>
-                                    </div>
-                                    <div id="e_{{ event.id }}" class="panel-collapse collapse in">
-                                        <div class="panel-body">
-                                            <table style="border-spacing: 25px 0; border-collapse: separate;">
-                                                <thead style="white-space: nowrap;">
+        <h2 class="text-white">Rezultatų pridėjimas</h2>
+        <div class="well well-large col-lg-8 col-lg-offset-2">
+            {% if notAddedResults|length > 0 %}
+                <div class="panel-group" id="accordion">
+                    <form role="form" action="{{ path('profile_update_results') }}" method="post">
+                        {% for event in notAddedResults %}
+                            <div class="panel panel-default">
+                                <div class="panel-heading">
+                                    <h4 class="panel-title">
+                                        <a data-toggle="collapse" data-parent="#accordion" href="#e_{{ event.id }}">
+                                            {{ event.eventName }} {{ event.year }} {{ event.distance }}km
+                                        </a>
+                                    </h4>
+                                </div>
+                                <div id="e_{{ event.id }}" class="panel-collapse collapse in">
+                                    <div class="panel-body">
+                                        <table class="results-table">
+                                            <thead>
+                                            <tr>
+                                                <th></th>
+                                                <th><b>Vieta</b></th>
+                                                <th><b>Oficialus laikas</b></th>
+                                                <th><b>Realus laikas</b></th>
+                                                <th><b>Starto numeris</b></th>
+                                                <th><b>Klubas</b></th>
+                                            </tr>
+                                            </thead>
+                                            <tbody>
+                                            {% for result in event.results %}
                                                 <tr>
-                                                    <th></th>
-                                                    <th><b>Vieta</b></th>
-                                                    <th><b>Oficialus laikas</b></th>
-                                                    <th><b>Realus laikas</b></th>
-                                                    <th><b>Starto numeris</b></th>
-                                                    <th><b>Klubas</b></th>
+                                                    <td><input type="checkbox" name="checked[]" title="{{ result.finishTime }}" value="{{ result.id }}"></td>
+                                                    {% if result.overallPosition is null %}
+                                                        <td>Neskelbiama</td>
+                                                    {% else %}
+                                                        <td>{{ result.overallPosition }}</td>
+                                                    {% endif %}
+
+                                                    {% if result.finishTime is null %}
+                                                        <td>Neskelbiama</td>
+                                                    {% else %}
+                                                        <td>{{ result.finishTime }}</td>
+                                                    {% endif %}
+
+                                                    {% if result.netTime is null %}
+                                                        <td>Neskelbiama</td>
+                                                    {% else %}
+                                                        <td>{{ result.netTime }}</td>
+                                                    {% endif %}
+
+                                                    {% if result.raceNumber is null %}
+                                                        <td>Neskelbiama</td>
+                                                    {% else %}
+                                                        <td>#{{ result.raceNumber }}</td>
+                                                    {% endif %}
+
+                                                    {% if result.club is null %}
+                                                        <td>Neskelbiama</td>
+                                                    {% else %}
+                                                        <td>{{ result.club }}</td>
+                                                    {% endif %}
                                                 </tr>
-                                                </thead>
-                                                <tbody>
-                                                {% for result in event.results %}
-                                                    <tr>
-                                                        <td><input type="checkbox" name="checked[]" title="{{ result.finishTime }}" value="{{ result.id }}"></td>
-                                                        {% if result.overallPosition is null %}
-                                                            <td>Neskelbiama</td>
-                                                        {% else %}
-                                                            <td>{{ result.overallPosition }}</td>
-                                                        {% endif %}
-
-                                                        {% if result.finishTime is null %}
-                                                            <td>Neskelbiama</td>
-                                                        {% else %}
-                                                            <td>{{ result.finishTime }}</td>
-                                                        {% endif %}
-
-                                                        {% if result.netTime is null %}
-                                                            <td>Neskelbiama</td>
-                                                        {% else %}
-                                                            <td>{{ result.netTime }}</td>
-                                                        {% endif %}
-
-                                                        {% if result.raceNumber is null %}
-                                                            <td>Neskelbiama</td>
-                                                        {% else %}
-                                                            <td>#{{ result.raceNumber }}</td>
-                                                        {% endif %}
-
-                                                        {% if result.club is null %}
-                                                            <td>Neskelbiama</td>
-                                                        {% else %}
-                                                            <td>{{ result.club }}</td>
-                                                        {% endif %}
-                                                    </tr>
-                                                {% endfor %}
-                                                </tbody>
-                                            </table>
-                                        </div>
+                                            {% endfor %}
+                                            </tbody>
+                                        </table>
                                     </div>
                                 </div>
-                            {% endfor %}
-                            <button class="btn" type="submit" style="margin-top: 20px">Išsaugoti</button>
-                        </form>
-                    </div>
-                {% else %}
-                    Rezultatų nerasta.
-                {% endif %}
-            </div>
-
-</div>
+                            </div>
+                        {% endfor %}
+                        <button class="btn" style="margin-top: 20px" type="submit">Išsaugoti</button>
+                    </form>
+                </div>
+            {% else %}
+                Rezultatų nerasta.
+            {% endif %}
+        </div>
+    </div>
 
 
 {% endblock %}

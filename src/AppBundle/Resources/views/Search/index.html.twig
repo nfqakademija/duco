@@ -1,0 +1,83 @@
+{% extends '::base.html.twig' %}
+
+{% block body %}
+
+    <div class="row">
+        <h2 class="text-white">Paieškos rezultatai</h2>
+        <div class="well well-large col-lg-10 col-lg-offset-1">
+            {% if searchResults|length > 0 %}
+                <div class="panel-group" id="accordion">
+                    {% for event in searchResults %}
+                        <div class="panel panel-default">
+                            <div class="panel-heading">
+                                <h4 class="panel-title">
+                                    <a data-toggle="collapse" data-parent="#accordion" href="#e_{{ event.id }}">
+                                        {{ event.eventName }} {{ event.year }} {{ event.distance }}km
+                                    </a>
+                                </h4>
+                            </div>
+                            <div id="e_{{ event.id }}" class="panel-collapse collapse in">
+                                <div class="panel-body">
+                                    <table class="results-table">
+                                        <thead>
+                                        <tr>
+                                            <th><b>Vardas</b></th>
+                                            <th><b>Pavardė</b></th>
+                                            <th><b>Vieta</b></th>
+                                            <th><b>Oficialus laikas</b></th>
+                                            <th><b>Realus laikas</b></th>
+                                            <th><b>Starto numeris</b></th>
+                                            <th><b>Klubas</b></th>
+                                        </tr>
+                                        </thead>
+                                        <tbody>
+                                        {% for result in event.results %}
+                                            <tr>
+                                                <td>{{ result.firstName }}</td>
+                                                <td>{{ result.lastName }}</td>
+                                                {% if result.overallPosition is null %}
+                                                    <td>Neskelbiama</td>
+                                                {% else %}
+                                                    <td>{{ result.overallPosition }}</td>
+                                                {% endif %}
+
+                                                {% if result.finishTime is null %}
+                                                    <td>Neskelbiama</td>
+                                                {% else %}
+                                                    <td>{{ result.finishTime }}</td>
+                                                {% endif %}
+
+                                                {% if result.netTime is null %}
+                                                    <td>Neskelbiama</td>
+                                                {% else %}
+                                                    <td>{{ result.netTime }}</td>
+                                                {% endif %}
+
+                                                {% if result.raceNumber is null %}
+                                                    <td>Neskelbiama</td>
+                                                {% else %}
+                                                    <td>#{{ result.raceNumber }}</td>
+                                                {% endif %}
+
+                                                {% if result.club is null %}
+                                                    <td>Neskelbiama</td>
+                                                {% else %}
+                                                    <td>{{ result.club }}</td>
+                                                {% endif %}
+                                            </tr>
+                                        {% endfor %}
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+                        </div>
+                    {% endfor %}
+                </div>
+            {% else %}
+                Rezultatų nerasta.
+            {% endif %}
+        </div>
+    </div>
+
+
+{% endblock %}

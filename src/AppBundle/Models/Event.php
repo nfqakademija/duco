@@ -6,7 +6,7 @@
  * Time: 23.41
  */
 
-namespace AppBundle\Model;
+namespace AppBundle\Models;
 
 use AppBundle\Entity\Result;
 use Doctrine\Common\Collections\ArrayCollection;
