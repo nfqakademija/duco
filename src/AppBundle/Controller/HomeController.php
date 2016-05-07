@@ -25,7 +25,9 @@ class HomeController extends Controller
 
         $form = $this->createForm(RegistrationFormType::class);
         return $this->render('AppBundle:Home:index.html.twig', array(
-            'form' => $form->createView()
+            'form' => $form->createView(),
+            'resultCount' => 20000,
+            'eventCount' => 14
         ));
     }
 }
