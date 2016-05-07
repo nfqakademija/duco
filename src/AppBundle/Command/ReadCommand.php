@@ -50,7 +50,7 @@ class ReadCommand extends ContainerAwareCommand
                 $provider->setEntityManager($this->entityManager);
                 $provider->setServiceContainer($this->container);
                 $provider->import();
-                $this->setDataImported($event->getId());
+                //$this->setDataImported($event->getId());
                 $output->writeln('Failas ' . $event->getSource() . ' nuskaitytas');
             }
         }

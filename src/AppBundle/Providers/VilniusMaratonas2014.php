@@ -85,8 +85,12 @@ class VilniusMaratonas2014 implements ProviderInterface
 
     protected function getFilePath()
     {
-        $file = $this->getEvent()->getSource() . '.' . $this->getEvent()->getSourceType();
-        $path = $this->getServiceContainer()->get('kernel')->getRootDir() . $file;
+        //$file = $this->getEvent()->getSource() . '.' . $this->getEvent()->getSourceType();
+        //$path = $this->getServiceContainer()->get('kernel')->getRootDir() . $file;
+        $fileType = $this->getEvent()->getSourceType();
+        $path = $this->getServiceContainer()->get('kernel')->getRootDir() . '/Resources/files/Maratonas.' . $fileType;
+        $file = $this->getServiceContainer()->get('kernel')->getRootDir() . '/Resources/files/' . $this->getEvent()->getSource();
+        file_put_contents($path, file_get_contents($file));
         return $path;
     }
 
