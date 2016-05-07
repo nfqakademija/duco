@@ -190,20 +190,4 @@ class Event extends \AppBundle\Model\Event
     {
         $this->columns = $columns;
     }
-
-    /**
-     * @return ArrayCollection
-     */
-    public function getResults()
-    {
-        return $this->results;
-    }
-
-    /**
-     * @param ArrayCollection $results
-     */
-    public function setResults($results)
-    {
-        $this->results = $results;
-    }
 }

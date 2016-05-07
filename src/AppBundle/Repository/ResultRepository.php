@@ -94,5 +94,7 @@ class ResultRepository extends \Doctrine\ORM\EntityRepository
         foreach ($array as $row) {
             $clonedData[] = clone $row;
         }
+
+        return $clonedData;
     }
 }

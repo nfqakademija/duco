@@ -35,4 +35,20 @@ class Event
         }
         $this->results->add($result);
     }
+
+    /**
+     * @return ArrayCollection
+     */
+    public function getResults()
+    {
+        return $this->results;
+    }
+
+    /**
+     * @param ArrayCollection $results
+     */
+    public function setResults($results)
+    {
+        $this->results = $results;
+    }
 }

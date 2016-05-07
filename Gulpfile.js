@@ -24,7 +24,7 @@ gulp.task('scripts', function() {
             dir.bower + 'jquery/dist/jquery.min.js',
             dir.bower + 'jquery-backstretch/jquery.backstretch.min.js',
             // Bootstrap JS modules
-            //dir.bootstrapJS + 'transition.js',
+            dir.bootstrapJS + 'collapse.js',
             //...
             // Main JS file
             dir.assets + 'scripts/main.js'
