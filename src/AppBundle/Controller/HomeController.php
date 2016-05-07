@@ -26,8 +26,22 @@ class HomeController extends Controller
         $form = $this->createForm(RegistrationFormType::class);
         return $this->render('AppBundle:Home:index.html.twig', array(
             'form' => $form->createView(),
-            'resultCount' => 20000,
-            'eventCount' => 14
+            'resultCount' => $this->getResultCount(),
+            'eventCount' => $this->getEventCount()
         ));
+    }
+
+    public function getResultCount()
+    {
+        $query = $this->getDoctrine()->getEntityManager()->createQueryBuilder();
+        $query->select('count(r)')->from('AppBundle:Result', 'r');
+        return $query->getQuery()->getSingleScalarResult();
+    }
+
+    public function getEventCount()
+    {
+        $query = $this->getDoctrine()->getEntityManager()->createQueryBuilder();
+        $query->select('count(e)')->from('AppBundle:Event', 'e');
+        return $query->getQuery()->getSingleScalarResult();
     }
 }
