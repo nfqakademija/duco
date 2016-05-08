@@ -106,3 +106,7 @@ fos_user:
     registration:
         form:
             type: app_user_registration
+    user_class: AppBundle\Entity\User
+    profile:
+        form:
+            type: app_user_profile
