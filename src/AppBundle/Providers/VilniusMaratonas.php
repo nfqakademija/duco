@@ -157,7 +157,7 @@ class VilniusMaratonas implements ProviderInterface
         return new CallbackItemConverter(function ($item) {
             if ($item['distance'] === '4.2' && $this->getEvent()->getYear() === 2010) {
                 $item['finishTime'] = substr($item['finishTime'], 0, strlen($item['finishTime'])-3);
-            } else if (strpos($item['finishTime'], '.') !== false) {
+            } elseif (strpos($item['finishTime'], '.') !== false) {
                 $item['finishTime'] = substr($item['finishTime'], 0, strpos($item['finishTime'], '.'));
             }
             return $item;
