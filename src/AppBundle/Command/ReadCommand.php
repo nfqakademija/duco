@@ -2,22 +2,11 @@
 
 namespace AppBundle\Command;
 
-use AppBundle\ValueConverter\FloatToTimeConverter;
-use Ddeboer\DataImport\ItemConverter\MappingItemConverter;
-use Doctrine\ORM\EntityManager;
+use AppBundle\Providers;
+use AppBundle\Entity;
 use Symfony\Bundle\FrameworkBundle\Command\ContainerAwareCommand;
-use Symfony\Bundle\FrameworkBundle\Controller\Controller;
-use Symfony\Component\Console\Input\InputArgument;
 use Symfony\Component\Console\Input\InputInterface;
-use Symfony\Component\Console\Input\InputOption;
 use Symfony\Component\Console\Output\OutputInterface;
-use Ddeboer\DataImport\Workflow;
-use Ddeboer\DataImport\Writer\DoctrineWriter;
-use Ddeboer\DataImport\ValueConverter\StringToDateTimeValueConverter;
-use Ddeboer\DataImport\Reader\ExcelReader;
-use Ddeboer\DataImport\ItemConverter\CallbackItemConverter;
-use Ddeboer\DataImport\ItemConverter\NestedMappingItemConverter;
-use Ddeboer\DataImport\Writer\CsvWriter;
 
 class ReadCommand extends ContainerAwareCommand
 {
@@ -41,44 +30,49 @@ class ReadCommand extends ContainerAwareCommand
     {
         $this
             ->setName('read')
-            ->setDescription('Read results');
+            ->setDescription('Read results')
+            ->addOption('import-events');
     }
 
     protected function execute(InputInterface $input, OutputInterface $output)
     {
-        $q = $this->entityManager->getRepository('AppBundle:Event');
-        $rows = $q->findAll();
-        foreach ($rows as $row) {
-            $file = new \SplFileObject($this->getFilePath($row));
-            $reader = new ExcelReader($file, $row->getColumnOffset());
-            $converter = new CallbackItemConverter(function ($item) use ($row) {
-                $item['eventId'] = $row->getId();
-                $item['distance'] = $row->getDistance();
-                return $item;
-            });
-            $columnConverter = new MappingItemConverter(unserialize($row->getColumns()));
-            $doctrineWriter = new DoctrineWriter($this->entityManager, 'AppBundle:Result');
-            $doctrineWriter->disableTruncate();
-            $workFlow = new Workflow($reader);
-            $workFlow
-                ->addItemConverter($columnConverter)
-                ->addValueConverter('finishTime', new FloatToTimeConverter())
-                ->addValueConverter('netTime', new FloatToTimeConverter())
-                ->addItemConverter($converter)
-                ->addWriter($doctrineWriter)
-                ->process();
+        if ($input->getOption('import-events')) {
+            $fileName = $this->container->get('kernel')->getRootDir() . '/Resources/files/events/events.sql';
+            $sql = file_get_contents($fileName);
+            $conn = $this->entityManager->getConnection()->prepare($sql);
+            $conn->execute();
+        } else {
+            $events = $this->getNotImportedEvents();
+            foreach ($events as $event) {
+                $providerName = '\\AppBundle\\Providers\\' . $event->getProviderName();
+                $provider = new $providerName();
+                $provider->setEvent($event);
+                $provider->setEntityManager($this->entityManager);
+                $provider->setServiceContainer($this->container);
+                $provider->import();
+                $this->setDataImported($event->getId());
+                $output->writeln('Failas ' . $event->getSource() . ' nuskaitytas');
+            }
         }
     }
 
     /**
-     * @param $row
-     * @return string
+     * @return array
      */
-    protected function getFilePath($row)
+    protected function getNotImportedEvents()
     {
-        $fileType = $row->getSourceType();
-        $filePath = $this->container->get('kernel')->getRootDir() . '/Resources/files/Maratonas.' . $fileType;
-        file_put_contents($filePath, file_get_contents($row->getSource()));
-        return $filePath;
+        $q = 'SELECT e FROM AppBundle\Entity\Event e WHERE e.dataImported = 0';
+        $query = $this->entityManager->createQuery($q);
+        return $query->getResult();
+    }
+
+    /**
+     * @param int $id
+     */
+    protected function setDataImported($id)
+    {
+        $q = 'UPDATE AppBundle\Entity\Event e SET e.dataImported = 1 WHERE e.id = ' . $id;
+        $query = $this->entityManager->createQuery($q);
+        $query->execute();
     }
 }
