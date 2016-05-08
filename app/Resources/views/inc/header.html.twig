@@ -9,7 +9,11 @@
         {% if app.user %}
             <div class="navbar-header">
                 <a href="{{ path('profile_show_results') }}">
-                    <img class="img-circle" src="{{ app.user.profilePicture }}"/>
+                    {% if app.user.profilePicture %}
+                        <img class="img-circle" src="{{ app.user.profilePicture }}"/>
+                    {% else %}
+                        <img class="img-circle" src="{{ asset('images/blank-photo.jpg') }}"/>
+                    {% endif %}
                     <p>{{ app.user.firstName }} {{ app.user.lastName }}</p>
                 </a>
                 <ul class="nav navbar-nav navbar-right security-links">

@@ -1,0 +1,24 @@
+{% trans_default_domain 'FOSUserBundle' %}
+
+
+
+
+
+{{ form_start(form, { 'action': path('fos_user_profile_edit'), 'attr': { 'class': 'fos_user_profile_edit' } }) }}
+<div class="col-sm-4 col-md-offset-4">
+    <div class="form-group">
+        {{ form_widget(form.firstname, { 'attr': {'class': 'form-firstname form-control', 'placeholder': 'form.firstname'|trans } }) }}
+        {{ form_errors(form.firstname) }}
+    </div>
+
+    <div class="form-group">
+        {{ form_widget(form.lastname, { 'attr': {'class': 'form-lastname form-control', 'placeholder': 'form.lastname'|trans } }) }}
+        {{ form_errors(form.lastname) }}
+    </div>
+
+    <div>
+        <button type="submit" id="_submit" name="_submit" class="btn">{{ 'profile.edit.submit'|trans }}</button>
+    </div>
+</div>
+
+{{ form_end(form) }}

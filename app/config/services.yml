@@ -16,3 +16,9 @@ services:
         tags:
             - { name: console.command }
         arguments: ['read', @doctrine.orm.entity_manager, @service_container]
+
+    app.profile.edit:
+        class: AppBundle\Form\Type\ProfileFormType
+        arguments: [%fos_user.model.user.class%]
+        tags:
+            - { name: form.type, alias: app_user_profile }
