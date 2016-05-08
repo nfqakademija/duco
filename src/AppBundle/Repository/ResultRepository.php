@@ -27,9 +27,10 @@ class ResultRepository extends \Doctrine\ORM\EntityRepository
             ->from(Result::class, 'r')
             ->innerJoin(Event::class, 'e', Join::WITH, 'e.id = r.eventId')
             ->leftJoin(AddedResult::class, 'a', Join::WITH, 'a.resultId = r.id')
-            ->where('r.firstName = :firstName')
-            ->andWhere('r.lastName = :lastName')
-            ->andWhere('a.userId IS NULL');
+            ->where('r.firstName LIKE :firstName')
+            ->andWhere('r.lastName LIKE :lastName')
+            ->andWhere('a.userId IS NULL')
+            ->orderBy('r.overallPosition');
 
         $qb->setParameters([
             'firstName' => $firstName,
@@ -51,7 +52,8 @@ class ResultRepository extends \Doctrine\ORM\EntityRepository
         $qb->select(['r', 'e'])
             ->from(AddedResult::class, 'r')
             ->innerJoin(Event::class, 'e', Join::WITH, 'e.id = r.eventId')
-            ->where('r.userId = :userId');
+            ->where('r.userId = :userId')
+            ->orderBy('r.overallPosition');
         $qb->setParameters([
             'userId' => $userId,
         ]);
@@ -73,7 +75,10 @@ class ResultRepository extends \Doctrine\ORM\EntityRepository
             ->innerJoin(Event::class, 'e', Join::WITH, 'e.id = r.eventId')
             ->where('CONCAT(r.firstName, r.lastName) LIKE :query')
             ->orWhere('r.raceNumber = :query')
-            ->orWhere('r.club LIKE :query');
+            ->orWhere('r.club LIKE :query')
+            ->orWhere('r.lastName LIKE :query')
+            ->orWhere('r.firstName LIKE :query')
+            ->orderBy('r.overallPosition');
         $qb->setParameters([
             'query' => str_replace(' ', '', $query),
         ]);
