@@ -8,6 +8,10 @@ use Ddeboer\DataImport\Writer\DoctrineWriter;
 use Ddeboer\DataImport\ItemConverter\MappingItemConverter;
 use Ddeboer\DataImport\ItemConverter\CallbackItemConverter;
 
+/**
+ * Class VilniusMaratonas
+ * @package AppBundle\Providers
+ */
 class VilniusMaratonas implements ProviderInterface
 {
     protected $event = array();
@@ -62,6 +66,11 @@ class VilniusMaratonas implements ProviderInterface
         $this->serviceContainer = $serviceContainer;
     }
 
+    /**
+     * Import data from file to database
+     *
+     * @throws \Ddeboer\DataImport\Exception\ExceptionInterface
+     */
     public function import()
     {
         $workFlow = new Workflow($this->getReader());
@@ -69,13 +78,18 @@ class VilniusMaratonas implements ProviderInterface
             ->addItemConverter($this->getColumnConverter())
             ->addItemConverter($this->getAddConverter())
             ->addItemConverter($this->getNameConverter())
-            //->addItemConverter($this->getTimeTrim())
+            ->addItemConverter($this->getTimeTrim())
             ->addItemConverter($this->getNetTimeConverter())
             ->addWriter($this->getDoctrineWriter())
             ->process();
 
     }
 
+    /**
+     * Returns results data from file
+     *
+     * @return ExcelReader
+     */
     protected function getReader()
     {
         $file = new \SplFileObject($this->getFilePath());
@@ -84,6 +98,11 @@ class VilniusMaratonas implements ProviderInterface
         return $reader;
     }
 
+    /**
+     * Copies from content to local file and returns path to that file
+     *
+     * @return string
+     */
     protected function getFilePath()
     {
         $fileType = $this->getEvent()->getSourceType();
@@ -94,11 +113,21 @@ class VilniusMaratonas implements ProviderInterface
         return $path;
     }
 
+    /**
+     * Unserializes string to array and converts reader's columns
+     *
+     * @return MappingItemConverter
+     */
     protected function getColumnConverter()
     {
         return new MappingItemConverter(unserialize($this->getEvent()->getColumns()));
     }
 
+    /**
+     * Set suitable variable value to event id
+     *
+     * @return CallbackItemConverter
+     */
     protected function getAddConverter()
     {
         return new CallbackItemConverter(function ($item) {
@@ -107,6 +136,11 @@ class VilniusMaratonas implements ProviderInterface
         });
     }
 
+    /**
+     * Separate first name and last name from one column and last name puts in other column
+     *
+     * @return CallbackItemConverter
+     */
     protected function getNameConverter()
     {
         return new CallbackItemConverter(function ($item) {
@@ -117,18 +151,28 @@ class VilniusMaratonas implements ProviderInterface
         });
     }
 
+    /**
+     * From 2010 event deletes milisecond part and trims finish time
+     *
+     * @return CallbackItemConverter
+     */
     protected function getTimeTrim()
     {
         return new CallbackItemConverter(function ($item) {
-            if ($item['distance'] === '4.2') {
-                //$item['finishTime'] = substr($item['finishTime'], 0, strlen($item['finishTime'])-3);
-            } else {
+            if ($item['distance'] === '4.2' && $this->getEvent()->getYear() === 2010) {
+                $item['finishTime'] = substr($item['finishTime'], 0, strlen($item['finishTime'])-3);
+            } elseif (strpos($item['finishTime'], '.') !== false) {
                 $item['finishTime'] = substr($item['finishTime'], 0, strpos($item['finishTime'], '.'));
             }
             return $item;
         });
     }
 
+    /**
+     * Copies finish time to net time
+     *
+     * @return CallbackItemConverter
+     */
     protected function getNetTimeConverter()
     {
         return new CallbackItemConverter(function ($item) {
@@ -137,6 +181,11 @@ class VilniusMaratonas implements ProviderInterface
         });
     }
 
+    /**
+     * Writes data to database and disables truncating
+     *
+     * @return DoctrineWriter
+     */
     protected function getDoctrineWriter()
     {
         $doctrineWriter = new DoctrineWriter(

@@ -11,6 +11,10 @@ use Ddeboer\DataImport\Filter\OffsetFilter;
 use Ddeboer\DataImport\Workflow;
 use AppBundle\ValueConverter\FloatToTimeConverter;
 
+/**
+ * Class KaunasMaratonas2013
+ * @package AppBundle\Providers
+ */
 class KaunasMaratonas2013 implements ProviderInterface
 {
     protected $event = array();
@@ -65,23 +69,33 @@ class KaunasMaratonas2013 implements ProviderInterface
         $this->serviceContainer = $serviceContainer;
     }
 
+    /**
+     * Import data from file to database
+     *
+     * @throws \Ddeboer\DataImport\Exception\ExceptionInterface
+     */
     public function import()
     {
         $reader = $this->getReader();
         $workFlow = new Workflow($reader);
         $workFlow
             ->addFilter(new OffsetFilter(1))
+            ->addFilter($this->getFirstRowFilter())
+            ->addFilter($this->getSecondRowFilter())
             ->addItemConverter($this->getColumnConverter())
             ->addItemConverter($this->getNameConverter())
             ->addItemConverter($this->getTimeTrimConverter())
-            ->addItemConverter($this->getRowMergeConverter($reader))
+            ->addItemConverter($this->getNetTimeConverter())
             ->addItemConverter($this->getAddConverter())
-            ->addValueConverter('netTime', new FloatToTimeConverter())
-            ->addFilter($this->getRowFilter())
             ->addWriter($this->getDoctrineWriter())
             ->process();
     }
 
+    /**
+     * Returns results data from file
+     *
+     * @return ExcelReader
+     */
     protected function getReader()
     {
         $file = new \SplFileObject($this->getFilePath());
@@ -90,6 +104,12 @@ class KaunasMaratonas2013 implements ProviderInterface
         return $reader;
     }
 
+    /**
+     * Returns column array with two merged rows
+     *
+     * @param $reader
+     * @return array
+     */
     protected function getColumnHeaders($reader)
     {
         $columns = $reader->getColumnHeaders();
@@ -101,6 +121,11 @@ class KaunasMaratonas2013 implements ProviderInterface
         return $columns;
     }
 
+    /**
+     * Downloads data and puts in local file and returns path to that local file
+     *
+     * @return string
+     */
     protected function getFilePath()
     {
         $fileType = $this->getEvent()->getSourceType();
@@ -109,6 +134,13 @@ class KaunasMaratonas2013 implements ProviderInterface
         return $path;
     }
 
+    /**
+     * Returns original column name before conversion
+     *
+     * @param $columns
+     * @param $name
+     * @return mixed|null
+     */
     protected function getColumnName($columns, $name)
     {
         while ($current = current($columns)) {
@@ -120,11 +152,21 @@ class KaunasMaratonas2013 implements ProviderInterface
         return null;
     }
 
+    /**
+     * Unserializes string to array and converts reader's columns
+     *
+     * @return MappingItemConverter
+     */
     protected function getColumnConverter()
     {
         return new MappingItemConverter(unserialize($this->getEvent()->getColumns()));
     }
 
+    /**
+     * Separate first name and last name from one column and last name puts in other column
+     *
+     * @return CallbackItemConverter
+     */
     protected function getNameConverter()
     {
         return new CallbackItemConverter(function ($item) {
@@ -135,6 +177,11 @@ class KaunasMaratonas2013 implements ProviderInterface
         });
     }
 
+    /**
+     * Trims finish time value where ',' is
+     *
+     * @return CallbackItemConverter
+     */
     protected function getTimeTrimConverter()
     {
         return new CallbackItemConverter(function ($item) {
@@ -143,30 +190,24 @@ class KaunasMaratonas2013 implements ProviderInterface
         });
     }
 
-    protected function getRowMergeConverter($reader)
+    /**
+     * Copies finish time to net time if data doesn't have net time value
+     *
+     * @return CallbackItemConverter
+     */
+    protected function getNetTimeConverter()
     {
-        return new CallbackItemConverter(function ($item) use ($reader) {
-            $readerItem = $reader->getRow($this->getIndex($item, $reader) + $this->getEvent()->getColumnOffset());
-            $netTime = $this->getColumnName(unserialize($this->getEvent()->getColumns()), 'netTime');
-            $item['netTime'] = $readerItem[$netTime];
+        return new CallbackItemConverter(function ($item) {
+            $item['netTime'] = $item['finishTime'];
             return $item;
         });
     }
 
-    protected function getIndex($item, $reader)
-    {
-        $raceNumber = $this->getColumnName(unserialize($this->getEvent()->getColumns()), 'raceNumber');
-        $i = 0;
-        foreach ($reader as $readerItem) {
-            if ($readerItem[$raceNumber] === $item['raceNumber'] && is_null($item['netTime'])) {
-                $ind = $i + 1;
-                break;
-            }
-            $i++;
-        }
-        return $ind;
-    }
-
+    /**
+     * Set to event id and distance suitable values
+     *
+     * @return CallbackItemConverter
+     */
     protected function getAddConverter()
     {
         return new CallbackItemConverter(function ($item) {
@@ -176,16 +217,37 @@ class KaunasMaratonas2013 implements ProviderInterface
         });
     }
 
-    protected function getRowFilter()
+    /**
+     * Checks if overall position column doesn't have 'DNF' value
+     *
+     * @return CallbackFilter
+     */
+    protected function getFirstRowFilter()
     {
         return new CallbackFilter(function ($item) {
             $overallPosition = $this->getColumnName(unserialize($this->getEvent()->getColumns()), 'overallPosition');
-            $finishTime = $this->getColumnName(unserialize($this->getEvent()->getColumns()), 'finishTime');
-            $netTime = $this->getColumnName(unserialize($this->getEvent()->getColumns()), 'netTime');
-            return (!is_null($item[$overallPosition]) || !is_null($item[$finishTime]) || !is_null($item[$netTime]));
+            return $item[$overallPosition] != 'DNF';
         });
     }
 
+    /**
+     * Checks if overall position column isn't null
+     *
+     * @return CallbackFilter
+     */
+    protected function getSecondRowFilter()
+    {
+        return new CallbackFilter(function ($item) {
+            $overallPosition = $this->getColumnName(unserialize($this->getEvent()->getColumns()), 'overallPosition');
+            return !is_null($item[$overallPosition]);
+        });
+    }
+
+    /**
+     * Writes data to database and disables truncating
+     *
+     * @return DoctrineWriter
+     */
     protected function getDoctrineWriter()
     {
         $doctrineWriter = new DoctrineWriter($this->entityManager, 'AppBundle:Result', array('raceNumber', 'eventId'));
