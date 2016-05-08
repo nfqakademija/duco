@@ -152,6 +152,11 @@ class AzuolynoBegimas2016 implements ProviderInterface
         return new MappingItemConverter(unserialize($this->getEvent()->getColumns()));
     }
 
+    /**
+     * Set to event id and distance suitable values
+     *
+     * @return CallbackItemConverter
+     */
     protected function getAddConverter()
     {
         return new CallbackItemConverter(function ($item) {
