@@ -8,6 +8,10 @@ use Ddeboer\DataImport\Writer\DoctrineWriter;
 use Ddeboer\DataImport\ItemConverter\MappingItemConverter;
 use Ddeboer\DataImport\ItemConverter\CallbackItemConverter;
 
+/**
+ * Class VilniusMaratonas
+ * @package AppBundle\Providers
+ */
 class VilniusMaratonas implements ProviderInterface
 {
     protected $event = array();

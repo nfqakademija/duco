@@ -10,6 +10,10 @@ use Ddeboer\DataImport\Filter\CallbackFilter;
 use Ddeboer\DataImport\Workflow;
 use AppBundle\ValueConverter\FloatToTimeConverter;
 
+/**
+ * Class KaunasMaratonas2015
+ * @package AppBundle\Providers
+ */
 class KaunasMaratonas2015 implements ProviderInterface
 {
     protected $event = array();

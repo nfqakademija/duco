@@ -2,6 +2,10 @@
 
 namespace AppBundle\Providers;
 
+/**
+ * Interface ProviderInterface
+ * @package AppBundle\Providers
+ */
 interface ProviderInterface
 {
     public function getEvent();

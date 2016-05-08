@@ -43,6 +43,7 @@ class ReadCommand extends ContainerAwareCommand
     {
         if ($input->getOption('import-events')) {
             $this->importEvents();
+            $output->writeln('Failas events.sql nuskaitytas');
         } else {
             $events = $this->getNotImportedEvents();
             foreach ($events as $event) {

@@ -11,6 +11,10 @@ use Ddeboer\DataImport\Filter\OffsetFilter;
 use Ddeboer\DataImport\Workflow;
 use AppBundle\ValueConverter\FloatToTimeConverter;
 
+/**
+ * Class KaunasMaratonas2013
+ * @package AppBundle\Providers
+ */
 class KaunasMaratonas2013 implements ProviderInterface
 {
     protected $event = array();
