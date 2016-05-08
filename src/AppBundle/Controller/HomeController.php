@@ -20,12 +20,28 @@ class HomeController extends Controller
     {
         $securityContext = $this->container->get('security.authorization_checker');
         if ($securityContext->isGranted('IS_AUTHENTICATED_REMEMBERED')) {
-            return $this->redirectToRoute('profile_show_results');
+            return $this->redirectToRoute('account_home');
         }
-        $form = $this->createForm(RegistrationFormType::class);
 
+        $form = $this->createForm(RegistrationFormType::class);
         return $this->render('AppBundle:Home:index.html.twig', array(
             'form' => $form->createView(),
+            'resultCount' => $this->getResultCount(),
+            'eventCount' => $this->getEventCount()
         ));
+    }
+
+    public function getResultCount()
+    {
+        $query = $this->getDoctrine()->getEntityManager()->createQueryBuilder();
+        $query->select('count(r)')->from('AppBundle:Result', 'r');
+        return $query->getQuery()->getSingleScalarResult();
+    }
+
+    public function getEventCount()
+    {
+        $query = $this->getDoctrine()->getEntityManager()->createQueryBuilder();
+        $query->select('count(e)')->from('AppBundle:Event', 'e');
+        return $query->getQuery()->getSingleScalarResult();
     }
 }

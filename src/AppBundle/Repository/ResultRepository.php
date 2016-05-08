@@ -36,7 +36,7 @@ class ResultRepository extends \Doctrine\ORM\EntityRepository
             'lastName' => $lastName,
         ]);
 
-        $data = $qb->getQuery()->useResultCache(false)->getResult();
+        $data = $qb->getQuery()->getResult();
 
         return $this->groupArrayToEvents($this->cloneArray($data), "AppBundle\\Entity\\Result");
     }
@@ -55,9 +55,31 @@ class ResultRepository extends \Doctrine\ORM\EntityRepository
         $qb->setParameters([
             'userId' => $userId,
         ]);
-        $data = $qb->getQuery()->useResultCache(false)->getResult();
+        $data = $qb->getQuery()->getResult();
 
         return $this->groupArrayToEvents($data, "AppBundle\\Entity\\AddedResult");
+    }
+
+    /**
+     * @param string $query
+     * @return null
+     */
+    public function getAllResultsBySearchQuery($query)
+    {
+        $query = strtolower(str_replace(' ', '', $query));
+        $qb = $this->getEntityManager()->createQueryBuilder();
+        $qb->select(['r', 'e'])
+            ->from(Result::class, 'r')
+            ->innerJoin(Event::class, 'e', Join::WITH, 'e.id = r.eventId')
+            ->where('CONCAT(r.firstName, r.lastName) LIKE :query')
+            ->orWhere('r.raceNumber = :query')
+            ->orWhere('r.club LIKE :query');
+        $qb->setParameters([
+            'query' => str_replace(' ', '', $query),
+        ]);
+        $data = $qb->getQuery()->getResult();
+
+        return $this->groupArrayToEvents($data, "AppBundle\\Entity\\Result");
     }
 
     /**
@@ -86,6 +108,8 @@ class ResultRepository extends \Doctrine\ORM\EntityRepository
     }
 
     /**
+     * Reikalingas, nes doctrine atiduoda ta pati instance ir nekuria naujo
+     *
      * @param array $array
      */
     private function cloneArray($array)
@@ -94,5 +118,7 @@ class ResultRepository extends \Doctrine\ORM\EntityRepository
         foreach ($array as $row) {
             $clonedData[] = clone $row;
         }
+
+        return $clonedData;
     }
 }

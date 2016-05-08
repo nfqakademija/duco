@@ -6,7 +6,7 @@
  * Time: 23.41
  */
 
-namespace AppBundle\Model;
+namespace AppBundle\Models;
 
 use AppBundle\Entity\Result;
 use Doctrine\Common\Collections\ArrayCollection;
@@ -34,5 +34,21 @@ class Event
             $this->results = new ArrayCollection();
         }
         $this->results->add($result);
+    }
+
+    /**
+     * @return ArrayCollection
+     */
+    public function getResults()
+    {
+        return $this->results;
+    }
+
+    /**
+     * @param ArrayCollection $results
+     */
+    public function setResults($results)
+    {
+        $this->results = $results;
     }
 }
