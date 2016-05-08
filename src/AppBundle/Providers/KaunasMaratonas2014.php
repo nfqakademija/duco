@@ -64,6 +64,11 @@ class KaunasMaratonas2014 implements ProviderInterface
         $this->serviceContainer = $serviceContainer;
     }
 
+    /**
+     * Import data from file to database
+     *
+     * @throws \Ddeboer\DataImport\Exception\ExceptionInterface
+     */
     public function import()
     {
         $workFlow = new Workflow($this->getReader());
@@ -78,6 +83,11 @@ class KaunasMaratonas2014 implements ProviderInterface
             ->process();
     }
 
+    /**
+     * Returns results data from file
+     *
+     * @return ExcelReader
+     */
     protected function getReader()
     {
         $file = new \SplFileObject($this->getFilePath());
@@ -85,6 +95,11 @@ class KaunasMaratonas2014 implements ProviderInterface
         return $reader;
     }
 
+    /**
+     * Downloads data and puts in local file and returns path to that local file
+     *
+     * @return string
+     */
     protected function getFilePath()
     {
         $fileType = $this->getEvent()->getSourceType();
@@ -93,6 +108,13 @@ class KaunasMaratonas2014 implements ProviderInterface
         return $path;
     }
 
+    /**
+     * Returns original column name before conversion
+     *
+     * @param $columns
+     * @param $name
+     * @return mixed|null
+     */
     protected function getColumnName($columns, $name)
     {
         while ($current = current($columns)) {
@@ -103,11 +125,21 @@ class KaunasMaratonas2014 implements ProviderInterface
         }
     }
 
+    /**
+     * Unserializes string to array and converts reader's columns
+     *
+     * @return MappingItemConverter
+     */
     protected function getColumnConverter()
     {
         return new MappingItemConverter(unserialize($this->getEvent()->getColumns()));
     }
 
+    /**
+     * Separate first name and last name from one column and last name puts in other column
+     *
+     * @return CallbackItemConverter
+     */
     protected function getNameConverter()
     {
         return new CallbackItemConverter(function ($item) {
@@ -118,6 +150,11 @@ class KaunasMaratonas2014 implements ProviderInterface
         });
     }
 
+    /**
+     * Set to event id and distance suitable values
+     *
+     * @return CallbackItemConverter
+     */
     protected function getAddConverter()
     {
         return new CallbackItemConverter(function ($item) {
@@ -127,16 +164,24 @@ class KaunasMaratonas2014 implements ProviderInterface
         });
     }
 
+    /**
+     * Checks if overall position is not null
+     *
+     * @return CallbackFilter
+     */
     protected function getRowFilter()
     {
         return new CallbackFilter(function ($item) {
             $overallPosition = $this->getColumnName(unserialize($this->getEvent()->getColumns()), 'overallPosition');
-            $finishTime = $this->getColumnName(unserialize($this->getEvent()->getColumns()), 'finishTime');
-            $netTime = $this->getColumnName(unserialize($this->getEvent()->getColumns()), 'netTime');
-            return (!is_null($item[$overallPosition]) || !is_null($item[$finishTime]) || !is_null($item[$netTime]));
+            return !is_null($item[$overallPosition]);
         });
     }
 
+    /**
+     * Writes data to database and disables truncating
+     *
+     * @return DoctrineWriter
+     */
     protected function getDoctrineWriter()
     {
         $doctrineWriter = new DoctrineWriter($this->entityManager, 'AppBundle:Result', array('raceNumber', 'eventId'));
