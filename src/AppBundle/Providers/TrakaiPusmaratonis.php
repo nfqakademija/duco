@@ -2,15 +2,19 @@
 
 namespace AppBundle\Providers;
 
-use Ddeboer\DataImport\Filter\OffsetFilter;
 use Ddeboer\DataImport\Reader\ExcelReader;
 use Ddeboer\DataImport\Writer\DoctrineWriter;
 use Ddeboer\DataImport\ItemConverter\CallbackItemConverter;
 use Ddeboer\DataImport\ItemConverter\MappingItemConverter;
 use Ddeboer\DataImport\Filter\CallbackFilter;
 use Ddeboer\DataImport\Workflow;
+use AppBundle\ValueConverter\FloatToTimeConverter;
 
-class TrakaiPusmaratonis2013 implements ProviderInterface
+/**
+ * Class TrakaiPusmaratonis
+ * @package AppBundle\Providers
+ */
+class TrakaiPusmaratonis implements ProviderInterface
 {
     protected $event = array();
     protected $entityManager;
@@ -64,21 +68,32 @@ class TrakaiPusmaratonis2013 implements ProviderInterface
         $this->serviceContainer = $serviceContainer;
     }
 
+    /**
+     * Import data from file to database
+     *
+     * @throws \Ddeboer\DataImport\Exception\ExceptionInterface
+     */
     public function import()
     {
         $workFlow = new Workflow($this->getReader());
         $workFlow
-            ->addFilter(new OffsetFilter(1))
             ->addFilter($this->getRowFilter())
             ->addItemConverter($this->getColumnConverter())
             ->addItemConverter($this->getAddConverter())
-            //->addItemConverter($this->getNameConverter())
-            //->addItemConverter($this->getTimeTrimConverter())
-            //->addItemConverter($this->getNetTimeConverter())
+            ->addItemConverter($this->getNameConverter())
+            ->addItemConverter($this->getNetTimeConverter())
+            ->addItemConverter($this->getFullNameTrim())
+            ->addValueConverter('finishTime', new FloatToTimeConverter())
+            ->addValueConverter('netTime', new FloatToTimeConverter())
             ->addWriter($this->getDoctrineWriter())
             ->process();
     }
 
+    /**
+     * Returns results data from file
+     *
+     * @return ExcelReader
+     */
     protected function getReader()
     {
         $file = new \SplFileObject($this->getFilePath());
@@ -86,6 +101,11 @@ class TrakaiPusmaratonis2013 implements ProviderInterface
         return $reader;
     }
 
+    /**
+     * Downloads data and puts in local file and returns path to that local file
+     *
+     * @return string
+     */
     protected function getFilePath()
     {
         $fileType = $this->getEvent()->getSourceType();
@@ -94,14 +114,26 @@ class TrakaiPusmaratonis2013 implements ProviderInterface
         return $path;
     }
 
+    /**
+     * Checks if data is acceptable. Data is not acceptable if overall position is empty
+     *
+     * @return CallbackFilter
+     */
     protected function getRowFilter()
     {
         return new CallbackFilter(function ($item) {
             $overallPosition = $this->getColumnName(unserialize($this->getEvent()->getColumns()), 'overallPosition');
-            return (!($item[$overallPosition] === 0));
+            return $item[$overallPosition] != '';
         });
     }
 
+    /**
+     * Returns original column name before convertion
+     *
+     * @param $columns
+     * @param $name
+     * @return mixed|null
+     */
     protected function getColumnName($columns, $name)
     {
         while ($current = current($columns)) {
@@ -113,19 +145,80 @@ class TrakaiPusmaratonis2013 implements ProviderInterface
         return null;
     }
 
+    /**
+     * Unserializes string to array and converts reader's columns
+     *
+     * @return MappingItemConverter
+     */
     protected function getColumnConverter()
     {
         return new MappingItemConverter(unserialize($this->getEvent()->getColumns()));
     }
 
+    /**
+     * Set to event id and distance suitable values
+     *
+     * @return CallbackItemConverter
+     */
     protected function getAddConverter()
     {
         return new CallbackItemConverter(function ($item) {
             $item['eventId'] = $this->getEvent()->getId();
+            $item['distance'] = $this->getEvent()->getDistance();
             return $item;
         });
     }
 
+    /**
+     * Separate first name and last name from one column and last name puts in other column
+     *
+     * @return CallbackItemConverter
+     */
+    protected function getNameConverter()
+    {
+        return new CallbackItemConverter(function ($item) {
+            $position = strpos($item['firstName'], ' ');
+            $item['lastName'] = substr($item['firstName'], $position+1);
+            $item['firstName'] = substr($item['firstName'], 0, $position);
+            return $item;
+        });
+    }
+
+    /**
+     * Deletes all white spaces
+     *
+     * @return CallbackItemConverter
+     */
+    protected function getFullNameTrim()
+    {
+        return new CallbackItemConverter(function ($item) {
+            $item['firstName'] = preg_replace('/\s+/', '', $item['firstName']);
+            $item['lastName'] = preg_replace('/\s+/', '', $item['lastName']);
+            return $item;
+        });
+    }
+
+    /**
+     * Copies finish time to net time if data doesn't have net time value
+     *
+     * @return CallbackItemConverter
+     */
+    protected function getNetTimeConverter()
+    {
+        return new CallbackItemConverter(function ($item) {
+            $netTime = $this->getColumnName(unserialize($this->getEvent()->getColumns()), 'netTime');
+            if (is_null($netTime)) {
+                $item['netTime'] = $item['finishTime'];
+            }
+            return $item;
+        });
+    }
+
+    /**
+     * Writes data to database and disables truncating
+     *
+     * @return DoctrineWriter
+     */
     protected function getDoctrineWriter()
     {
         $doctrineWriter = new DoctrineWriter($this->entityManager, 'AppBundle:Result', array('raceNumber', 'eventId'));
