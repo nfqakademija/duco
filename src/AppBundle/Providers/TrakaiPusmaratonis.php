@@ -128,7 +128,7 @@ class TrakaiPusmaratonis implements ProviderInterface
     }
 
     /**
-     * Returns original column name before convertion
+     * Returns original column name before conversion
      *
      * @param $columns
      * @param $name
