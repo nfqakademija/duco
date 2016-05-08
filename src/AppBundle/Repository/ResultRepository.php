@@ -121,4 +121,16 @@ class ResultRepository extends \Doctrine\ORM\EntityRepository
 
         return $clonedData;
     }
+
+    /**
+     * Result quantity
+     *
+     * @return mixed
+     */
+    public function getResultCount()
+    {
+        return $this->getEntityManager()
+            ->createQuery('SELECT COUNT(r) FROM AppBundle:Result r')
+            ->getSingleScalarResult();
+    }
 }
