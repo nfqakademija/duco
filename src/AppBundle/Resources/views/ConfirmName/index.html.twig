@@ -1,15 +1,13 @@
 {% extends "::base.html.twig" %}
 
-{% block title %}Homepage - {{ parent() }}{% endblock %}
-
 {% block body %}
     <div class="col-md-8 col-md-offset-2">
 
         <div class="form-box">
             <div class="form-top">
                 <div class="form-top-left">
-                    <h3>Confirm your name</h3>
-                    <p>Insert your name you participating in marathons with</p>
+                    <h3>Patvirtinkite savo duomenis</h3>
+                    <p>Įveskite savo vardą ir pavardę. Pagal tai bus atrenkami Jūsų rezultatai.</p>
                 </div>
                 <div class="form-top-right">
                     <i class="fa fa-pencil"></i>
@@ -18,14 +16,14 @@
             <div class="form-bottom">
                 <form role="form" action="{{ path('name_confirm_submit') }}" method="post" class="registration-form">
                     <div class="form-group">
-                        <label class="sr-only" for="form-first-name">First name</label>
-                        <input type="text" name="form-first-name" placeholder="First name..." class="form-first-name form-control" id="form-first-name" value="{{ first_name }}">
+                        <label class="sr-only" for="form-first-name">Vardas</label>
+                        <input type="text" name="form-first-name" placeholder="Vardas" class="form-first-name form-control" id="form-first-name" value="{{ first_name }}">
                     </div>
                     <div class="form-group">
-                        <label class="sr-only" for="form-last-name">Last name</label>
-                        <input type="text" name="form-last-name" placeholder="Last name..." class="form-last-name form-control" id="form-last-name" value="{{ last_name }}">
+                        <label class="sr-only" for="form-last-name">Pavardė</label>
+                        <input type="text" name="form-last-name" placeholder="Pavardė" class="form-last-name form-control" id="form-last-name" value="{{ last_name }}">
                     </div>
-                    <button type="submit" class="btn">Confirm!</button>
+                    <button type="submit" class="btn">Patvirtinti</button>
                 </form>
             </div>
         </div>
