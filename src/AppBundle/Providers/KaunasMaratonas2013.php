@@ -171,8 +171,8 @@ class KaunasMaratonas2013 implements ProviderInterface
     {
         return new CallbackItemConverter(function ($item) {
             $position = strpos($item['firstName'], ' ');
-            $item['lastName'] = substr($item['firstName'], $position+1);
-            $item['firstName'] = substr($item['firstName'], 0, $position);
+            $item['lastName'] = substr($item['firstName'], 0, $position);
+            $item['firstName'] = substr($item['firstName'], $position+1);
             return $item;
         });
     }
