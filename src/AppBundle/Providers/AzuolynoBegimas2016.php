@@ -9,6 +9,10 @@ use Ddeboer\DataImport\ItemConverter\MappingItemConverter;
 use Ddeboer\DataImport\Filter\CallbackFilter;
 use Ddeboer\DataImport\Workflow;
 
+/**
+ * Class AzuolynoBegimas2016
+ * @package AppBundle\Providers
+ */
 class AzuolynoBegimas2016 implements ProviderInterface
 {
     protected $event = array();
@@ -63,6 +67,11 @@ class AzuolynoBegimas2016 implements ProviderInterface
         $this->serviceContainer = $serviceContainer;
     }
 
+    /**
+     * Import data from file to database
+     *
+     * @throws \Ddeboer\DataImport\Exception\ExceptionInterface
+     */
     public function import()
     {
         $workFlow = new Workflow($this->getReader());
@@ -77,6 +86,11 @@ class AzuolynoBegimas2016 implements ProviderInterface
             ->process();
     }
 
+    /**
+     * Returns results data from file
+     *
+     * @return ExcelReader
+     */
     protected function getReader()
     {
         $file = new \SplFileObject($this->getFilePath());
@@ -84,6 +98,11 @@ class AzuolynoBegimas2016 implements ProviderInterface
         return $reader;
     }
 
+    /**
+     * Downloads data and puts in local file and returns path to that local file
+     *
+     * @return string
+     */
     protected function getFilePath()
     {
         $fileType = $this->getEvent()->getSourceType();
@@ -92,6 +111,11 @@ class AzuolynoBegimas2016 implements ProviderInterface
         return $path;
     }
 
+    /**
+     * Checks if data is acceptable. Data is not acceptable if overall position is null
+     *
+     * @return CallbackFilter
+     */
     protected function getRowFilter()
     {
         return new CallbackFilter(function ($item) {
@@ -100,6 +124,13 @@ class AzuolynoBegimas2016 implements ProviderInterface
         });
     }
 
+    /**
+     * Returns original column name before conversion
+     *
+     * @param $columns
+     * @param $name
+     * @return mixed|null
+     */
     protected function getColumnName($columns, $name)
     {
         while ($current = current($columns)) {
@@ -111,30 +142,35 @@ class AzuolynoBegimas2016 implements ProviderInterface
         return null;
     }
 
+    /**
+     * Unserializes string to array and converts reader's columns
+     *
+     * @return MappingItemConverter
+     */
     protected function getColumnConverter()
     {
         return new MappingItemConverter(unserialize($this->getEvent()->getColumns()));
     }
 
+    /**
+     * Set to event id and distance suitable values
+     *
+     * @return CallbackItemConverter
+     */
     protected function getAddConverter()
     {
         return new CallbackItemConverter(function ($item) {
             $item['eventId'] = $this->getEvent()->getId();
-            switch ($this->getEvent()->getSheet()) {
-                case 0:
-                    $item['distance'] = 5;
-                    break;
-                case 1:
-                    $item['distance'] = 10;
-                    break;
-                case 2:
-                    $item['distance'] = 15;
-                    break;
-            }
+            $item['distance'] = $this->getEvent()->getDistance();
             return $item;
         });
     }
 
+    /**
+     * Set to event id and distance suitable values
+     *
+     * @return CallbackItemConverter
+     */
     protected function getNameConverter()
     {
         return new CallbackItemConverter(function ($item) {
@@ -145,6 +181,11 @@ class AzuolynoBegimas2016 implements ProviderInterface
         });
     }
 
+    /**
+     * Trims finish time value
+     *
+     * @return CallbackItemConverter
+     */
     protected function getTimeTrimConverter()
     {
         return new CallbackItemConverter(function ($item) {
@@ -153,6 +194,11 @@ class AzuolynoBegimas2016 implements ProviderInterface
         });
     }
 
+    /**
+     * Copies finish time to net time
+     *
+     * @return CallbackItemConverter
+     */
     protected function getNetTimeConverter()
     {
         return new CallbackItemConverter(function ($item) {
@@ -161,6 +207,11 @@ class AzuolynoBegimas2016 implements ProviderInterface
         });
     }
 
+    /**
+     * Writes data to database and disables truncating
+     *
+     * @return DoctrineWriter
+     */
     protected function getDoctrineWriter()
     {
         $doctrineWriter = new DoctrineWriter(
