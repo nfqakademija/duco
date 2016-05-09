@@ -4,6 +4,8 @@ form:
     titles:
         login: Prisijunkite
         register: Užsiregistruokite
+        edit: 'Profilio keitimas'
     subtitles:
         login: 'Įveskite savo elektroninį paštą ir slaptažodį'
         register: 'Užpildykite žemiau esančią formą ir gaukite prieigą prie maratonų'
+        edit: 'Pasikeiskite savo vardą ir pavardę'
