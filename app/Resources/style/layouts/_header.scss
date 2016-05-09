@@ -6,7 +6,10 @@
 
 
 .navbar {
-  margin-top: 20px;
+  background-color: rgba(61, 92, 137, 0.7);
+  .container-fluid {
+    margin-top: 20px;
+  }
   color: #fff;
 
   &-brand {

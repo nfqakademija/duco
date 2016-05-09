@@ -4,7 +4,7 @@
 
 
 
-{{ form_start(form, { 'action': path('fos_user_profile_edit'), 'attr': { 'class': 'fos_user_profile_edit' } }) }}
+{{ form_start(form, { 'action': path('fos_user_profile_edit'), 'attr': { 'class': 'fos_user_profile_edit', 'novalidate': 'novalidate' } }) }}
 <div class="form-group">
     {{ form_widget(form.firstname, { 'attr': {'class': 'form-firstname form-control', 'placeholder': 'form.firstname'|trans } }) }}
     {{ form_errors(form.firstname) }}

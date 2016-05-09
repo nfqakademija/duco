@@ -9,7 +9,7 @@
         <div class="list-group-item list-group-item-danger">{{ error.messageKey|trans(error.messageData, 'security') }}</div>
     {% endif %}
 
-    <form action="{{ path("fos_user_security_check") }}" method="post">
+    <form action="{{ path("fos_user_security_check") }}" method="post" novalidate>
         <input type="hidden" name="_csrf_token" value="{{ csrf_token }}"/>
         <div class="form-group">
             <input type="text" name="_username" placeholder="{{ 'form.email'|trans }}"
