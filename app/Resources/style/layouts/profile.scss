@@ -13,3 +13,11 @@
 .tablesorter-header-inner {
   text-align: center;
 }
+
+.disable-first-column-filtering thead .tablesorter-filter-row td input{
+  display: none;
+}
+
+.margin-30 {
+  margin: 30px;
+}

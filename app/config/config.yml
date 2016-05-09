@@ -85,7 +85,7 @@ hwi_oauth:
             client_id:           1729598303982998
             client_secret:       f4bb6ad344df694478ab7a5581dc75ff
             scope:               "email, public_profile"
-            infos_url:           "https://graph.facebook.com/me?fields=id,first_name,last_name,email,picture.type(square)"
+            infos_url:           "https://graph.facebook.com/me?fields=id,first_name,last_name,email,picture.type(large)"
             paths:
               email: email
               profilepicture: picture.data.url

@@ -1,3 +1,42 @@
 header:
     logout: Atsijungti
     search: 'Ieškoti rezultatų'
+
+home:
+    your_results: Savo rezultatus galite rasti tarp
+    participants_results: dalyvių rezultatų iš
+    events: renginių
+
+name_confirm:
+    confirm_name: Patvirtinkite savo duomenis
+    insert: Įveskite savo vardą ir pavardę. Pagal tai bus atrenkami Jūsų rezultatai.
+    first_name: Vardas
+    last_name: Pavardė
+    confirm: Patvirtinti
+
+profile:
+    results: Rezultatai
+    unaccepted_results: Nepatvirtinti rezultatai
+    save: Išsaugoti
+    not_found: Informacijos apie Tavo oficialius bėgimus nėra.
+    register: Registruokis į artėjančius maratonus!
+
+search:
+    search_results: Paieškos rezultatai
+    not_found: Rezultatų nerasta
+
+result:
+    first_name: Vardas
+    last_name: Pavardė
+    location: Vieta
+    official_time: Oficialus laikas
+    real_time: Realus laikas
+    distance: Atstumas
+    name: Pavadinimas
+    year: Metai
+    unavailable: Neskelbiama
+    race_number: Starto numeris
+    club: Klubas
+
+public_profile:
+    not_found: Vartotojas nerastas

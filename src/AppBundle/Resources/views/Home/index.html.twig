@@ -5,7 +5,7 @@
 {% block body %}
     <div class="col-sm-12">
         <h2 style="color: white">
-            Savo rezultatus galite rasti tarp <span><strong>{{ resultCount }}</strong></span> dalyvių rezultatų iš <span><strong>{{ eventCount }}</strong></span> renginių
+            {{ 'home.your_results'|trans({},'AppBundle') }} <span><strong>{{ resultCount }}</strong></span> {{ 'home.participants_results'|trans({},'AppBundle') }} <span><strong>{{ eventCount }}</strong></span> {{ 'home.events'|trans({},'AppBundle') }}
         </h2>
     </div>
     <div class="row">
