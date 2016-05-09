@@ -1,0 +1,168 @@
+Pozicija;Numeris;Dalyvis;Klubas;Laikas
+1;901;Varnagirytė Viktorija;Bk Jonas Maratonas, Vilkaviškis, Lietuva;17:48,2
+2;916;Ananina Svetlana;Prusija, Kaliningrad;18:04,5
+3;925;Oponovičiūtė Vitalija;Vilnius;19:01,7
+4;888;Miežytė Živilė;Vilnius;20:11,6
+5;871;Balčiūtė Ema;Kaunas, Lietuva;20:17,5
+6;891;Rimkutė Deimantė;Lietuva, Šilalė;22:13,6
+7;923;Anskaitytė Indrė;Neko Runners, Vilnius;22:18,2
+8;893;Valatkaitė Kamilė;Vilnius, Lt;22:29,8
+9;854;Bagdonaitė Karolina;Asu;22:37,3
+10;870;Lakštauskienė Jūratė;Žasliai;22:52,3
+11;803;Kalėdienė Ingrida;Kauno Bmk, Kaunas, Lietuva;23:02,6
+12;827;Mekienė Rimantė;Bėgimo Klubas, Vilnius;23:06,6
+13;815;Bičkovaitė Sandra;Bėgimo Klubas, Šiauliai;23:21,2
+14;883;Globienė Kristina;Bėgimo Klubas, Marijampolė, Lietuva;23:39,5
+15;842;Viršilaitė Gabija;"""Sporto Klubas """"Ritmas"""""", Gargždai";23:43,2
+16;875;Rusteikaiė Vaiva;Klaipėda;23:53,0
+17;859;Jokubauskaitė Rasa;Šilalė, Lietuva;23:58,8
+18;907;Bielinytė Eglė;Vilnius;24:27,6
+19;841;Gendvilaitė Sonata;Vilnius;24:28,2
+20;903;Gailiūtė Simona;Vilnius;24:37,0
+21;889;Lokomskytė Džaneta;Lietuva, Šilalė;24:41,6
+22;909;Žilinskienė Ramunė;Vilnius;24:44,7
+23;835;Vareikienė Santa;Kedainiai;24:49,2
+24;885;Marmaitė Viktorija;Kaunas;24:57,3
+25;926;Gedvilienė Jolanta ;Jonavos Maratonas;25:30,0
+26;802;Vaitiekūnienė Kristina;Jonava;25:39,8
+27;840;Vadoklytė Rūta;Vilnius;26:21,1
+28;920;Pacevičiūtė Giedrė;Kauno maratono klubas, Kaunas;26:22,0
+29;869;Viršilaitė Aušrinė;Šilalė, Lietuva;26:27,9
+30;868;Barcytė Gita;Šilalė, Lietuva;26:40,5
+31;866;Gudauskaitė Laura;Šilalė, Lietuva;26:40,9
+32;929;Balsevičienė Alina ;Kaunas;26:42,1
+33;818;Radzevičiūtė Rūta;Vilnius, Lietuva;26:43,4
+34;877;Markevičienė Jurgita;Kaunas;26:50,9
+35;838;Juraškienė Jurgita;"""Sporto Klubas """"Ritmas"""""", Gargždai";26:54,8
+36;928;Etevičiūtė Živilė ;Vilnius;27:03,8
+37;810;Antanavičienė Kristina;Bėgimo Klubas, Klaipėda;27:05,1
+38;904;Levickaitė Gabija;Pwc Running Team, Vilnius;27:10,3
+39;914;Talutytė Renata;Kaunas;27:23,8
+40;849;Antanėlytė Gintarė;Amber Tours, Vilnius, Lietuva;27:45,4
+41;843;Ostapenkaitė Ugnė;"""Sporto Klubas """"Ritmas"""""", Gargždai";27:52,8
+42;777;Mmatulevičiūtė Giedrė;Vilnius;28:04,5
+43;860;Gedvilienė Ilona;Mažeikiai;28:04,6
+44;832;Babilčiūtė Jurgita;Vilnius;28:04,9
+45;890;Jakaitė Lauryna;Lietuva, Šilalė;28:19,8
+46;829;Jofė Agnė;Bėgimo Klubas, Kaunas;28:20,8
+47;922;Grigaitė Martyna;Kauno maratono klubas, Kaunas;28:22,7
+48;905;Bielčiuvienė Rasa;Vilnius, Lietuva;28:32,0
+49;852;Kontenienė Dalija;Vėtra, Pasvalys;28:33,1
+50;876;Augūnienė Oksana;Kaunas,Lietuva;28:37,5
+51;830;Baronaitė Sigita;European Cooperation Day, Vilnius, Lietuva;28:38,6
+52;844;Severjanova Renata;Amber Tours, Vilnius, Lietuva;28:38,7
+53;856;Dapkutė Liveta;Lietuva, Šilalė;28:42,5
+54;886;Domasienė Palmyra;Vilnius, Lietuva;28:48,7
+55;862;Bogužaitė Eglė;Šilalė, Lietuva;28:50,2
+56;861;Stonytė Evelina;Šilalė, Lietuva;28:56,5
+57;917;Elizarova Evgeniya;LT-PL-RU, Ozersk, Russia;29:00,3
+58;780;Rozmanaitė Giedrė ;Vilnius;29:03,2
+59;814;Tautkutė Vaida;Bėgimo Klubas, Telsiai. Lietuva;29:05,9
+60;813;Braciūtė Gintarė;Bėgimo Klubas, Telšiai, Lietuva;29:16,7
+61;902;Čygaitė Lina;Vilnius;29:19,0
+62;797;Karosaitė Zita ;Inžinerija;29:22,9
+63;857;Rašinskaitė Irma;Lietuva, Šilalė;29:23,1
+64;881;Žibūdienė Justė;Ovc Consulting, Vilnius;29:25,6
+65;919;Kvedaravičienė Joana;Šiauliai;29:41,1
+66;819;Balčiūnienė Danutė;Kauno Bmk, Kaunas;29:58,6
+67;825;Mazuchowska Magdalena;Olsztyn, Poland;30:05,5
+68;874;Chorundžij Nadia;Vilnius;30:09,3
+69;882;Kazarez Nadia;Lyda;30:25,8
+70;912;Kleinaitė Raminta;Radviliškis, Lietuva;30:25,8
+71;910;Mikalauskaitė Agnė;Lietuva / Olandija;30:26,5
+72;809;Lukaševičienė Giedrė;Bėgimo Klubas, Lietuva, Kaunas;30:30,0
+73;913;Ratautė Aušra;Bėgimo klubas, Prienų rajonas, šiauliškių k;30:34,5
+74;873;Gineityytė Monika;Dešra, Vilnius;30:34,7
+75;894;Meškauskaitė Brigita;Lietuva, Šilalė;30:34,8
+76;884;Savickienė Eglė;Šiauliai;30:39,2
+77;851;Andrulė Edita;Kauno Bmk, Kaunas;30:45,9
+78;831;Minelgė Simona;Neringos Buriuotoju Klubas Vėtrungis, Nida,Lietuva;30:54,3
+79;807;Vilkė Daiva;Bėgimo Klubas, Lietuva, Šilalė;31:01,5
+80;858;Balčiūtė Daiva;Šilalė, Lietuva;31:03,8
+81;900;Sergedaitė Angelė;Vilnius, Lietuva;31:04,6
+82;778;tėvelytė Aistė;Kaunas;31:08,6
+83;911;Markūnaitė Gabrielė;Kaunas, Lietuva;31:15,9
+84;808;Piekarskienė Vilma;Bėgimo Klubas, Vilnius, Lietuva;31:17,3
+85;833;Sabatauskaitė Livija;Jonava;31:17,5
+86;864;Zarankaitė Ugnė;Šilalė, Lietuva;31:17,7
+87;921;Valančienė Giedrė;Kaunas;31:18,9
+88;837;Korolienė Jurga;Bėgimo Klubas, Kaunas;31:20,0
+89;824;Chervyakova Irina;Palanga;31:28,1
+90;812;Gedvilienė Asta;Bėgimo Klubas, Klaipeda,Lietuva;31:43,8
+91;811;Karalevičienė Ramunė;Bėgimo Klubas, Jonava;32:00,1
+92;820;Bredulytė Rita;Bėgimo Klubas, Kaunas;32:11,8
+93;865;Masteikaitė Dorotėja;Šilalė, Lietuva;32:19,9
+94;805;Surplienė Lina;Vilnius, Lietuva;32:24,8
+95;855;Liorančaitė Jūratė;Lietuva, Šilalė;32:30,8
+96;863;Šiaudvytytė Gabrielė;Šilalė, Lietuva;32:31,1
+97;899;Birbilienė Žydrūnė;Vilnius;32:39,8
+98;892;Raudoniūtė Erika;Lietuva, Šilalė;32:48,2
+99;896;Nikolajeva Eta;Enpi Cbc Llb, Riga-Vilnius;32:48,4
+100;828;Murauskaitė Šaban Vitalija;Bėgimo Klubas, Jonava, Lietuva;32:56,0
+101;853;Norvilienė Aida;Finarima, Kretinga;32:56,3
+102;872;Juodkienė Ona;Vilnius, Lietuva;33:00,9
+103;839;Žičkė Giedrė;Bėgimo Klubas, Vilnius, Lietuva;33:09,8
+104;880;Černiauskaitė Modesta;Vilnius, Lietuva;33:10,6
+105;806;Moškaitė Laura;Bėgimo Klubas, Vilnius Lietuva;33:12,8
+106;804;Anužytė Rūta;Bėgimo Klubas, Klaipeda , Lietuva;33:12,9
+107;801;Siaurytė Agne;Bėgimo Klubas, Beverwijk, Olandija;33:13,4
+108;918;Dolgaya Angelina;Russia;33:24,6
+109;927;Bagočiūnienė Laimutė Margarita ;Kauno bėgimo klubas;33:27,6
+110;701;Križinauskas Justinas;Sk Lukas, Šiauliai, Lietuva;33:27,7
+111;795;Laurinaitis Justinas ;Klaipėda;33:34,3
+112;765;Nausėda Evaldas;Bėgimo klubas;33:34,5
+113;738;Jakštas Rolandas;Kaišiadorys;33:34,7
+114;741;Vaišvila Arūnas;Kauno Maratono Klubas, Kaunas, Lietuva;33:35,3
+115;764;Zykas Egidijus;Klaipėda;33:38,8
+116;752;Vaivada Ernestas;Lietuva, Šilalė;33:40,4
+117;747;Vyštartas Alanas;Lietuva, Šilalė;33:41,7
+118;736;Augutis Vilmantas;Vilnius;33:49,1
+119;728;Gedvilas Povilas;Mažeikiai;33:56,7
+120;760;Tkačev Viačeslav;Kaliningrad, Kaliningrad;34:04,4
+121;761;Elizarov Pavel;LT-PL-RU, Ozersk, Russia;34:20,8
+122;702;Žemaitis Tadas;Kauno Maratono Klubas, Kaunas;34:29,9
+123;757;Žylė Osvaldas;Panevėžys;34:33,8
+124;753;Milašius Andrius;Vilnius;34:34,5
+125;718;Dulevičius Gintautas;Vėtra, Pasvalys;34:39,8
+126;867;Leščiauskas Hubertas;Šilalė, Lietuva;34:46,2
+127;745;Tumas Romualdas;Utena, Lietuva;34:50,0
+128;715;Kavaliauskas Julius;Bėgimo Klubas, Klaipėda, Lietuva;34:50,6
+129;775;Latanauskas Martynas;Klaipėda;34:53,0
+130;739;Ilijesku Jevgenijus;Klaipeda;35:00,9
+131;725;Žukauskas Nerijus;Lietuva, Šilalė;35:05,3
+132;742;Repšys Saulius;Molėtai. Lietuva;35:07,9
+133;706;Wiejek Roland;Olsztyn, Poland;35:28,4
+134;721;Barkauskas Tadas;Vilnius, Lietuva;36:04,7
+135;708;Surplys Giedrius;European Cooperation Day, Vilnius;36:08,2
+136;727;Ševčenka Liutauras;Lietuva, Šilalė;36:08,3
+137;737;Vikerta Adomas;Kaunas,Lietuva;36:28,4
+138;731;Gudauskas Jonas;Šilalė, Lietuva;36:55,0
+139;720;Jakaitis Vilius;Bėgimo Klubas, Šiauliai;36:55,6
+140;732;Skruodys Nerijus;Nesugadintas Jaunimas, Rokiskis;36:55,9
+141;776;Stankūnas Paulius ;Kaunas;37:01,9
+142;707;Pawlikowski Tomasz;Olsztyn, Poland;37:05,5
+143;734;Degutis Giedrius;Šiauliai;37:06,3
+144;724;Gedvilas Alvydas;Mažeikiai;37:07,5
+145;733;Lakštauskas Rimantas;Žasliai;37:07,7
+146;719;Masevičius Antanas;Vilnius;37:11,5
+147;713;Olevsonas Tomas;Vilnius, Lietuva;37:17,4
+148;717;Lapienė Saulius;Vėtra, Pasvalys;37:20,7
+149;716;Baliūnas Juozas;Vėtra, Pasvalys;37:24,4
+150;749;Pocius Albertas;Lietuva, Šilalė;37:25,9
+151;748;Drukteinis Lukas;Lietuva, Šilalė;37:41,2
+152;711;Adžgauskas Virginijus;Bėgimo Klubas, Kaunas;37:42,0
+153;714;Borniauskis Antanas;Vilnius;37:58,3
+154;754;Karpinski Michal;Olsztyn, Poland;37:59,5
+155;750;Bendžius Rimantas;Lietuva, Šilalė;38:05,8
+156;735;Žičkis Tomas;Bėgimo Klubas, Vilnius, Lietuva;38:35,1
+157;779;Šarūnas Mikaliūnas;Neringa;38:42,6
+158;798;Martusevičius Rimtautas ;Inžinerija;38:51,5
+159;762;Jokubaitis Vaidas;JTS, Vilnius;39:05,1
+160;799;Lepeška Virginijus ;Vilnius;39:28,7
+161;759;Dzikas Arūnas;Vilnius;39:43,6
+162;722;Noreika Lukas;Lietuva, Šilalė;39:46,3
+163;744;Tumas Paulius;Vilnius, Lietuva;44:22,7
+164;704;Mackevičius Rimantas;Inžinerija, Vilnius, Lietuva;46:59,7
+165;709;Mickus Vytautas;Inžinerija, Vilnius;47:00,4
+166;710;Sabatauskas Rolandas;Jonava;47:57,6
+167;703;Tamulionis Edmundas;Bėgimo Klubas, Alytus;47:57,7

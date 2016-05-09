@@ -9,11 +9,7 @@ use Ddeboer\DataImport\ItemConverter\MappingItemConverter;
 use Ddeboer\DataImport\Filter\CallbackFilter;
 use Ddeboer\DataImport\Workflow;
 
-/**
- * Class TrakaiPusmaratonis
- * @package AppBundle\Providers
- */
-class TrakaiPusmaratonis2016 implements ProviderInterface
+class NidaPusmaratonis
 {
     protected $event = array();
     protected $entityManager;
@@ -80,8 +76,8 @@ class TrakaiPusmaratonis2016 implements ProviderInterface
             ->addItemConverter($this->getColumnConverter())
             ->addItemConverter($this->getAddConverter())
             ->addItemConverter($this->getNameConverter())
+            ->addItemConverter($this->getTimeTrim())
             ->addItemConverter($this->getNetTimeConverter())
-            ->addItemConverter($this->getFullNameTrim())
             ->addWriter($this->getDoctrineWriter())
             ->process();
     }
@@ -178,22 +174,21 @@ class TrakaiPusmaratonis2016 implements ProviderInterface
     {
         return new CallbackItemConverter(function ($item) {
             $position = strpos($item['firstName'], ' ');
-            $item['lastName'] = substr($item['firstName'], $position+1);
-            $item['firstName'] = substr($item['firstName'], 0, $position);
+            $item['lastName'] = substr($item['firstName'], 0, $position);
+            $item['firstName'] = substr($item['firstName'], $position+1);
             return $item;
         });
     }
 
     /**
-     * Deletes all white spaces
+     * Trims finish time
      *
      * @return CallbackItemConverter
      */
-    protected function getFullNameTrim()
+    protected function getTimeTrim()
     {
         return new CallbackItemConverter(function ($item) {
-            $item['firstName'] = preg_replace('/\s+/', '', $item['firstName']);
-            $item['lastName'] = preg_replace('/\s+/', '', $item['lastName']);
+            $item['finishTime'] = substr($item['finishTime'], 0, strpos($item['finishTime'], ','));
             return $item;
         });
     }
