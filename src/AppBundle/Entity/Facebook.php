@@ -89,7 +89,7 @@ class Facebook
     /**
      * @return string
      */
-    public function getFacebookProfileImgUrl()
+    public function getProfileImgUrl()
     {
         return $this->facebookProfileImgUrl;
     }
@@ -97,7 +97,7 @@ class Facebook
     /**
      * @param string $facebookProfileImgUrl
      */
-    public function setFacebookProfileImgUrl($facebookProfileImgUrl)
+    public function setProfileImgUrl($facebookProfileImgUrl)
     {
         $this->facebookProfileImgUrl = $facebookProfileImgUrl;
     }

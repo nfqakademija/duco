@@ -3,7 +3,7 @@ jQuery(document).ready(function() {
     /*
      Fullscreen background
      */
-    $.backstretch("images/fonas.jpg");
+    $.backstretch("/images/fonas.jpg");
 
     /*
      Login form validation
@@ -100,6 +100,5 @@ jQuery(document).ready(function() {
             // ,uitheme : "bootstrap"
 
         }
-    })
-
+    });    
 });

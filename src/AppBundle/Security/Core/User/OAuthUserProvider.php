@@ -79,14 +79,14 @@ class OAuthUserProvider extends BaseClass
                 $socialUser->setUserId($userId);
                 $socialUser->setGoogleId($socialId);
                 $socialUser->setGoogleAccessToken($accessToken);
-                $socialUser->setGoogleProfileImgUrl($profileImgUrl);
+                $socialUser->setProfileImgUrl($profileImgUrl);
                 break;
             case 'facebook':
                 $socialUser = new Facebook();
                 $socialUser->setUserId($userId);
                 $socialUser->setFacebookId($socialId);
                 $socialUser->setFacebookAccessToken($accessToken);
-                $socialUser->setFacebookProfileImgUrl($profileImgUrl);
+                $socialUser->setProfileImgUrl($profileImgUrl);
                 break;
             default:
                 return;

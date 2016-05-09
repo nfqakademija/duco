@@ -1,13 +1,15 @@
 {% extends "::base.html.twig" %}
 
+{% trans_default_domain 'AppBundle' %}
+
 {% block body %}
     <div class="col-md-8 col-md-offset-2">
 
         <div class="form-box">
             <div class="form-top">
                 <div class="form-top-left">
-                    <h3>Patvirtinkite savo duomenis</h3>
-                    <p>Įveskite savo vardą ir pavardę. Pagal tai bus atrenkami Jūsų rezultatai.</p>
+                    <h3>{{ 'name_confirm.confirm_name'|trans }}</h3>
+                    <p>{{ 'name_confirm.insert'|trans }}</p>
                 </div>
                 <div class="form-top-right">
                     <i class="fa fa-pencil"></i>
@@ -16,14 +18,14 @@
             <div class="form-bottom">
                 <form role="form" action="{{ path('name_confirm_submit') }}" method="post" class="registration-form">
                     <div class="form-group">
-                        <label class="sr-only" for="form-first-name">Vardas</label>
-                        <input type="text" name="form-first-name" placeholder="Vardas" class="form-first-name form-control" id="form-first-name" value="{{ first_name }}">
+                        <label class="sr-only" for="form-first-name">{{ 'name_confirm.first_name'|trans }}</label>
+                        <input type="text" name="form-first-name" placeholder="{{ 'name_confirm.first_name'|trans }}" class="form-first-name form-control" id="form-first-name" value="{{ first_name }}">
                     </div>
                     <div class="form-group">
-                        <label class="sr-only" for="form-last-name">Pavardė</label>
-                        <input type="text" name="form-last-name" placeholder="Pavardė" class="form-last-name form-control" id="form-last-name" value="{{ last_name }}">
+                        <label class="sr-only" for="form-last-name">{{ 'name_confirm.last_name'|trans }}</label>
+                        <input type="text" name="form-last-name" placeholder="{{ 'name_confirm.last_name'|trans }}" class="form-last-name form-control" id="form-last-name" value="{{ last_name }}">
                     </div>
-                    <button type="submit" class="btn">Patvirtinti</button>
+                    <button type="submit" class="btn">{{ 'name_confirm.confirm'|trans }}</button>
                 </form>
             </div>
         </div>

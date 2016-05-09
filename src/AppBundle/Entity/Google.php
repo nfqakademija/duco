@@ -89,7 +89,7 @@ class Google
     /**
      * @return string
      */
-    public function getGoogleProfileImgUrl()
+    public function getProfileImgUrl()
     {
         return $this->googleProfileImgUrl;
     }
@@ -97,7 +97,7 @@ class Google
     /**
      * @param string $googleProfileImgUrl
      */
-    public function setGoogleProfileImgUrl($googleProfileImgUrl)
+    public function setProfileImgUrl($googleProfileImgUrl)
     {
         $this->googleProfileImgUrl = $googleProfileImgUrl;
     }
