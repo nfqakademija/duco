@@ -33,6 +33,6 @@ class PublicAccountController extends Controller
             'results' => $results,
             'profilePicture' => $profileImg,
             'user' => $user,
-        ]);       
+        ]);
     }
 }
