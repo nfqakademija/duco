@@ -40,3 +40,8 @@ result:
 
 public_profile:
     not_found: Vartotojas nerastas
+
+errors:
+    404:
+        text: Puslapis nerastas
+        link: Grįžti į pagrindinį puslapį
