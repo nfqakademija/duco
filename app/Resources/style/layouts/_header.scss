@@ -1,103 +1,67 @@
-
-
-
-.navbar-brand {
-  margin-left: 0px;
-  position: absolute;
-  top: 20px;
-  display: block;
-  height: 52px;
-  width: 189px;
-  background-image: url('http://txt-dynamic.static.1001fonts.net/txt/dHRmLjcyLmZmZmZmZi5SRlZEVHcsLC4w/quantico.regular.png');
-}
+//
+//
+//
 
 
 
 
-@media only screen and (max-width: 767px) {
-  .navbar {
+.navbar {
+  margin-top: 20px;
+  color: #fff;
 
+  &-brand {
+    height: 52px;
+    width: 189px;
+    background-image: url('http://txt-dynamic.static.1001fonts.net/txt/dHRmLjcyLmZmZmZmZi5SRlZEVHcsLC4w/quantico.regular.png');
+  }
 
+  p {
+    display: none;
+    color: #FFFFFF;
+  }
 
-    .centered-search-box {
-      position: absolute;
-      width: 30%;
-      float: right;
-      top: 0px;
-      right: 20px;
+  .security-links {
+    .glyphicon {
+      color: #FFFFFF;
+    }
+    .logout-text {
+      display: none;
+      color: #FFFFFF;
+    }
+  }
+
+  &-form {
+    margin-top: 0px;
+  }
+
+  .input-group {
+    width: 100%;
+
+    &-btn {
+      display: block;
     }
   }
 }
 
-@media only screen and (min-width: 767px) {
-  @media only screen and (max-width: 1200px) {
-    .navbar-header {
-      float: right;
-    }
+@media (max-width: 767px) {
+  .navbar-header {
+    margin-top: 20px;
+  }
 
-    .security-links {
-      margin-right: 20px;
-    }
-
-    .centered-search-box {
-      width: 50%;
-      margin: 20px auto;
-      text-align: center;
-    }
+  .centered-search-box {
+    margin-top: 8px;
   }
 }
 
-
-@media only screen and (min-width: 1200px) {
-  .navbar {
-    background-color: rgba(61, 92, 137, 0.7);
-    height: 90px;
-
-    &-nav {
-      margin: 0 -15px;
-    }
-
-    &-header {
-      margin-top: 20px;
-      width: 400px;
-      float: right;
-      color: black;
-
-      a {
-        float: left;
-      }
-
-      p {
-        margin-top: 10px;
-      }
-
-      img {
-        height: 50px;
-        vertical-align: middle;
-        margin-right: 5px;
-      }
-
-      img, p {
-        float: left;
-      }
-
-      a, p {
-        color: #fff;
-      }
-    }
-
-
-
-    .security-links {
-      position: absolute;
-      right: 5%;
-    }
-
-    .centered-search-box {
-      width: 50%;
-      margin: 20px auto;
-      text-align: center;
-    }
-
+@media (min-width: 768px) {
+  .navbar-form .form-control {
+    width: 100%;
   }
+
+  .navbar-header {
+    p {
+      margin-top: 10px;
+    }
+  }
+
 }
