@@ -1,0 +1,15 @@
+{% extends '::base.html.twig' %}
+
+
+
+
+
+{% trans_default_domain 'AppBundle' %}
+
+{% block body %}
+
+    <h3 class='well well-large bg-white'>
+        {{ 'errors.404.text'|trans }}. <a href="{{ path('app.index') }}">{{ 'errors.404.link'|trans }}</a>.
+    </h3>
+
+{% endblock %}
