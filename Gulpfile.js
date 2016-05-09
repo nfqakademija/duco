@@ -27,6 +27,8 @@ gulp.task('scripts', function() {
             dir.bootstrapJS + 'collapse.js',
             //...
             // Main JS file
+            dir.assets + 'scripts/jquery.tablesorter.js',
+            dir.assets + 'scripts/jquery.tablesorter.widgets.js',
             dir.assets + 'scripts/main.js'
         ])
         .pipe(concat('script.js'))

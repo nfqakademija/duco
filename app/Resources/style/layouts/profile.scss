@@ -6,11 +6,10 @@
   background-color: white;
 }
 
-.results-table {
-  border-spacing: 25px 0;
-  border-collapse: separate;
+.tablesorter-filter {
+  width: 100%;
 }
 
-.results-table thead {
-  white-space: nowrap;
+.tablesorter-header-inner {
+  text-align: center;
 }
