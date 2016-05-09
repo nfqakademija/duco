@@ -40,6 +40,11 @@ search:
     methods: GET
     defaults: { _controller: AppBundle:Search:index }
 
+public_profile:
+    path: /public-profile/{userId}
+    methods: GET
+    defaults: { _controller: AppBundle:PublicAccount:index }
+
 fos_user:
     resource: "@FOSUserBundle/Resources/config/routing/all.xml"
 

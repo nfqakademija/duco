@@ -30,7 +30,10 @@ class ResultRepository extends \Doctrine\ORM\EntityRepository
             ->where('r.firstName LIKE :firstName')
             ->andWhere('r.lastName LIKE :lastName')
             ->andWhere('a.userId IS NULL')
-            ->orderBy('r.overallPosition');
+            ->orderBy('e.year', 'DESC')
+            ->addOrderBy('e.eventName')
+            ->addOrderBy('e.distance')
+            ->addOrderBy('r.overallPosition');
 
         $qb->setParameters([
             'firstName' => $firstName,
@@ -53,7 +56,10 @@ class ResultRepository extends \Doctrine\ORM\EntityRepository
             ->from(AddedResult::class, 'r')
             ->innerJoin(Event::class, 'e', Join::WITH, 'e.id = r.eventId')
             ->where('r.userId = :userId')
-            ->orderBy('r.overallPosition');
+            ->orderBy('r.overallPosition')
+            ->addOrderBy('e.year', 'DESC')
+            ->addOrderBy('e.eventName')
+            ->addOrderBy('e.distance');
         $qb->setParameters([
             'userId' => $userId,
         ]);
@@ -78,7 +84,10 @@ class ResultRepository extends \Doctrine\ORM\EntityRepository
             ->orWhere('r.club LIKE :query')
             ->orWhere('r.lastName LIKE :query')
             ->orWhere('r.firstName LIKE :query')
-            ->orderBy('r.overallPosition');
+            ->orderBy('e.year', 'DESC')
+            ->addOrderBy('e.eventName')
+            ->addOrderBy('e.distance')
+            ->addOrderBy('r.overallPosition');
         $qb->setParameters([
             'query' => str_replace(' ', '', $query),
         ]);

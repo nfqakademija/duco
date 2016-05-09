@@ -1,0 +1,469 @@
+Pozicija;Numeris;Dalyvis;Klubas;Laikas
+1;14;Symes Matthew;Adelaide, South Australia;37:41,2
+2;31;Vitulskis Tomas;Vilnius;37:41,2
+3;40;Križinauskas Nerijus;Peugeot, Lietuva, Kaunas;58:16,1
+4;127;Michalkovskij Anton;Maratonas, Klaipėda, Lietuva;58:16,1
+5;203;Balčiūnaitė Živilė;Vilniaus Baltai, Vilnius;1:04:24,4
+6;223;Vaičiulienė Austėja;Vilnius;1:04:24,4
+7;234;Damašickienė Vilija;Maratonas, Jonava;1:07:08,4
+8;239;Sakalaitė Eglė;Kaunas;1:07:08,4
+9;225;Trainoviciutė Samanta;Druskininkai;1:07:22,9
+10;227;Šalnienė Renata;Kauno Maratono Klubas, Kaunas;1:07:22,9
+11;222;Vilkickaitė Violeta;Utena, Lietuva;1:10:46,5
+12;209;Galvydienė Sonata;"""Bk """"Maratonas''"", Jonava, Lietuva";1:10:46,5
+13;228;Čerlina Svetlana;Small Planet Airlines, Vilnius;1:10:56,4
+14;215;Plegevičiūtė Indrė;Klaipėda, Lietuva;1:10:56,4
+15;235;Striūkienė Birutė;Inžinerija, Vilnius;1:13:08,1
+16;224;Buteikytė Asta;Vilnius;1:13:08,1
+17;236;Ivanauskaitė Ramunė;Plaukimo Neigaliuju Takas Klubas, Kaunas Lietuva;1:13:53,6
+18;238;Borusienė Audronė;Kauno Bmk, Kaunas;1:13:53,6
+19;221;Stonytė Striūkienė Viktorija;Inžinerija, Vilnius, Lithuania;1:13:56,7
+20;213;Jonaitytė Agne;Vilnius;1:13:56,7
+21;237;Dobrovolskienė Ida;Kauno Bmk, Kaunas;1:15:00,9
+22;207;Gorelčionkienė Rūta;F.O.C.U.S. Running, Vilnius;1:15:00,9
+23;218;Šedbaraitė Indrė;Kauno Bmk, Londonas, Didžioji Britanija;1:16:33,4
+24;208;Zacharova Viktorija;F.O.C.U.S. Running, Vilnius;1:16:33,4
+25;211;Bružikienė Inga;Bėgimo Klubas, Kaunas Lietuva;1:17:34,3
+26;214;Žukauskaitė Eglė;Lietuva;1:17:34,3
+27;230;Litvinavičienė Gintarė;Maratonas, Jonava;1:18:06,9
+28;229;Bičkūnienė Danguolė;Ltu Trail Running People, Lietuva;1:18:06,9
+29;210;Petrauskienė Vilma;Bėgimo Klubas, Mažeikių R.;1:18:24,7
+30;219;Girdvainytė Rita;Klaipėda;1:18:24,7
+31;206;Und Ei Hue;Deutschland;1:19:20,4
+32;220;Silenas Pudžiuvelienė Lindre;Huracan, Vilnius, Lietuva;1:19:20,4
+33;233;Kučinskienė Violeta;Kambariokai, Molėtai, Lietuva;1:19:50,9
+34;246;Ritchik Ugnė ;Vilnius;1:19:50,9
+35;212;Kvedaravičiūtė Vilija;Šiauliai;1:19:57,5
+36;232;Grinkevič Ala;Nidos Kopos, Lietuva;1:19:57,5
+37;204;Mačionytė Miglė;Jokers, Vilnius;1:20:06,0
+38;227;Šalnienė Renata;Kauno Maratono Klubas, Kaunas;1:20:06,0
+39;228;Čerlina Svetlana;Small Planet Airlines, Vilnius;1:20:41,0
+40;230;Litvinavičienė Gintarė;Maratonas, Jonava;1:20:41,0
+41;229;Bičkūnienė Danguolė;Ltu Trail Running People, Lietuva;1:21:18,4
+42;232;Grinkevič Ala;Nidos Kopos, Lietuva;1:21:18,4
+43;233;Kučinskienė Violeta;Kambariokai, Molėtai, Lietuva;1:21:23,5
+44;234;Damašickienė Vilija;Maratonas, Jonava;1:21:23,5
+45;235;Striūkienė Birutė;Inžinerija, Vilnius;1:21:40,8
+46;236;Ivanauskaitė Ramunė;Plaukimo Neigaliuju Takas Klubas, Kaunas Lietuva;1:21:40,8
+47;238;Borusienė Audronė;Kauno Bmk, Kaunas;1:21:44,8
+48;237;Dobrovolskienė Ida;Kauno Bmk, Kaunas;1:21:44,8
+49;203;Balčiūnaitė Živilė;Vilniaus Baltai, Vilnius;1:22:40,2
+50;223;Vaičiulienė Austėja;Vilnius;1:22:40,2
+51;239;Sakalaitė Eglė;Kaunas;1:23:12,1
+52;225;Trainoviciutė Samanta;Druskininkai;1:23:12,1
+53;222;Vilkickaitė Violeta;Utena, Lietuva;1:23:45,3
+54;209;Galvydienė Sonata;"""Bk """"Maratonas''"", Jonava, Lietuva";1:23:45,3
+55;215;Plegevičiūtė Indrė;Klaipėda, Lietuva;1:24:34,8
+56;224;Buteikytė Asta;Vilnius;1:24:34,8
+57;221;Stonytė Striūkienė Viktorija;Inžinerija, Vilnius, Lithuania;1:25:43,0
+58;213;Jonaitytė Agne;Vilnius;1:25:43,0
+59;207;Gorelčionkienė Rūta;F.O.C.U.S. Running, Vilnius;1:26:11,7
+60;218;Šedbaraitė Indrė;Kauno Bmk, Londonas, Didžioji Britanija;1:26:11,7
+61;208;Zacharova Viktorija;F.O.C.U.S. Running, Vilnius;1:26:47,6
+62;211;Bružikienė Inga;Bėgimo Klubas, Kaunas Lietuva;1:26:47,6
+63;214;Žukauskaitė Eglė;Lietuva;1:27:05,3
+64;210;Petrauskienė Vilma;Bėgimo Klubas, Mažeikių R.;1:27:05,3
+65;219;Girdvainytė Rita;Klaipėda;1:27:22,6
+66;206;Und Ei Hue;Deutschland;1:27:22,6
+67;220;Silenas Pudžiuvelienė Lindre;Huracan, Vilnius, Lietuva;1:28:00,2
+68;246;Ritchik Ugnė ;Vilnius;1:28:00,2
+69;212;Kvedaravičiūtė Vilija;Šiauliai;1:28:10,1
+70;204;Mačionytė Miglė;Jokers, Vilnius;1:28:10,1
+71;280;Gudauskas Modestas;Žingsnis savęs link, Šilalė;1:28:21,0
+72;6;Dopolskas Valdas;Vilniaus Baltai, Vilnius;1:28:21,0
+73;1;Sadeckas Darius;F.O.C.U.S. Running, Vilnius, Lietuva;1:28:24,9
+74;2;Viršilas Mindaugas;"""""""Pilėnai"""""", Raseiniai";1:28:24,9
+75;80;Pavlichuk Valeriy;Kaliningrad, Russia;1:28:34,2
+76;4;Skinulis Aurimas;Kauno Maratono Klubas, Kacergine;1:28:34,2
+77;8;Jegorov Andrej;Nida/Vilnius;1:29:29,1
+78;9;Bizimavičius Tomas;Kauno Maratono Klubas, Kaunas;1:29:29,1
+79;240;Adomkaitis Egidijus;F.O.C.U.S. RUNNING;1:29:57,7
+80;123;Balsys Domantas;Kauno Bmk, Kaunas, Lietuva;1:29:57,7
+81;3;Venckūnas Tomas;Kauno Bmk, Kaunas;1:29:58,9
+82;7;Zaicevas Robertas;AB Patrol, Vilnius;1:29:58,9
+83;91;Vilčinskas Ramūnas;Kauno Bmk, Kačerginė;1:30:14,6
+84;64;Čiapas Agnius;"""Bk """"Maratonas''"", Klaipėda";1:30:14,6
+85;271;Tūbelis Kaspars;VSK Noskrien, Liepaja;1:30:26,8
+86;36;Žukauskas Antanas;Maratonas, Jonava, Lietuva;1:30:26,8
+87;187;Černikovas Igoris;Bijusta/Inžinerija, Vilnius, Lietuva;1:30:42,6
+88;70;Slavickas Andrius;Kauno Maratono Klubas, Kaunas;1:30:43,4
+89;179;Kazlauskas Alfonsas;Pilėnai, Kauno Raj.;1:30:43,4
+90;63;Kulik Maksim;Kauno Bmk, Kaunas, Lietuva;1:30:55,5
+91;11;Kavaliauskas Tadas;Šviesos Kariai, Vilnius;1:30:55,5
+92;155;Muralis Virgilijus;"""Bk """"Maratonas''"", Jonava";1:31:24,4
+93;57;Voroncov Sergei;Kaliningrad;1:31:24,4
+94;56;Pašakinskas Sigitas;Ltu Trail Running People, Vilnius;1:31:49,6
+95;142;Žuburs Dainis;Maratona klubs, Latvia;1:31:49,6
+96;83;Jocius Linas;Atletai.Lt, Panevėžys;1:31:51,2
+97;100;Afarjancas Benas;"""Tdibmk """"Tvinksnis"""""", Palanga";1:31:51,2
+98;60;Baužys Vaidotas;Runglorious Bastards, Vinlius;1:32:00,6
+99;117;Petraitis Grigas;Kauno Bmk, Vilnius, Lietuva;1:32:00,6
+100;62;Varapnickas Saulius;Kaunas, Lietuva;1:32:07,6
+101;46;Jagminas Andrius;Statoil, Vilnius,Lietuva;1:32:07,6
+102;18;Bertašavičius Laurynas;Kauno Maratono Klubas, Kaunas;1:32:48,6
+103;138;Cibulskas Dalius;"""Bk """"Maratonas''"", Jonava";1:32:48,6
+104;162;Silius Rolandas;Vainutas, Vainutas;1:32:54,1
+105;141;Džuplij Jurij;Inžinerija, Vilnius;1:32:54,1
+106;269;Bernotas Deividas;Jonavos BK Maratonas;1:33:22,3
+107;143;Spirgys Benediktas;Telšiai;1:33:22,3
+108;52;Švėgžda Dainius;Kaščiukai, Radviliškis;1:33:41,6
+109;200;Garla Vytautas;Penevėžio maratonas, Panevėžys;1:33:41,6
+110;197;Soroka Raimondas;Dzūkija, Alytus, Lietuva;1:33:52,7
+111;72;Kriugžda Rolandas;Kaišiadorys Bėga, Kaišiadorys;1:33:52,7
+112;186;Škadauskas Romas;Ventės Ragas, Ventė;1:33:54,6
+113;75;Žiogas Giedrius;Kauno Maratono Klubas, Naujasodžio Km. Karmėlavos Sen.;1:33:54,6
+114;71;Gorelčionka Tomas;F.O.C.U.S. Running, Lietuva;1:33:57,1
+115;185;Sičiūnas Arūnas;Medienos Karalystė, Panevėžys;1:33:57,1
+116;148;Stadzenieks Mārcis;Maratona Klubs, Liepaja, Latvia;1:34:04,1
+117;41;Pašvenskas Mindaugas;Runglorious Bastards, Vilnius;1:34:04,1
+118;147;Vaičius Kęstutis;Klaipėda,Lietuva;1:34:10,0
+119;121;Vaitkevičius Andrius;Kauno Maratono Klubas, Kaunas;1:34:10,0
+120;103;Mikučionis Nerijus;Pilėnai, Kaunas - Palanga;1:34:38,7
+121;178;Kaniauskas Raimundas;Ko Čia Batai?, Klaipėda, Lietuva;1:34:38,7
+122;110;Lisauskas Simonas;Multisport Group, Vilnius;1:35:05,4
+123;84;Pužas Donatas;F.O.C.U.S. Running, Vilnius;1:35:05,4
+124;132;Balčiūnas Andrius;Kauno Bmk, Kaunas;1:35:28,0
+125;96;Bieliauskas Mantautas;Runglorious Bastards, Vilnius, Lietuva;1:35:28,0
+126;93;Kliukas Nerijus;F.O.C.U.S. Running, Lietuva;1:35:28,2
+127;195;Markevičius Albinas;Kauno Bmk, Kaunas;1:35:28,2
+128;154;Dobrovolskas Vidmantas;Kauno Bmk, Kaunas;1:35:42,5
+129;124;Šustauskas Egidijus;Kauno Maratono Klubas, Kaunas;1:35:42,5
+130;170;Aleksiunas Kestas;Aš Begu, Kaisiadorys;1:35:45,5
+131;65;Sakalauskas Andrius;Kauno Maratono Klubas, Kaunas;1:35:45,5
+132;74;Daukša Valdas;Kauno Maratono Klubas, Kaunas;1:35:50,3
+133;149;Akstinas Petras;Palanga;1:35:50,3
+134;120;Kaminskas Dovydas;Tauragės Bmk, Tauragė, Lietuva;1:35:50,9
+135;160;Šalkauskis Egidijus;"""Tdibmk """"Tvinksnis"""""", Palanga, Lietuva";1:35:50,9
+136;49;Čėsna Šarūnas;Kaisiadorysrun, Kaišiadorys, Lietuva;1:36:02,6
+137;108;Jurkšaitis Andrius;Tauragė, Lietuva;1:36:02,6
+138;87;Mikalonis Mindaugas;Šviesos Kariai, Vilnius, Lietuva;1:36:05,9
+139;48;Boza Tomas;Kauno Bmk, Didžioji Britanija;1:36:05,9
+140;16;Grigusevičius Andrius;Vilnius, Lietuva;1:36:30,7
+141;59;Banys Marius;Anykščių Rajonas, Leliūnai;1:36:30,7
+142;53;Mačys Andrius;Kaunas;1:36:31,8
+143;129;Šlapelis Dangis;Kulautuva, Lietuva;1:36:31,8
+144;156;Puteikis Valdas;Neko Runners, Vilnius;1:36:41,5
+145;262;Balčiauskas Zenonas;Vėtra, Pasvalys;1:36:41,5
+146;30;Avižinis Paulius;Šviesos Kariai, Vilnius, Lietuva;1:36:42,8
+147;77;Bimbiris Vaidas;Dragūnų Klubas, Klaipėda;1:36:42,8
+148;245;Vaitkevičius Zigmantas ;CRANBALT;1:36:59,8
+149;182;Likpetris Virginijus;Vejas, Pakruojis;1:36:59,8
+150;35;Ledakas Vytautas;Deryboslt Sek, Vilnius;1:37:04,0
+151;38;Stankevičius Linas;Šiauliai;1:37:04,0
+152;42;Kriauza Povilas;Kaunas;1:37:24,9
+153;173;Jurskis Arnas;Arimex, Vilnius;1:37:24,9
+154;144;Gedvilas Alfonsas;Ok Versmė, Šiauliai;1:37:36,1
+155;29;Sankauskas Dovydas;Ilginuotoliai.Lt, Vilnius;1:37:36,1
+156;152;Dubinskas Arūnas;Šviesos Kariai, Vilnius;1:37:38,5
+157;106;Steckis Darius;Klaipėda;1:37:38,5
+158;146;Jonaitis Gintautas;Kauno Maratono Klubas, Kaunas;1:37:38,9
+159;66;Rinkevičius Saulius;Močiutės Šlepetės, Vilnius, Lietuva;1:37:38,9
+160;188;Ložys Vidmantas;Šviesos Kariai, Vilnius;1:37:44,9
+161;25;Braciška Aurelijus;Vilnius;1:37:44,9
+162;168;Virketis Gintautas;Kretinga;1:37:52,0
+163;113;Songaila Ramūnas;Vilnius;1:37:52,0
+164;166;Šmitas Edmundas;Šilutė, Lietuva;1:37:57,7
+165;37;Mickevičius Gintautas;Šiauliai,Lietuva;1:37:57,7
+166;112;Račkauskas Svajūnas;Bėgimo Klubas, Šiauliai, Lietuva;1:38:03,9
+167;193;Valiūnas Rimantas;Inžinerija, Vilnius;1:38:03,9
+168;151;Lakštauskas Albertas;Kaišiadorys Bėga, Žasliai;1:38:04,0
+169;19;Padegimas Ričardas;Windbrothers, Kaunas;1:38:04,0
+170;15;Velička Žydrūnas;Robinzonada Adventure Team, Kauno R., Kulautuva;1:38:12,3
+171;27;Bielčius Nerijus;Vilnius, Lietuva;1:38:12,3
+172;183;Ruzgas Arvydas;Dzūkija, Alytus, Lietuva;1:38:16,2
+173;263;Karklys Audrius;Telšiai;1:38:16,2
+174;102;Kazlauskas Tomas;Neko, Vilnius;1:38:18,9
+175;50;Tumavičius Marius;"""Bk """"Maratonas''"", Jonava";1:38:18,9
+176;161;Tulaba Andrius;Panevėžys;1:38:26,1
+177;45;Rimkus Rimas;Ind, Kaunas;1:38:26,1
+178;190;Jonaitis Vilius;Mažeikiai;1:38:30,5
+179;32;Žibūda Tadas;Ovc Consulting, Vilnius;1:38:30,5
+180;21;Kalėda Darius;Kauno Bmk, Kaunas, Lietuva;1:38:33,9
+181;163;Povilavičius Giedrius;"""Bk """"Maratonas''"", Jonava";1:38:33,9
+182;104;Gibavičius Karolis;Kauno Maratono Klubas, Kaunas, Lietuva;1:38:41,3
+183;12;Tarasevičius Edvardas;Neveronys;1:38:41,3
+184;10;Kybartas Marius;F.O.C.U.S. Running, Vilnius;1:39:01,0
+185;33;Regelskis Rytis;Kauno Sanciu Sporto Ir Sveikatingumo Centras, Kaunas;1:39:01,0
+186;99;Jocius Donatas;Kėdainiai;1:39:01,2
+187;165;Kontrimas Arūnas;Kauno Bmk, Kaunas;1:39:01,2
+188;17;Krupinas Augis;Vilnius;1:39:21,9
+189;20;Vaitkus Saulius;Mažeikiai;1:39:21,9
+190;26;Nenartavičius Žydrūnas;Vilnius, Lietuva;1:39:22,2
+191;171;Pupininkas Gintaras;Begantis, Vilnius;1:39:22,2
+192;85;Mažeika Viktoras;Kauno Bmk, Vilnius;1:39:33,6
+193;265;Dirvonskas Tomas;Vilnius;1:39:33,6
+194;177;Štrimaitis Arnoldas;Inžinerija, Palanga;1:39:38,4
+195;196;Petruškevičius Kazimieras;Vėtra, Pasvalys;1:39:38,4
+196;167;Dambrauskas Marius;Šiauliai;1:40:08,9
+197;253;Jasinskas Romas;Rambynas, Panevėžys;1:40:08,9
+198;115;Bendorius Artūras;Bendoriai, Vilnius;1:40:24,9
+199;34;Strazdauskas Tomas;Lietuva, Šiauliai;1:40:24,9
+200;243;Savičius Laimius ;Kaunas;1:40:29,6
+201;133;Šapoka Romualdas;Vilnius, Lietuva;1:40:29,6
+202;164;Savickas Donatas;Šiauliai;1:40:32,9
+203;159;Šlaustas Gintas;Mažeikiai;1:40:32,9
+204;73;Vaičius Gintautas;Vilnius;1:40:38,0
+205;81;Daugmaudis Vilhelmas;Siauliai;1:40:38,0
+206;43;Vosylius Dainius;Palanga;1:40:43,0
+207;135;Četrauskas Vainius;Vilnius, Klaipėda;1:40:43,0
+208;264;Kisielius Donatas;Vilnius / Nida;1:40:44,9
+209;76;Jonušas Andrius;Vilnius, Lietuva;1:40:44,9
+210;241;Juodelė Linas ;Bėgimo broliai;1:40:48,6
+211;78;Gudelionis Mantas;Vilnius, Lietuva;1:40:48,6
+212;55;Asars Māﾁris;Liepaja, Latvia;1:40:57,1
+213;51;Marchenko Dmitrii;Amberman, Kaliningrad;1:40:57,1
+214;44;Šarūnas Tadas;Vilnius, Lietuva;1:41:04,8
+215;266;Vyšniauskas Robertas;SEB, Vilnius;1:41:04,8
+216;105;Dabrega Simonas;Bėgimo Klubas, Kaunas;1:41:29,4
+217;128;Kuzma Pijus;Callcredit, Kaunas;1:41:29,4
+218;68;Juodviršis Mindaugas;Bėgikai.Lt, Vilnius;1:41:41,0
+219;67;Dapkevicius Andrius;Šviesos Kariai, Kaunas;1:41:41,0
+220;268;Milašius Tadas;BK Šviesos kariai;1:41:47,7
+221;257;Survila Albertas;Vejas, Pakruojis;1:41:47,7
+222;114;Leščevski Kšyštof;Multisportas, Vilnius, Lietuva;1:41:53,3
+223;169;Azanovas Jurijus;Runglorious Bastards, Vilnius;1:41:53,3
+224;22;Stripeika Egidijus;Šiauliai;1:41:55,2
+225;58;Šiaulys Eitaras;Runglorious Bastards, Klaipėda;1:41:55,2
+226;131;Razvanavičius Simonas;Rokiškis, Lietuva;1:41:57,4
+227;109;Jegelevicius Justas;Vilnius;1:41:57,4
+228;260;Križinauskas Adolfas;Sk Lukas, Šiauliai, Lietuva;1:41:57,8
+229;267;Gudas Marius;"""BJJ Rodrigo Cavaca"", Kaunas";1:41:57,8
+230;116;Karneckas Justas;Vilnius;1:42:04,5
+231;47;Šaltys Justinas;Vilnius;1:42:04,5
+232;107;Mažeika Donatas;Kaunas;1:42:31,6
+233;199;Balčiūnas Dainius;Kauno Bmk, Kaunas;1:42:31,6
+234;242;Misiukonis Tomas ;Vilnius;1:42:32,4
+235;122;Švajev Artūras;Klaipėda;1:42:32,4
+236;145;Chervyakov Valentin;Palanga;1:42:35,7
+237;279;Vilčinskas Jonas ;BK Jonas Maratonas;1:42:35,7
+238;174;Jablonskis Vladas;Judėk Pirmyn, Kaunas;1:42:46,8
+239;184;Kinderis Gediminas;Kauno Bmk, Kaunas;1:42:46,8
+240;256;Norvilas Bronislovas;"""Sporto Klubas """"Ritmas"""""", Gargždai";1:42:56,2
+241;189;Urbonas Vidmantas;Klaipėda;1:42:56,2
+242;244;Šiugžda Karolis ;CRANBALT;1:43:00,2
+243;61;Daugmaudis Giedrius;Tamsta, Vilnius, Lietuva;1:43:00,2
+244;39;Kleinas Andrius;Klubas: S+B, Vilnius;1:43:00,7
+245;118;Sliekas Ramūnas;ind;1:43:00,7
+246;140;Zalanskas Julius;Vilkynė, Lietuva;1:43:02,6
+247;101;Pudžiuvelis Nerijus;Huracan, Vilnius, Lietuva;1:43:02,6
+248;180;Zalanskas Arūnas;Vilkynė, Lietuva;1:43:03,6
+249;194;Vansevičius Petras;Bėgimo Klubas, Jonava;1:43:03,6
+250;181;Kazlauskas Rimantas;Megeju, Neringa Lithuania;1:43:07,4
+251;192;Ramoška Povilas;Šviesos Kariai, Vilnius;1:43:07,4
+252;125;Poderis Vytautas;Kaunas, Lietuva;1:43:11,9
+253;172;Riekstiņš Jānis;Ape Tk, Rīga;1:43:11,9
+254;153;Valančius Mindaugas;Kaunas, Lietuva;1:44:06,0
+255;54;Avelis Nerijus;Teo, Klaipėda, Lietuva;1:44:06,0
+256;69;Viršila Mindaugas;Teo, Klaipėda, Lietuva;1:44:20,6
+257;134;Šitikovas Darius;Kaunas, Lietuva;1:44:20,6
+258;92;Baniūnas Paulius;Lithuania;1:44:25,0
+259;175;Jucevičius Gintaras;Molėtai, Lietuva;1:44:25,0
+260;158;Kucinskas Arunas;F.O.C.U.S. Running, Molėtai, Lietuva;1:44:44,1
+261;258;Petkus Jurgis;Tauragės Bmk, Jurbarkas;1:44:44,1
+262;254;Sutkus Alfonsas;Vėtra, Pasvalys;1:44:47,4
+263;251;Stankevičius Kazimieras;Vėtra, Pasvalys;1:44:47,4
+264;255;Limantas Romualdas;Kauno Bmk, Kaunas;1:44:55,2
+265;14;Symes Matthew;Adelaide, South Australia;1:44:55,2
+266;31;Vitulskis Tomas;Vilnius;1:45:04,8
+267;252;Čirba Stasys;Inžinerija, Vilnius;1:45:04,8
+268;191;Radavičius Marijus;Inžinerija, Vilnius, Lietuva;1:45:08,3
+269;261;Baliukevičius Genius;Inžinerija, Vilnius;1:45:08,3
+270;40;Križinauskas Nerijus;Peugeot, Lietuva, Kaunas;1:45:23,1
+271;127;Michalkovskij Anton;Maratonas, Klaipėda, Lietuva;1:45:23,1
+272;176;Pociūnas Saulenis;Vilnius;1:45:32,0
+273;142;Žuburs Dainis;Maratona klubs, Latvia;1:45:32,0
+274;141;Džuplij Jurij;Inžinerija, Vilnius;1:45:40,3
+275;143;Spirgys Benediktas;Telšiai;1:45:40,3
+276;148;Stadzenieks Mārcis;Maratona Klubs, Liepaja, Latvia;1:45:41,7
+277;147;Vaičius Kęstutis;Klaipėda,Lietuva;1:45:41,7
+278;149;Akstinas Petras;Palanga;1:45:47,9
+279;144;Gedvilas Alfonsas;Ok Versmė, Šiauliai;1:45:47,9
+280;152;Dubinskas Arūnas;Šviesos Kariai, Vilnius;1:45:51,3
+281;146;Jonaitis Gintautas;Kauno Maratono Klubas, Kaunas;1:45:51,3
+282;151;Lakštauskas Albertas;Kaišiadorys Bėga, Žasliai;1:46:03,9
+283;263;Karklys Audrius;Telšiai;1:46:03,9
+284;241;Juodelė Linas ;Bėgimo broliai;1:46:14,5
+285;267;Gudas Marius;"""BJJ Rodrigo Cavaca"", Kaunas";1:46:14,5
+286;242;Misiukonis Tomas ;Vilnius;1:46:17,9
+287;145;Chervyakov Valentin;Palanga;1:46:17,9
+288;153;Valančius Mindaugas;Kaunas, Lietuva;1:46:24,9
+289;271;Tūbelis Kaspars;VSK Noskrien, Liepaja;1:46:24,9
+290;155;Muralis Virgilijus;"""Bk """"Maratonas''"", Jonava";1:46:26,4
+291;162;Silius Rolandas;Vainutas, Vainutas;1:46:26,4
+292;154;Dobrovolskas Vidmantas;Kauno Bmk, Kaunas;1:47:04,5
+293;170;Aleksiunas Kestas;Aš Begu, Kaisiadorys;1:47:04,5
+294;160;Šalkauskis Egidijus;"""Tdibmk """"Tvinksnis"""""", Palanga, Lietuva";1:47:05,4
+295;156;Puteikis Valdas;Neko Runners, Vilnius;1:47:05,4
+296;173;Jurskis Arnas;Arimex, Vilnius;1:47:09,6
+297;168;Virketis Gintautas;Kretinga;1:47:09,6
+298;166;Šmitas Edmundas;Šilutė, Lietuva;1:47:10,5
+299;161;Tulaba Andrius;Panevėžys;1:47:10,5
+300;163;Povilavičius Giedrius;"""Bk """"Maratonas''"", Jonava";1:47:20,0
+301;165;Kontrimas Arūnas;Kauno Bmk, Kaunas;1:47:20,0
+302;171;Pupininkas Gintaras;Begantis, Vilnius;1:47:20,4
+303;177;Štrimaitis Arnoldas;Inžinerija, Palanga;1:47:20,4
+304;167;Dambrauskas Marius;Šiauliai;1:47:22,2
+305;164;Savickas Donatas;Šiauliai;1:47:22,2
+306;159;Šlaustas Gintas;Mažeikiai;1:47:28,7
+307;169;Azanovas Jurijus;Runglorious Bastards, Vilnius;1:47:28,7
+308;174;Jablonskis Vladas;Judėk Pirmyn, Kaunas;1:47:30,9
+309;172;Riekstiņš Jānis;Ape Tk, Rīga;1:47:30,9
+310;175;Jucevičius Gintaras;Molėtai, Lietuva;1:47:32,4
+311;158;Kucinskas Arunas;F.O.C.U.S. Running, Molėtai, Lietuva;1:47:32,4
+312;176;Pociūnas Saulenis;Vilnius;1:47:38,2
+313;187;Černikovas Igoris;Bijusta/Inžinerija, Vilnius, Lietuva;1:47:38,2
+314;179;Kazlauskas Alfonsas;Pilėnai, Kauno Raj.;1:47:52,3
+315;186;Škadauskas Romas;Ventės Ragas, Ventė;1:47:52,3
+316;185;Sičiūnas Arūnas;Medienos Karalystė, Panevėžys;1:48:09,8
+317;178;Kaniauskas Raimundas;Ko Čia Batai?, Klaipėda, Lietuva;1:48:09,8
+318;182;Likpetris Virginijus;Vejas, Pakruojis;1:49:30,4
+319;188;Ložys Vidmantas;Šviesos Kariai, Vilnius;1:49:30,4
+320;183;Ruzgas Arvydas;Dzūkija, Alytus, Lietuva;1:50:12,0
+321;190;Jonaitis Vilius;Mažeikiai;1:50:12,0
+322;184;Kinderis Gediminas;Kauno Bmk, Kaunas;1:50:33,6
+323;189;Urbonas Vidmantas;Klaipėda;1:50:33,6
+324;180;Zalanskas Arūnas;Vilkynė, Lietuva;1:50:43,1
+325;181;Kazlauskas Rimantas;Megeju, Neringa Lithuania;1:50:43,1
+326;200;Garla Vytautas;Penevėžio maratonas, Panevėžys;1:50:54,2
+327;197;Soroka Raimondas;Dzūkija, Alytus, Lietuva;1:50:54,2
+328;195;Markevičius Albinas;Kauno Bmk, Kaunas;1:50:54,2
+329;193;Valiūnas Rimantas;Inžinerija, Vilnius;1:50:54,2
+330;196;Petruškevičius Kazimieras;Vėtra, Pasvalys;1:50:57,6
+331;199;Balčiūnas Dainius;Kauno Bmk, Kaunas;1:50:57,6
+332;194;Vansevičius Petras;Bėgimo Klubas, Jonava;1:51:19,9
+333;192;Ramoška Povilas;Šviesos Kariai, Vilnius;1:51:19,9
+334;191;Radavičius Marijus;Inžinerija, Vilnius, Lietuva;1:51:20,8
+335;262;Balčiauskas Zenonas;Vėtra, Pasvalys;1:51:20,8
+336;260;Križinauskas Adolfas;Sk Lukas, Šiauliai, Lietuva;1:51:31,2
+337;261;Baliukevičius Genius;Inžinerija, Vilnius;1:51:31,2
+338;257;Survila Albertas;Vejas, Pakruojis;1:51:44,4
+339;256;Norvilas Bronislovas;"""Sporto Klubas """"Ritmas"""""", Gargždai";1:51:44,4
+340;258;Petkus Jurgis;Tauragės Bmk, Jurbarkas;1:52:36,9
+341;253;Jasinskas Romas;Rambynas, Panevėžys;1:52:36,9
+342;279;Vilčinskas Jonas ;BK Jonas Maratonas;1:52:37,0
+343;254;Sutkus Alfonsas;Vėtra, Pasvalys;1:52:37,0
+344;251;Stankevičius Kazimieras;Vėtra, Pasvalys;1:52:40,6
+345;255;Limantas Romualdas;Kauno Bmk, Kaunas;1:52:40,6
+346;6;Dopolskas Valdas;Vilniaus Baltai, Vilnius;1:52:51,0
+347;1;Sadeckas Darius;F.O.C.U.S. Running, Vilnius, Lietuva;1:52:51,0
+348;2;Viršilas Mindaugas;"""""""Pilėnai"""""", Raseiniai";1:52:59,8
+349;80;Pavlichuk Valeriy;Kaliningrad, Russia;1:52:59,8
+350;4;Skinulis Aurimas;Kauno Maratono Klubas, Kacergine;1:53:00,5
+351;8;Jegorov Andrej;Nida/Vilnius;1:53:00,5
+352;9;Bizimavičius Tomas;Kauno Maratono Klubas, Kaunas;1:53:01,0
+353;240;Adomkaitis Egidijus;F.O.C.U.S. RUNNING;1:53:01,0
+354;123;Balsys Domantas;Kauno Bmk, Kaunas, Lietuva;1:53:14,1
+355;3;Venckūnas Tomas;Kauno Bmk, Kaunas;1:53:14,1
+356;7;Zaicevas Robertas;AB Patrol, Vilnius;1:53:22,8
+357;91;Vilčinskas Ramūnas;Kauno Bmk, Kačerginė;1:53:22,8
+358;64;Čiapas Agnius;"""Bk """"Maratonas''"", Klaipėda";1:53:26,4
+359;36;Žukauskas Antanas;Maratonas, Jonava, Lietuva;1:53:26,4
+360;70;Slavickas Andrius;Kauno Maratono Klubas, Kaunas;1:53:43,4
+361;63;Kulik Maksim;Kauno Bmk, Kaunas, Lietuva;1:53:43,4
+362;11;Kavaliauskas Tadas;Šviesos Kariai, Vilnius;1:53:58,2
+363;57;Voroncov Sergei;Kaliningrad;1:53:58,2
+364;56;Pašakinskas Sigitas;Ltu Trail Running People, Vilnius;1:54:02,0
+365;83;Jocius Linas;Atletai.Lt, Panevėžys;1:54:02,0
+366;100;Afarjancas Benas;"""Tdibmk """"Tvinksnis"""""", Palanga";1:54:23,6
+367;60;Baužys Vaidotas;Runglorious Bastards, Vinlius;1:54:23,6
+368;117;Petraitis Grigas;Kauno Bmk, Vilnius, Lietuva;1:54:52,8
+369;62;Varapnickas Saulius;Kaunas, Lietuva;1:54:52,8
+370;46;Jagminas Andrius;Statoil, Vilnius,Lietuva;1:55:13,4
+371;18;Bertašavičius Laurynas;Kauno Maratono Klubas, Kaunas;1:55:13,4
+372;138;Cibulskas Dalius;"""Bk """"Maratonas''"", Jonava";1:55:21,8
+373;269;Bernotas Deividas;Jonavos BK Maratonas;1:55:21,8
+374;52;Švėgžda Dainius;Kaščiukai, Radviliškis;1:55:34,0
+375;72;Kriugžda Rolandas;Kaišiadorys Bėga, Kaišiadorys;1:55:34,0
+376;75;Žiogas Giedrius;Kauno Maratono Klubas, Naujasodžio Km. Karmėlavos Sen.;1:55:35,6
+377;71;Gorelčionka Tomas;F.O.C.U.S. Running, Lietuva;1:55:35,6
+378;41;Pašvenskas Mindaugas;Runglorious Bastards, Vilnius;1:55:51,4
+379;121;Vaitkevičius Andrius;Kauno Maratono Klubas, Kaunas;1:55:51,4
+380;103;Mikučionis Nerijus;Pilėnai, Kaunas - Palanga;1:55:58,6
+381;110;Lisauskas Simonas;Multisport Group, Vilnius;1:55:58,6
+382;84;Pužas Donatas;F.O.C.U.S. Running, Vilnius;1:56:00,5
+383;132;Balčiūnas Andrius;Kauno Bmk, Kaunas;1:56:00,5
+384;96;Bieliauskas Mantautas;Runglorious Bastards, Vilnius, Lietuva;1:56:36,5
+385;93;Kliukas Nerijus;F.O.C.U.S. Running, Lietuva;1:56:36,5
+386;124;Šustauskas Egidijus;Kauno Maratono Klubas, Kaunas;1:56:49,3
+387;65;Sakalauskas Andrius;Kauno Maratono Klubas, Kaunas;1:56:49,3
+388;74;Daukša Valdas;Kauno Maratono Klubas, Kaunas;1:56:53,3
+389;120;Kaminskas Dovydas;Tauragės Bmk, Tauragė, Lietuva;1:56:53,3
+390;49;Čėsna Šarūnas;Kaisiadorysrun, Kaišiadorys, Lietuva;1:56:53,7
+391;108;Jurkšaitis Andrius;Tauragė, Lietuva;1:56:53,7
+392;87;Mikalonis Mindaugas;Šviesos Kariai, Vilnius, Lietuva;1:56:56,1
+393;48;Boza Tomas;Kauno Bmk, Didžioji Britanija;1:56:56,1
+394;16;Grigusevičius Andrius;Vilnius, Lietuva;1:57:33,6
+395;59;Banys Marius;Anykščių Rajonas, Leliūnai;1:57:33,6
+396;53;Mačys Andrius;Kaunas;1:57:34,6
+397;129;Šlapelis Dangis;Kulautuva, Lietuva;1:57:34,6
+398;30;Avižinis Paulius;Šviesos Kariai, Vilnius, Lietuva;1:57:40,8
+399;77;Bimbiris Vaidas;Dragūnų Klubas, Klaipėda;1:57:40,8
+400;245;Vaitkevičius Zigmantas ;CRANBALT;1:57:58,8
+401;35;Ledakas Vytautas;Deryboslt Sek, Vilnius;1:57:58,8
+402;38;Stankevičius Linas;Šiauliai;1:58:17,7
+403;42;Kriauza Povilas;Kaunas;1:58:17,7
+404;29;Sankauskas Dovydas;Ilginuotoliai.Lt, Vilnius;1:58:23,4
+405;106;Steckis Darius;Klaipėda;1:58:23,4
+406;66;Rinkevičius Saulius;Močiutės Šlepetės, Vilnius, Lietuva;1:59:42,9
+407;25;Braciška Aurelijus;Vilnius;1:59:42,9
+408;113;Songaila Ramūnas;Vilnius;1:59:52,4
+409;37;Mickevičius Gintautas;Šiauliai,Lietuva;1:59:52,4
+410;112;Račkauskas Svajūnas;Bėgimo Klubas, Šiauliai, Lietuva;2:00:31,0
+411;19;Padegimas Ričardas;Windbrothers, Kaunas;2:00:31,0
+412;15;Velička Žydrūnas;Robinzonada Adventure Team, Kauno R., Kulautuva;2:00:32,0
+413;27;Bielčius Nerijus;Vilnius, Lietuva;2:00:32,0
+414;102;Kazlauskas Tomas;Neko, Vilnius;2:00:32,0
+415;50;Tumavičius Marius;"""Bk """"Maratonas''"", Jonava";2:00:32,0
+416;45;Rimkus Rimas;Ind, Kaunas;2:02:01,5
+417;32;Žibūda Tadas;Ovc Consulting, Vilnius;2:02:01,5
+418;21;Kalėda Darius;Kauno Bmk, Kaunas, Lietuva;2:04:00,1
+419;104;Gibavičius Karolis;Kauno Maratono Klubas, Kaunas, Lietuva;2:04:00,1
+420;12;Tarasevičius Edvardas;Neveronys;2:04:26,7
+421;10;Kybartas Marius;F.O.C.U.S. Running, Vilnius;2:04:26,7
+422;33;Regelskis Rytis;Kauno Sanciu Sporto Ir Sveikatingumo Centras, Kaunas;2:04:32,4
+423;99;Jocius Donatas;Kėdainiai;2:04:32,4
+424;17;Krupinas Augis;Vilnius;2:05:13,9
+425;20;Vaitkus Saulius;Mažeikiai;2:05:13,9
+426;26;Nenartavičius Žydrūnas;Vilnius, Lietuva;2:05:20,7
+427;85;Mažeika Viktoras;Kauno Bmk, Vilnius;2:05:20,7
+428;265;Dirvonskas Tomas;Vilnius;2:05:46,2
+429;115;Bendorius Artūras;Bendoriai, Vilnius;2:05:46,2
+430;34;Strazdauskas Tomas;Lietuva, Šiauliai;2:05:46,3
+431;243;Savičius Laimius ;Kaunas;2:05:46,3
+432;133;Šapoka Romualdas;Vilnius, Lietuva;2:05:55,4
+433;73;Vaičius Gintautas;Vilnius;2:05:55,4
+434;81;Daugmaudis Vilhelmas;Siauliai;2:06:37,3
+435;43;Vosylius Dainius;Palanga;2:06:37,3
+436;135;Četrauskas Vainius;Vilnius, Klaipėda;2:07:57,8
+437;264;Kisielius Donatas;Vilnius / Nida;2:07:57,8
+438;76;Jonušas Andrius;Vilnius, Lietuva;2:08:19,7
+439;78;Gudelionis Mantas;Vilnius, Lietuva;2:08:19,7
+440;55;Asars Māﾁris;Liepaja, Latvia;2:08:37,3
+441;51;Marchenko Dmitrii;Amberman, Kaliningrad;2:08:37,3
+442;44;Šarūnas Tadas;Vilnius, Lietuva;2:08:37,4
+443;266;Vyšniauskas Robertas;SEB, Vilnius;2:08:37,4
+444;105;Dabrega Simonas;Bėgimo Klubas, Kaunas;2:08:37,5
+445;128;Kuzma Pijus;Callcredit, Kaunas;2:08:37,5
+446;68;Juodviršis Mindaugas;Bėgikai.Lt, Vilnius;2:10:01,0
+447;67;Dapkevicius Andrius;Šviesos Kariai, Kaunas;2:10:01,0
+448;268;Milašius Tadas;BK Šviesos kariai;2:10:13,1
+449;114;Leščevski Kšyštof;Multisportas, Vilnius, Lietuva;2:10:13,1
+450;22;Stripeika Egidijus;Šiauliai;2:10:14,8
+451;58;Šiaulys Eitaras;Runglorious Bastards, Klaipėda;2:10:14,8
+452;131;Razvanavičius Simonas;Rokiškis, Lietuva;2:11:11,1
+453;109;Jegelevicius Justas;Vilnius;2:11:11,1
+454;116;Karneckas Justas;Vilnius;2:12:44,6
+455;47;Šaltys Justinas;Vilnius;2:12:44,6
+456;107;Mažeika Donatas;Kaunas;2:15:06,5
+457;122;Švajev Artūras;Klaipėda;2:15:06,5
+458;244;Šiugžda Karolis ;CRANBALT;2:15:20,8
+459;61;Daugmaudis Giedrius;Tamsta, Vilnius, Lietuva;2:15:20,8
+460;39;Kleinas Andrius;Klubas: S+B, Vilnius;2:20:11,2
+461;118;Sliekas Ramūnas;ind;2:20:11,2
+462;140;Zalanskas Julius;Vilkynė, Lietuva;2:23:31,8
+463;101;Pudžiuvelis Nerijus;Huracan, Vilnius, Lietuva;2:23:32,0
+464;125;Poderis Vytautas;Kaunas, Lietuva;2:23:32,0
+465;54;Avelis Nerijus;Teo, Klaipėda, Lietuva;2:27:52,6
+466;69;Viršila Mindaugas;Teo, Klaipėda, Lietuva;2:27:52,6
+467;134;Šitikovas Darius;Kaunas, Lietuva;2:41:21,3
+468;92;Baniūnas Paulius;Lithuania;2:41:21,3
